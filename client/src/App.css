@@ -1,0 +1,18 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+.animate-arrow-in {
+	opacity: 1;
+	transform: translateX(0);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.animate-arrow-out {
+	opacity: 0;
+	transform: translateX(100%);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}

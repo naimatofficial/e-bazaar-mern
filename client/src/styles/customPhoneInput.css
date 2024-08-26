@@ -1,0 +1,17 @@
+/* src/styles/customPhoneInput.css */
+.custom-phone-input {
+	--react-international-phone-background-color: #ffffff;
+	--react-international-phone-border-color: #d1d5db; /* Tailwind: border-gray-300 */
+	--react-international-phone-border-radius: 0.375rem; /* Tailwind: rounded */
+	--react-international-phone-text-color: #4b5563; /* Tailwind: text-gray-700 */
+	--react-international-phone-font-size: 1rem; /* Tailwind: text-base */
+	--react-international-phone-height: 44px; /* Adjust height if needed */
+}
+
+.custom-phone-input input {
+	@apply w-full py-2 px-3 border-none rounded leading-tight focus:outline-none;
+}
+
+.custom-phone-input input:focus {
+	@apply border-none outline-none ring-1 ring-primary-100;
+}
