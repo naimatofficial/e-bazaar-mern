@@ -1,0 +1,123 @@
+2024-08-26T11:02:01.748Z [error]: Error: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+    at file:///F:/ligth-house-projects/backend/app.js:112:9
+    at Layer.handle [as handle_request] (F:\ligth-house-projects\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:119:3)
+2024-08-26T11:02:03.543Z [error]: Error: Can't find this /feature-deals on this server.
+    at file:///F:/ligth-house-projects/backend/app.js:112:9
+    at Layer.handle [as handle_request] (F:\ligth-house-projects\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\ligth-house-projects\backend\node_modules\express\lib\router\route.js:119:3)
+2024-08-26T11:02:03.581Z [error]: CastError: Cast to ObjectId failed for value "latest-product" (type string) at path "_id" for model "Product"
+    at SchemaObjectId.cast (F:\ligth-house-projects\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (F:\ligth-house-projects\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (F:\ligth-house-projects\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (F:\ligth-house-projects\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (F:\ligth-house-projects\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (F:\ligth-house-projects\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (F:\ligth-house-projects\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (F:\ligth-house-projects\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///F:/ligth-house-projects/backend/controllers/handleFactory.js:159:21
+2024-08-26T11:02:03.642Z [error]: Error: The token belonging to this user does no longer exist.
+    at file:///F:/ligth-house-projects/backend/middleware/authMiddleware.js:57:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-26T11:02:27.193Z [error]: Can't find this /undefined on this server.
+2024-08-26T11:02:44.520Z [error]: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+2024-08-26T11:02:45.368Z [error]: Can't find this /feature-deals on this server.
+2024-08-26T11:02:45.423Z [error]: Invalid _id: latest-product.
+2024-08-26T11:02:45.503Z [error]: Can't find this /undefined on this server.
+2024-08-26T11:02:45.768Z [error]: Can't find this /uploads/1722943940859-pngtree-blue-grocery-store-online-shopping-banner-template-png-image_6439141.jpg on this server.
+2024-08-26T11:02:45.774Z [error]: Can't find this /uploads/1722943940859-360_F_378201432_Cgifq9ZMniHkolM5XujZX89OooDuPcmR.jpg on this server.
+2024-08-26T11:02:45.805Z [error]: Can't find this /uploads/1722949599300-72db6bb11a1553d416ea79f7b0f9990d.jpg on this server.
+2024-08-26T11:02:45.819Z [error]: Can't find this /uploads/1722949599300-monogram-letter-logo-design_955379-5473.jpg on this server.
+2024-08-26T11:02:45.826Z [error]: Can't find this /uploads/1724505046352-MARK.PK-01.jpg on this server.
+2024-08-26T11:02:45.829Z [error]: Can't find this /uploads/1724505046320-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:04:32.510Z [error]: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+2024-08-26T11:04:33.614Z [error]: Can't find this /feature-deals on this server.
+2024-08-26T11:04:33.695Z [error]: Invalid _id: latest-product.
+2024-08-26T11:04:33.767Z [error]: Can't find this /undefined on this server.
+2024-08-26T11:04:33.893Z [error]: Can't find this /uploads/1722943940859-pngtree-blue-grocery-store-online-shopping-banner-template-png-image_6439141.jpg on this server.
+2024-08-26T11:04:33.895Z [error]: Can't find this /uploads/1722943940859-360_F_378201432_Cgifq9ZMniHkolM5XujZX89OooDuPcmR.jpg on this server.
+2024-08-26T11:04:33.903Z [error]: Can't find this /uploads/1722949599300-72db6bb11a1553d416ea79f7b0f9990d.jpg on this server.
+2024-08-26T11:04:33.905Z [error]: Can't find this /uploads/1722949599300-monogram-letter-logo-design_955379-5473.jpg on this server.
+2024-08-26T11:04:33.907Z [error]: Can't find this /uploads/1724505046352-MARK.PK-01.jpg on this server.
+2024-08-26T11:04:33.912Z [error]: Can't find this /uploads/1724505046320-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:05:40.373Z [error]: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+2024-08-26T11:06:08.221Z [error]: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:08.247Z [error]: Can't find this /uploads/thumbnails/1724240014493-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:06:08.262Z [error]: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:06:08.267Z [error]: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:06:08.277Z [error]: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:08.288Z [error]: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+2024-08-26T11:06:08.296Z [error]: Can't find this /uploads/thumbnails/1723208028333-News%20Section%20(1).png on this server.
+2024-08-26T11:06:08.299Z [error]: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:08.301Z [error]: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:35.920Z [error]: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:35.925Z [error]: Can't find this /uploads/thumbnails/1724240014493-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:06:35.926Z [error]: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:06:35.935Z [error]: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:35.936Z [error]: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:06:35.938Z [error]: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+2024-08-26T11:06:35.943Z [error]: Can't find this /uploads/thumbnails/1723208028333-News%20Section%20(1).png on this server.
+2024-08-26T11:06:35.945Z [error]: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:35.952Z [error]: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+2024-08-26T11:06:35.954Z [error]: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:45.429Z [error]: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+2024-08-26T11:06:45.761Z [error]: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:45.765Z [error]: Can't find this /uploads/thumbnails/1724240014493-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:06:45.767Z [error]: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:06:45.769Z [error]: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:06:45.774Z [error]: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:45.781Z [error]: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+2024-08-26T11:06:45.785Z [error]: Can't find this /uploads/thumbnails/1723208028333-News%20Section%20(1).png on this server.
+2024-08-26T11:06:45.788Z [error]: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:06:45.795Z [error]: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:07:02.504Z [error]: Can't find this /api/wishlist/66b082b6ad592e1c38962414 on this server.
+2024-08-26T11:07:03.346Z [error]: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:07:03.348Z [error]: Can't find this /uploads/thumbnails/1724240014493-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:07:03.353Z [error]: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:07:03.354Z [error]: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:07:03.375Z [error]: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:07:03.376Z [error]: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+2024-08-26T11:07:03.378Z [error]: Can't find this /uploads/thumbnails/1723208028333-News%20Section%20(1).png on this server.
+2024-08-26T11:07:03.379Z [error]: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:07:03.439Z [error]: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:07:09.745Z [error]: Can't find this /favicon.ico on this server.
+2024-08-26T11:07:57.769Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
+2024-08-26T11:08:03.093Z [error]: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:03.095Z [error]: Can't find this /uploads/thumbnails/1724240014493-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:08:03.096Z [error]: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:08:03.116Z [error]: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:08:03.143Z [error]: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:03.145Z [error]: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+2024-08-26T11:08:03.147Z [error]: Can't find this /uploads/thumbnails/1723208028333-News%20Section%20(1).png on this server.
+2024-08-26T11:08:03.150Z [error]: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:03.153Z [error]: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:08.802Z [error]: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:08.804Z [error]: Can't find this /uploads/thumbnails/1724240014493-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:08:08.818Z [error]: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+2024-08-26T11:08:08.825Z [error]: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+2024-08-26T11:08:08.834Z [error]: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:08.848Z [error]: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+2024-08-26T11:08:08.852Z [error]: Can't find this /uploads/thumbnails/1723208028333-News%20Section%20(1).png on this server.
+2024-08-26T11:08:08.860Z [error]: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:08.863Z [error]: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+2024-08-26T11:08:43.277Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
+2024-08-26T11:10:29.938Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
+2024-08-26T11:10:42.598Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
+2024-08-26T11:10:53.166Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
+2024-08-26T11:11:17.091Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
+2024-08-26T11:12:25.086Z [error]: Can't find this /api/wishlist/66a3380342ea2edc15c50e2c on this server.
