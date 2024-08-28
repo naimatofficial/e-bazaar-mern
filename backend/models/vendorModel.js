@@ -48,7 +48,7 @@ const vendorSchema = new mongoose.Schema(
 
         status: {
             type: String,
-            enum: ['pending', 'active', 'rejected'],
+            enum: ['pending', 'active', 'inactive', 'rejected'],
             default: 'pending',
         },
         vendorImage: {
@@ -71,6 +71,22 @@ const vendorSchema = new mongoose.Schema(
         timestamps: true,
     }
 )
+
+vendorSchema.virtual('productCount', {
+    ref: 'Product',
+    localField: '_id',
+    foreignField: 'userId',
+    // This tells mongoose to return a count instead of the documents
+    count: true,
+})
+
+vendorSchema.virtual('bank', {
+    ref: 'VendorBank',
+    localField: '_id',
+    foreignField: 'vendor',
+    justOne: true,
+    options: { select: 'holderName accountNumber bankName branch vendor ' },
+})
 
 vendorSchema.methods.correctPassword = async function (
     candidatePassword,

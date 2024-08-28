@@ -10,8 +10,14 @@ import {
     logout,
     loginCustomer,
     signupCustomer,
+    updatePassword,
+    forgotPassword,
 } from '../controllers/authController.js'
-import { protect, restrictTo } from '../middleware/authMiddleware.js'
+import {
+    protect,
+    restrictTo,
+    selectModelByRole,
+} from '../middleware/authMiddleware.js'
 import { validateSchema } from '../middleware/validationMiddleware.js'
 import customerValidationSchema from './../validations/customerValidator.js'
 import { loginLimiter } from '../utils/helpers.js'
@@ -25,6 +31,9 @@ router.post(
     signupCustomer
 )
 router.post('/logout', protect, logout)
+
+router.put('/update-password', protect, selectModelByRole, updatePassword)
+router.post('/forgot-password', forgotPassword)
 
 router
     .route('/')

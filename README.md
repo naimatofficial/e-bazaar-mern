@@ -1,6 +1,6 @@
 # 🛒 Ecommerce Baazaar
 
-![Ecommerce Baazaar Logo](https://your-image-url-here) <!-- Image or Logo -->
+![Ecommerce Baaazaar Logo](https://your-image-url-here) <!-- Image or Logo -->
 
 > A full-fledged e-commerce application built using the MERN stack (MongoDB, Express, React, Node.js) with a seamless shopping experience and efficient order management.
 
@@ -54,7 +54,7 @@ Ensure you have the following installed:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/ecommerce-baazaar.git
+git clone https://github.com/naimatofficial/e-bazaar-mern.git
 ```
 
 ### **Set up environment variables:**
@@ -71,7 +71,7 @@ JWT_ACCESS_TIME=********
 JWT_REFRESH_TIME=********
 JWT_COOKIE_EXPIRES_IN=********
 
-REDIS_URL=redis://localhost:[redis_port]
+REDIS_URL=*redis_url*
 ```
 
 ### **Install packages & Start Both Server**

@@ -51,4 +51,6 @@ vendorBankSchema.post('save', async function (next) {
     }
 })
 
-export default mongoose.model('VendorBank', vendorBankSchema)
+const VendorBank = mongoose.model('VendorBank', vendorBankSchema)
+
+export default VendorBank

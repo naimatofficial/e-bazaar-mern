@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import * as crypto from 'crypto'
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
 
@@ -62,6 +63,9 @@ const customerSchema = new mongoose.Schema(
         permanentAddress: addressSchema,
         officeShippingAddress: addressSchema,
         officeBillingAddress: addressSchema,
+        passwordChangedAt: Date,
+        passwordResetToken: String,
+        passwordResetExpires: Date,
     },
     {
         timestamps: true,
@@ -75,12 +79,48 @@ customerSchema.methods.correctPassword = async function (
     return await bcrypt.compare(candidatePassword, customerPassword)
 }
 
+customerSchema.methods.changePasswordAfter = function (JWTTimestamp) {
+    if (this.passwordChangedAt) {
+        const changeTimestamp = parseInt(
+            this.passwordChangedAt.getTime() / 1000,
+            10
+        )
+
+        return JWTTimestamp < changeTimestamp
+    }
+    // NO password changed
+    return false
+}
+
+customerSchema.methods.createPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(32).toString('hex')
+
+    this.passwordResetToken = crypto
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex')
+
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000
+
+    return resetToken
+}
+
 customerSchema.pre('save', async function (next) {
     // Only work when the password is not modified
     if (!this.isModified('password')) return next()
 
     // Hash the password using cost of 12
     this.password = await bcrypt.hash(this.password, 12)
+
+    next()
+})
+
+customerSchema.pre('save', function (next) {
+    if (!this.isModified('password') || this.isNew) return next()
+
+    // 1 sec minus: beaucese the unexcepted bug during issued jwt token
+    // the token created after the password changed
+    this.passwordChangedAt = Date.now() - 1000
 
     next()
 })

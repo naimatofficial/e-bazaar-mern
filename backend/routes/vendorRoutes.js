@@ -12,8 +12,12 @@ import {
 import { validateSchema } from '../middleware/validationMiddleware.js'
 import vendorValidationSchema from './../validations/vendorValidator.js'
 import { loginLimiter } from '../utils/helpers.js'
-import { protect, restrictTo } from '../middleware/authMiddleware.js'
-import { loginVendor } from './../controllers/authController.js'
+import {
+    protect,
+    restrictTo,
+    selectModelByRole,
+} from '../middleware/authMiddleware.js'
+import { loginVendor, updatePassword } from './../controllers/authController.js'
 
 const router = express.Router()
 
@@ -40,10 +44,10 @@ router
         validateSchema(vendorValidationSchema),
         createVendor
     )
-    .get(protect, getAllVendors)
+    .get(getAllVendors)
 
 router
-    .route('/:vendorId')
+    .route('/:id')
     .get(getVendorById)
     .delete(protect, restrictTo('admin', 'vendor'), deleteVendor)
 
@@ -58,6 +62,8 @@ router.route('/signup').post(
     // validateSchema(vendorValidationSchema),
     registerVendor
 )
+
+router.put('/update-password', protect, selectModelByRole, updatePassword)
 
 router.post('/login', loginLimiter, loginVendor)
 

@@ -55,10 +55,6 @@ router.route('/:productId/sold').get(sellProduct)
 
 router.put('/:productId/update-product-image', updateProductImages)
 
-// router.route('/:productId/reviews').post(addReview).get(getProductReviews)
-
-// router.route('/:reviewId/status').patch(updateReviewStatus)
-
 router
     .route('/:id')
     .get(getProductById)
@@ -69,8 +65,6 @@ router.route('/:id/status').put(updateProductStatus)
 
 router.route('/:id/feature').put(updateProductFeaturedStatus)
 
-// // router.get('/feature-product', getFeaturedProducts);
-// // router.get('/latest-product', getLatestProducts);
 // router.get('/top-rated', getTopRatedProducts);
 // // router.get('/pending', getAllPendingProducts);
 // // router.get('/approved', getAllApprovedProducts);
@@ -82,15 +76,5 @@ router.route('/:id/feature').put(updateProductFeaturedStatus)
 // // router.get('/vendor/:vendorId/denied', getDeniedProductsByVendor);
 // // router.get('/vendor/:vendorId/approved', getApprovedProductsByVendor);
 // // router.get('/vendor/:vendorId/newest', getNewestProductByVendor);
-// router.post('/:productId/reviews', addReview);
-// router.get('/:productId/reviews', getProductReviews);
-
-// router.put('/:id/status', updateProductStatus);
-// router.put('/:id/feature', updateProductFeaturedStatus);
-// router.put('/:id', updateProduct);
-// router.get('/:id', getProductById);
-// router.delete('/:id', deleteProduct);
-
-// // Update review status
 
 export default router

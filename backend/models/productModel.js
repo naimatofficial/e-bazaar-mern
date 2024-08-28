@@ -184,6 +184,14 @@ productSchema.pre(/^find/, function (next) {
             path: 'subSubCategory',
             select: 'name',
         })
+        .populate({
+            path: 'colors',
+            select: 'name',
+        })
+        .populate({
+            path: 'attributes',
+            select: 'name',
+        })
     next()
 })
 

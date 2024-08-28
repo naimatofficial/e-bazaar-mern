@@ -14,11 +14,22 @@ const models = {
     customer: Customer,
 }
 
+export const selectModelByRole = (req, res, next) => {
+    const userRole = req.user.role.toLowerCase()
+    const Model = models[userRole]
+
+    if (!Model) {
+        return next(new AppError('User role not recognized.', 401))
+    }
+
+    // Attach the selected model to the request object
+    req.Model = Model
+    next()
+}
+
 export const protect = catchAsync(async (req, res, next) => {
     // 1) Getting token and check of it's there
     let token
-
-    console.log(req.headers.authorization)
 
     if (
         req.headers.authorization &&
@@ -39,7 +50,6 @@ export const protect = catchAsync(async (req, res, next) => {
     // 2) Verification token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
 
-    console.log(decoded)
     // 3) Determine the model based on the user role in the token
     const userRole = decoded.role // Assume role is included in the token payload
     const Model = models[userRole]

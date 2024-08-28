@@ -129,9 +129,9 @@ export const updateVendorStatus = catchAsync(async (req, res, next) => {
     })
 })
 // Get all vendors
-export const getAllVendors = getAll(Vendor)
+export const getAllVendors = getAll(Vendor, { path: 'bank productCount' })
 
 // Get vendor by ID
-export const getVendorById = getOne(Vendor)
+export const getVendorById = getOne(Vendor, { path: 'bank productCount' })
 // Delete vendor by ID
 export const deleteVendor = deleteOne(Vendor)

@@ -51,8 +51,10 @@ const SignUpForm = () => {
 			return;
 		}
 
+		// remove confirm password
+		data.confirmPassword = undefined;
+
 		try {
-			console.log(data);
 			await customerRegister(data).unwrap();
 			toast.success("Registration successfully");
 			navigate("/customer/auth/sign-in");

@@ -10,6 +10,7 @@ import path, { dirname } from 'path'
 // ROUTES
 import userRoutes from './routes/userRoutes.js'
 import vendorRoutes from './routes/vendorRoutes.js'
+import vendorBankRoutes from './routes/vendorBankRotues.js'
 import customerRoutes from './routes/customerRoutes.js'
 import brandsRoutes from './routes/brandRoutes.js'
 
@@ -83,6 +84,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 // API ROUTES
 app.use('/api/users', userRoutes)
 app.use('/api/vendors', vendorRoutes)
+app.use('/api/vendor-banks', vendorBankRoutes)
 app.use('/api/customers', customerRoutes)
 
 app.use('/api/products', productRoutes)
