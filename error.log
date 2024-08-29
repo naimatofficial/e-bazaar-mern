@@ -1570,3 +1570,6 @@ Use mongoose.model(name, schema)
 2024-08-29T07:01:01.235Z [error]: Error: There was an error sending the email. Try again later!
     at file:///F:/e-bazaar-mern/backend/controllers/authController.js:219:13
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-29T07:01:56.236Z [error]: Error: There was an error sending the email. Try again later!
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:221:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
