@@ -9,6 +9,7 @@ import {
 } from '../controllers/orderControllers.js'
 import { validateSchema } from '../middleware/validationMiddleware.js'
 import orderValidationSchema from './../validations/orderValidator.js'
+import { protect, restrictTo } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 
@@ -19,6 +20,6 @@ router
 
 router.route('/:id').get(getOrderById).delete(deleteOrder)
 
-router.route('/:id/status').put(updateOrderStatus)
+router.route('/:id/status').put(protect, restrictTo('admin'), updateOrderStatus)
 
 export default router

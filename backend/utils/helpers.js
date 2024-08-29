@@ -12,3 +12,75 @@ export const loginLimiter = rateLimit({
     max: 5, // limit each IP to 5 requests per windowMs for login route
     message: 'Too many login attempts from this IP, please try again later.',
 })
+
+export const createPasswordResetMessage = (
+    email,
+    ipAddress,
+    timestamp,
+    resetUrl
+) => {
+    const brandLogoURL =
+        'https://i.pinimg.com/originals/c8/51/e1/c851e1918e356d0bfdcd090fb2c2332c.jpg'
+
+    return `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="${brandLogoURL}" alt="Brand Logo" style="max-width: 150px;">
+            </div>
+            <h2 style="color: #333;">Reset Password</h2>
+            <p>A password reset event has been triggered. The password reset window 
+                is limited to 10 minutes. If you do not reset your password within 10 minutes, 
+                you will need to submit a new request.To complete the password reset process, 
+                visit the following link:
+            </p>
+            <a href=${resetUrl} target='_blank'>${resetUrl}</a>
+            <table style="width: 100%; margin-top: 20px;">
+                <tr>
+                    <td style="font-weight: bold;">Username</td>
+                    <td>${email}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">IP Address</td>
+                    <td>${ipAddress}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">Reset Timestamp</td>
+                    <td>${timestamp}</td>
+                </tr>
+            </table>
+        </div>
+    `
+}
+
+export const createPasswordResetConfirmationMessage = (
+    email,
+    ipAddress,
+    timestamp
+) => {
+    const brandLogoURL =
+        'https://i.pinimg.com/originals/c8/51/e1/c851e1918e356d0bfdcd090fb2c2332c.jpg'
+
+    return `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="${brandLogoURL}" alt="Brand Logo" style="max-width: 150px;">
+            </div>
+            <h2 style="color: #333;">Password Reset Confirmation</h2>
+            <p>Your password was successfully reset.</p>
+            <table style="width: 100%; margin-top: 20px;">
+                <tr>
+                    <td style="font-weight: bold;">Username</td>
+                    <td>${email}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">IP Address</td>
+                    <td>${ipAddress}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">Reset Timestamp</td>
+                    <td>${timestamp}</td>
+                </tr>
+            </table>
+        </div>
+    `
+}

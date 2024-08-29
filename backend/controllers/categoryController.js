@@ -1,13 +1,8 @@
 import Category from '../models/categoryModel.js'
-import {
-    sendErrorResponse,
-    sendSuccessResponse,
-} from '../utils/responseHandler.js'
-import fs from 'fs'
-import path from 'path'
+import { sendErrorResponse } from '../utils/responseHandler.js'
 import slugify from 'slugify'
 import { client } from '../utils/redisClient.js'
-import { deleteOne, getAll, getOne } from './handleFactory.js'
+import { deleteOne, getAll, getOne, getOneBySlug } from './handleFactory.js'
 import catchAsync from '../utils/catchAsync.js'
 import { getCacheKey } from '../utils/helpers.js'
 import redisClient from '../config/redisConfig.js'
@@ -93,52 +88,7 @@ export const updateCategory = catchAsync(async (req, res) => {
     await client.del('categories')
 })
 // Delete a category by ID
-export const deleteCategory = async (req, res) => {
-    try {
-        const category = await Category.findByIdAndDelete(req.params.id)
-        if (!category) {
-            return sendErrorResponse(res, 'Category not found', 404)
-        }
-
-        if (category.logo) {
-            fs.unlinkSync(path.join('uploads', category.logo))
-        }
-
-        await client.del(`category_${req.params.id}`)
-        await client.del('categories')
-
-        sendSuccessResponse(res, category, 'Category deleted successfully')
-    } catch (error) {
-        sendErrorResponse(res, error.message)
-    }
-}
+export const deleteCategory = deleteOne(Category)
 
 // Get category by slug
-export const getCategoryBySlug = async (req, res) => {
-    try {
-        const slug = req.params.slug
-
-        // Check if the category by slug is cached
-        const cachedCategory = await client.get(`category_slug_${slug}`)
-        if (cachedCategory) {
-            console.log('Serving category by slug from cache')
-            return sendSuccessResponse(
-                res,
-                JSON.parse(cachedCategory),
-                'Category fetched successfully'
-            )
-        }
-
-        const category = await Category.findOne({ slug })
-        if (!category) {
-            return sendErrorResponse(res, 'Category not found', 404)
-        }
-
-        // Cache the category by slug
-        await client.set(`category_slug_${slug}`, JSON.stringify(category))
-
-        sendSuccessResponse(res, category, 'Category fetched successfully')
-    } catch (error) {
-        sendErrorResponse(res, error.message)
-    }
-}
+export const getCategoryBySlug = getOneBySlug(Category)

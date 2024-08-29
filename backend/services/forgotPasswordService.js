@@ -5,10 +5,10 @@ const sendEmail = async (options) => {
 
     // 1. Create a transporter
     const transporter = nodemailer.createTransport({
-        service: 'Gmail', // You can change this to another service like SendGrid, Mailgun, etc.
+        service: 'gmail', // You can change this to another service like SendGrid, Mailgun, etc.
         auth: {
-            user: '1a2b3c4d5e6f7g',
-            pass: '1a2b3c4d5e6f7g',
+            user: process.env.EMAIL_ADDRESS,
+            pass: process.env.EMAIL_PASS_KEY,
         },
     })
 
@@ -21,7 +21,7 @@ const sendEmail = async (options) => {
     }
 
     console.log(mailOptions)
-
+    //
     // 3. Actually send the email
     // await transporter.sendMail(mailOptions)
 

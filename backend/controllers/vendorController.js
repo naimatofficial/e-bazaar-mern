@@ -6,7 +6,7 @@ import {
 } from '../utils/responseHandler.js'
 
 import jwt from 'jsonwebtoken'
-import { deleteOne, getAll, getOne } from './handleFactory.js'
+import { deleteOne, getAll, getOne, updateStatus } from './handleFactory.js'
 import catchAsync from '../utils/catchAsync.js'
 import AppError from '../utils/appError.js'
 import { getCacheKey } from '../utils/helpers.js'
@@ -104,30 +104,6 @@ export const registerVendor = catchAsync(async (req, res) => {
     }
 })
 
-// Update vendor status
-export const updateVendorStatus = catchAsync(async (req, res, next) => {
-    const { vendorId } = req.params
-    const { status } = req.body
-
-    const updatedVendor = await Vendor.findByIdAndUpdate(
-        vendorId,
-        { status },
-        { new: true }
-    )
-
-    if (!updatedVendor) {
-        return next(new AppError('No vendor found with that ID', 404))
-    }
-
-    // Update cache
-    const cacheKey = getCacheKey(Vendor, '', req.query)
-    await redisClient.del(cacheKey)
-
-    res.status(200).json({
-        status: 'success',
-        doc: updatedVendor,
-    })
-})
 // Get all vendors
 export const getAllVendors = getAll(Vendor, { path: 'bank productCount' })
 
@@ -135,3 +111,6 @@ export const getAllVendors = getAll(Vendor, { path: 'bank productCount' })
 export const getVendorById = getOne(Vendor, { path: 'bank productCount' })
 // Delete vendor by ID
 export const deleteVendor = deleteOne(Vendor)
+
+// Update vendor status
+export const updateVendorStatus = updateStatus(Vendor)

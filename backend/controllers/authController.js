@@ -7,7 +7,11 @@ import redisClient from '../config/redisConfig.js'
 import catchAsync from '../utils/catchAsync.js'
 import AppError from './../utils/appError.js'
 import { loginService } from '../services/authService.js'
-import { getCacheKey } from '../utils/helpers.js'
+import {
+    createPasswordResetConfirmationMessage,
+    createPasswordResetMessage,
+    getCacheKey,
+} from '../utils/helpers.js'
 import sendEmail from './../services/forgotPasswordService.js'
 import * as crypto from 'crypto'
 
@@ -166,7 +170,8 @@ export const VendorSignup = catchAsync(async (req, res, next) => {
 
 export const forgotPassword = catchAsync(async (req, res, next) => {
     // 1) Get user based on posted email
-    const user = await Customer.findOne({ email: req.body.email })
+    const email = req.body.email
+    const user = await Customer.findOne({ email })
     if (!user) {
         return next(
             new AppError('There is no user with that email address.', 404)
@@ -179,18 +184,26 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
     // 3) Send it to user's email
     try {
-        const resetURL = `${req.protocol}://${req.get(
-            'host'
-        )}/api/users/resetPassword/${resetToken}`
+        const resetURL = `http://localhost:3000/users/resetPassword/${resetToken}`
 
-        const message = `Forgot your password? Submit a PATCH request 
-                         with your new password and passwordConfirm to: ${resetURL}.
-                     \n  If you didn't forget your password, please ignore this email!`
+        // Get the user's IP address
+        const ipAddress = req.ip
+        const timestamp =
+            new Date().toISOString().replace('T', ' ').substring(0, 16) + ' GMT'
+
+        const message = createPasswordResetMessage(
+            user.email,
+            ipAddress,
+            timestamp,
+            resetUrl
+        )
+
+        console.log(message)
 
         await sendEmail({
             email: user.email,
             subject: 'Your password reset token (valid for 10 min)!',
-            message,
+            html: message,
         })
 
         res.status(200).json({
@@ -201,6 +214,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
         user.passwordResetToken = undefined
         user.passwordResetExpires = undefined
         await user.save({ validateBeforeSave: false })
+
+        if (user) console.log(user)
 
         return next(
             new AppError(
@@ -213,13 +228,19 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
 export const resetPassword = catchAsync(async (req, res, next) => {
     // 1) Create a hashedToken
+    const { passwordNew, passwordConfirm } = req.body
+
+    if (passwordNew !== passwordConfirm) {
+        return next(new AppError('Passwords not matched!', 400))
+    }
+
     const hashedToken = crypto
         .createHash('sha256')
         .update(req.params.token)
         .digest('hex')
 
     // 2) Check the user exists and also check password reset expires is greater then current time
-    const user = await User.findOne({
+    const user = await Customer.findOne({
         passwordResetToken: hashedToken,
         passwordResetExpires: { $gt: Date.now() },
     })
@@ -228,11 +249,28 @@ export const resetPassword = catchAsync(async (req, res, next) => {
         return next(new AppError('Token is invalid or has expired', 400))
     }
 
+    // 3) Set email message
+    const ipAddress = req.ip // Get the user's IP address
+    const timestamp =
+        new Date().toISOString().replace('T', ' ').substring(0, 16) + ' GMT'
+
+    const message = createPasswordResetConfirmationMessage(
+        user.email,
+        ipAddress,
+        timestamp
+    )
+
     // 3) Update the user properties & remove the unnecessary fields
-    user.password = req.body.password
+    user.password = passwordNew
     user.passwordResetToken = undefined
     user.passwordResetExpires = undefined
     await user.save()
+
+    await sendEmail({
+        email: user.email,
+        subject: 'Password Reset Confirmation',
+        html: message,
+    })
 
     createSendToken(user, 200, res)
 })

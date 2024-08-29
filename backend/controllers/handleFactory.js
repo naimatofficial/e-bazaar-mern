@@ -76,8 +76,6 @@ export const updateOne = (Model) =>
         //     }
         // }
 
-        console.log('DAta: ', filteredData)
-
         // Perform the update operation
         const doc = await Model.findByIdAndUpdate(req.params.id, filteredData, {
             new: true,
@@ -218,11 +216,10 @@ export const getAll = (Model, popOptions) =>
 
 export const getOneBySlug = (Model, popOptions) =>
     catchAsync(async (req, res, next) => {
-        const cacheKey = getCacheKey(Model.modelName, req.params.slug)
-
-        const slug = req.params.slug
+        const slug = req.params.slug.toLowerCase() || ''
 
         // Check cache first
+        const cacheKey = getCacheKey(Model.modelName, slug)
         const cachedDoc = await redisClient.get(cacheKey)
 
         if (cachedDoc) {
@@ -251,6 +248,49 @@ export const getOneBySlug = (Model, popOptions) =>
         res.status(200).json({
             status: 'success',
             cached: false,
+            doc,
+        })
+    })
+
+// UPDATE One Document
+export const updateStatus = (Model) =>
+    catchAsync(async (req, res, next) => {
+        if (!req.body.status) {
+            return next(new AppError(`Please provide status value.`, 400))
+        }
+
+        console.log('Status: ', req.body.status)
+
+        // Perform the update operation
+        const doc = await Model.findByIdAndUpdate(
+            req.params.id,
+            { status: req.body.status },
+            {
+                new: true,
+                runValidators: true,
+            }
+        )
+
+        const docName = Model.modelName.toLowerCase() || 'Document'
+
+        // Handle case where the document was not found
+        if (!doc) {
+            return next(new AppError(`No ${docName} found with that ID`, 404))
+        }
+
+        const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
+
+        // delete pervious document data
+        await redisClient.del(cacheKeyOne)
+        // updated the cache with new data
+        await redisClient.setEx(cacheKeyOne, 3600, JSON.stringify(doc))
+
+        // Update cache
+        const cacheKey = getCacheKey(Model.modelName, '', req.query)
+        await redisClient.del(cacheKey)
+
+        res.status(200).json({
+            status: 'success',
             doc,
         })
     })

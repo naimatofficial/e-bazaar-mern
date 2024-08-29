@@ -8,7 +8,7 @@ import { validateProductDependencies } from '../utils/validation.js'
 import { populateProductDetails } from '../utils/productHelper.js'
 import { buildFilterQuery, buildSortOptions } from '../utils/filterHelper.js'
 import Customer from '../models/customerModel.js'
-import { deleteOne, getAll, getOne } from './handleFactory.js'
+import { deleteOne, getAll, getOne, updateStatus } from './handleFactory.js'
 import catchAsync from '../utils/catchAsync.js'
 import { getCacheKey } from '../utils/helpers.js'
 import redisClient from '../config/redisConfig.js'
@@ -232,31 +232,7 @@ export const addReview = async (req, res) => {
 }
 
 // Update product status
-export const updateProductStatus = async (req, res) => {
-    try {
-        const productId = req.params.id
-        const { status } = req.body
-
-        const validStatuses = ['active', 'inactive', 'pending']
-        if (!validStatuses.includes(status)) {
-            return res.status(400).json({ message: 'Invalid status' })
-        }
-
-        const product = await Product.findById(productId)
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found' })
-        }
-
-        product.status = status
-        await product.save()
-        await client.del('all_products:*')
-        await client.del(`product_${productId}`)
-        sendSuccessResponse(res, product, 200)
-    } catch (error) {
-        sendErrorResponse(res, error)
-    }
-}
-
+export const updateProductStatus = updateStatus(Product)
 // Update product featured status
 export const updateProductFeaturedStatus = async (req, res) => {
     try {

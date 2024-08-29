@@ -42,10 +42,6 @@ const customerValidationSchema = Joi.object({
     }),
     phoneNumber: Joi.string().optional().allow(''),
     image: Joi.string().optional().allow(''),
-    role: Joi.string().valid('customer').default('customer').messages({
-        'string.base': 'Role must be a string',
-        'any.only': 'Role must be customer',
-    }),
     referCode: Joi.string().optional().allow(''),
     password: Joi.string().min(8).required().messages({
         'any.required': 'Password is required',

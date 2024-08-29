@@ -15,6 +15,7 @@ import {
 } from '../controllers/productController.js'
 import { validateSchema } from '../middleware/validationMiddleware.js'
 import productValidationSchema from './../validations/productValidator.js'
+import { protect, restrictTo } from './../middleware/authMiddleware.js'
 
 const router = express.Router()
 
@@ -61,7 +62,9 @@ router
     .put(updateProduct)
     .delete(deleteProduct)
 
-router.route('/:id/status').put(updateProductStatus)
+router
+    .route('/status/:id')
+    .put(protect, restrictTo('admin'), updateProductStatus)
 
 router.route('/:id/feature').put(updateProductFeaturedStatus)
 

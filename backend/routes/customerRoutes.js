@@ -5,6 +5,7 @@ import {
     getCustomer,
     getCustomers,
     updateCustomer,
+    updateCustomerStatus,
 } from './../controllers/customerController.js'
 import {
     logout,
@@ -12,6 +13,7 @@ import {
     signupCustomer,
     updatePassword,
     forgotPassword,
+    resetPassword,
 } from '../controllers/authController.js'
 import {
     protect,
@@ -34,6 +36,7 @@ router.post('/logout', protect, logout)
 
 router.put('/update-password', protect, selectModelByRole, updatePassword)
 router.post('/forgot-password', forgotPassword)
+router.put('/reset-password/:token', resetPassword)
 
 router
     .route('/')
@@ -44,6 +47,8 @@ router
         createCustomer
     )
     .get(protect, restrictTo('admin', 'vendor'), getCustomers)
+
+router.put('/status/:id', protect, restrictTo('admin'), updateCustomerStatus)
 
 router
     .route('/:id')

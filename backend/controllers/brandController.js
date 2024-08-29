@@ -2,9 +2,13 @@ import redisClient from '../config/redisConfig.js'
 import Brand from '../models/brandModel.js'
 import catchAsync from '../utils/catchAsync.js'
 import { getCacheKey } from '../utils/helpers.js'
-import { client } from '../utils/redisClient.js'
-import { sendSuccessResponse } from '../utils/responseHandler.js'
-import { deleteOne, getAll, getOne, getOneBySlug } from './handleFactory.js'
+import {
+    deleteOne,
+    getAll,
+    getOne,
+    getOneBySlug,
+    updateStatus,
+} from './handleFactory.js'
 
 // Create a new brand
 export const createBrand = catchAsync(async (req, res) => {
@@ -130,35 +134,6 @@ export const updateBrand = catchAsync(async (req, res) => {
 })
 // Delete a brand by ID
 export const deleteBrand = deleteOne(Brand)
+
 // Update a brand's status by ID
-export const updateBrandStatus = catchAsync(async (req, res) => {
-    const { id } = req.params
-    const { status } = req.body
-
-    // // Ensure the status is valid
-    // if (!['active', 'inactive'].includes(status)) {
-    //     return res.status(400).json({ message: 'Invalid status value' })
-    // }
-
-    // Update the brand's status
-    const updatedBrand = await Brand.findByIdAndUpdate(
-        id,
-        { status },
-        { new: true }
-    )
-
-    if (!updatedBrand) {
-        return res.status(404).json({ message: 'Brand not found' })
-    }
-
-    // Update the cache
-    const cacheKey = `brand:${updatedBrand._id}`
-    await client.set(cacheKey, JSON.stringify(updatedBrand))
-    console.log(`[CACHE] Updated cache for brand with key: ${cacheKey}`)
-
-    // Invalidate the all brands cache
-    await client.del('all_brands')
-    console.log(`[CACHE] Invalidated cache for all brands`)
-
-    sendSuccessResponse(res, updatedBrand, 'Brand status updated successfully')
-})
+export const updateBrandStatus = updateStatus(Brand)
