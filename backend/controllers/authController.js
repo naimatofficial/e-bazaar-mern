@@ -195,10 +195,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
             user.email,
             ipAddress,
             timestamp,
-            resetUrl
+            resetURL
         )
-
-        console.log(message)
 
         await sendEmail({
             email: user.email,
@@ -214,8 +212,6 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
         user.passwordResetToken = undefined
         user.passwordResetExpires = undefined
         await user.save({ validateBeforeSave: false })
-
-        if (user) console.log(user)
 
         return next(
             new AppError(

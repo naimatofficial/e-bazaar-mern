@@ -1,8 +1,6 @@
 import nodemailer from 'nodemailer'
 
 const sendEmail = async (options) => {
-    console.log(process.env.EMAIL_ADDRESS)
-
     // 1. Create a transporter
     const transporter = nodemailer.createTransport({
         service: 'gmail', // You can change this to another service like SendGrid, Mailgun, etc.
@@ -17,14 +15,10 @@ const sendEmail = async (options) => {
         from: process.env.EMAIL_ADDRESS,
         to: options.email,
         subject: options.subject,
-        text: options.message,
+        html: options.html,
     }
 
-    console.log(mailOptions)
-    //
     // 3. Actually send the email
-    // await transporter.sendMail(mailOptions)
-
     await transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(`Error:`, error)
