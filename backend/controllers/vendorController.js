@@ -89,7 +89,6 @@ export const registerVendor = catchAsync(async (req, res) => {
         vendorImage,
         logo,
         banner,
-        status: 'pending',
     })
 
     const savedVendor = await newVendor.save()

@@ -7,25 +7,22 @@ const refundSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Order',
             required: [true, 'Please provide order Id.'],
+            unique: true,
+        },
+        reasonByCustomer: {
+            type: String,
+            required: [true, 'Please provide refund reason.'],
+        },
+        approveReason: {
+            type: String,
+        },
+        rejectReason: {
+            type: String,
         },
         status: {
             type: String,
             enum: ['pending', 'approved', 'refunded', 'rejected'],
             default: 'pending',
-        },
-        statusReason: {
-            type: String,
-        },
-        reason: {
-            type: String,
-            required: [true, 'Please provide reason.'],
-        },
-        requestedAt: {
-            type: Date,
-            default: Date.now,
-        },
-        processedAt: {
-            type: Date,
         },
     },
     { timestamps: true }

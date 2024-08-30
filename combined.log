@@ -1607,3 +1607,224 @@ Use mongoose.model(name, schema)
     at model.Query.exec (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:4401:80)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:204:21
+2024-08-29T07:55:36.928Z [error]: CastError: Cast to Number failed for value "$gte: 10" (type string) at path "stock" for model "Product"
+    at SchemaNumber.cast (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schema\number.js:380:11)
+    at SchemaType.applySetters (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaNumber.castForQuery (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schema\number.js:434:16)
+    at cast (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._find (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:2292:8)
+    at model.Query.exec (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:204:21
+2024-08-29T08:17:54.317Z [error]: CastError: Cast to date failed for value "2024-8-31T19:00:00.000Z" (type string) at path "createdAt" for model "Order"
+    at SchemaDate.cast (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schema\date.js:376:11)
+    at SchemaDate.handleSingle (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schema\date.js:388:15)
+    at SchemaDate.castForQuery (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schema\date.js:426:18)
+    at cast (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\cast.js:352:39)
+    at Query.cast (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._find (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:2292:8)
+    at model.Query.exec (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:204:21
+2024-08-30T05:03:07.735Z [error]: Error: One or more vendors do not exist.
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:109:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:07:54.401Z [error]: Error: Can't find this /favicon.ico on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-08-30T05:57:15.493Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:43:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+2024-08-30T05:57:25.679Z [error]: Error: The token belonging to this user does no longer exist.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:67:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:58:04.749Z [error]: Error: Please provide refund reason.
+    at file:///F:/e-bazaar-mern/backend/middleware/validationMiddleware.js:6:21
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:77:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:58:29.016Z [error]: Error: Referenced order ID does not exist
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/refundModel.js:42:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:58:50.287Z [error]: Error: Referenced order ID does not exist
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/refundModel.js:42:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:59:05.936Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:87:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:77:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:59:18.382Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T05:59:49.895Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T06:00:13.931Z [error]: JsonWebTokenError: jwt malformed
+    at module.exports (F:\e-bazaar-mern\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at node:internal/util:442:7
+    at new Promise (<anonymous>)
+    at node:internal/util:428:12
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:51:48
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+2024-08-30T06:11:56.978Z [error]: JsonWebTokenError: jwt malformed
+    at module.exports (F:\e-bazaar-mern\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at node:internal/util:442:7
+    at new Promise (<anonymous>)
+    at node:internal/util:428:12
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:53:48
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+2024-08-30T06:28:50.680Z [error]: Error: Referenced order ID does not exist
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/refundModel.js:42:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T06:29:00.965Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:89:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:79:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T06:43:53.037Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at param (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:365:14)
+    at param (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:421:3)
+2024-08-30T06:44:02.987Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:89:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:79:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T07:01:19.048Z [error]: ValidationError: User validation failed: name: Please tell us your name., email: Please provide your email address., password: Please provide a password.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-08-30T07:05:15.286Z [error]: ReferenceError: data is not defined
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:69:17
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:175:3)
+2024-08-30T07:05:33.185Z [error]: MongoServerError: E11000 duplicate key error collection: newbazaradmin.users index: phoneNumber_1 dup key: { phoneNumber: null }
+    at InsertOneOperation.execute (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async executeOperation (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\execute_operation.js:136:16)
+    at async Collection.insertOne (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\collection.js:155:16)
+2024-08-30T07:06:41.104Z [error]: MongoServerError: E11000 duplicate key error collection: newbazaradmin.users index: phoneNumber_1 dup key: { phoneNumber: null }
+    at InsertOneOperation.execute (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async executeOperation (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\execute_operation.js:136:16)
+    at async Collection.insertOne (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\collection.js:155:16)
+2024-08-30T07:06:45.625Z [error]: MongoServerError: E11000 duplicate key error collection: newbazaradmin.users index: phoneNumber_1 dup key: { phoneNumber: null }
+    at InsertOneOperation.execute (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async executeOperation (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\execute_operation.js:136:16)
+    at async Collection.insertOne (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\collection.js:155:16)
+2024-08-30T07:07:10.277Z [error]: MongoServerError: E11000 duplicate key error collection: newbazaradmin.users index: phoneNumber_1 dup key: { phoneNumber: null }
+    at InsertOneOperation.execute (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async executeOperation (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\execute_operation.js:136:16)
+    at async Collection.insertOne (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\collection.js:155:16)
+2024-08-30T07:11:30.723Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:151:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T07:11:58.363Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:151:21
+2024-08-30T07:14:50.026Z [error]: ReferenceError: updatedReason is not defined
+    at file:///F:/e-bazaar-mern/backend/controllers/refundController.js:58:52
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T07:18:12.551Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:175:3)
+2024-08-30T07:18:25.750Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:175:3)
+2024-08-30T09:15:43.188Z [error]: ValidationError: Category validation failed: logo: Please provide category logo.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-08-30T09:17:35.481Z [error]: Error: The token belonging to this user does no longer exist.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:69:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T09:18:03.439Z [error]: ValidationError: Category validation failed: logo: Please provide category logo.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-08-30T09:20:58.661Z [error]: ValidationError: Category validation failed: logo: Please provide category logo.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-08-30T09:21:23.712Z [error]: ValidationError: Category validation failed: logo: Please provide category logo.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-08-30T09:22:56.009Z [error]: ValidationError: Brand validation failed: logo: Please provide brand logo.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-08-30T09:25:23.558Z [error]: MongoServerError: E11000 duplicate key error collection: store.subcategories index: name_1 dup key: { name: "pa34asd" }
+    at InsertOneOperation.execute (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async executeOperation (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\execute_operation.js:136:16)
+    at async Collection.insertOne (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\collection.js:155:16)

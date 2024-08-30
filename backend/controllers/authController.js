@@ -64,11 +64,9 @@ export const login = catchAsync(async (req, res, next) => {
 })
 
 export const signup = catchAsync(async (req, res, next) => {
-    const data = checkFields(User, req, next)
+    const { filteredData } = checkFields(User, req, next)
 
-    console.log(data)
-
-    const { name, email, password } = data
+    const { name, email, password } = filteredData
 
     const newUser = await User.create({
         name,

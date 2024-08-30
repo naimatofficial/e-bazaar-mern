@@ -23,33 +23,35 @@ export const createPasswordResetMessage = (
         'https://i.pinimg.com/originals/c8/51/e1/c851e1918e356d0bfdcd090fb2c2332c.jpg'
 
     return `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; padding: 10px">
-            <div style="text-align: left; margin-bottom: 20px; border-bottom: 1px solid #444">
-                <img src="${brandLogoURL}" alt="Brand Logo" style="max-width: 150px;">
-            </div>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; padding: 10px; background-color: #e7e7e7">
+            <div style="padding: 20px; width: 50%; margin: 0 auto; background-color: #fff">
+                <div style="text-align: left; margin-bottom: 20px; border-bottom: 1px solid #444">
+                        <img src="${brandLogoURL}" alt="Brand Logo" style="max-width: 150px;">
+                    </div>
 
-            <div style="padding: 20px; width: 70%; margin: 0 auto;">
-                <h2 style="color: #333;">Reset Password</h2>
-                <p>A password reset event has been triggered. The password reset window 
-                    is limited to 10 minutes. If you do not reset your password within 10 minutes, 
-                    you will need to submit a new request.To complete the password reset process, 
-                    visit the following link:
-                </p>
-                <a href=${resetUrl} target='_blank'>${resetUrl}</a>
-                <table style="width: 100%; margin-top: 20px;">
-                    <tr>
-                        <td style="font-weight: bold;">Username</td>
-                        <td>${email}</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">IP Address</td>
-                        <td>${ipAddress}</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Reset Timestamp</td>
-                        <td>${timestamp}</td>
-                    </tr>
-                </table>
+                    <div>
+                        <h2 style="color: #222; font-size: 24px;">Reset Password</h2>
+                        <p>A password reset event has been triggered. The password reset window 
+                            is limited to 10 minutes. If you do not reset your password within 10 minutes, 
+                            you will need to submit a new request.To complete the password reset process, 
+                            visit the following link:
+                        </p>
+                        <a href=${resetUrl} target='_blank'>${resetUrl}</a>
+                        <table style="width: 100%; margin-top: 20px;">
+                            <tr>
+                                <td style="font-weight: bold;">Username</td>
+                                <td>${email}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">IP Address</td>
+                                <td>${ipAddress}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Reset Timestamp</td>
+                                <td>${timestamp}</td>
+                            </tr>
+                        </table>
+                    </div>
             </div>
         </div>
     `

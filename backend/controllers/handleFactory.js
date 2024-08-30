@@ -38,9 +38,35 @@ export const checkFields = (Model, req, next) => {
 }
 
 // DELETE One Document
-export const deleteOne = (Model) =>
+// export const deleteOne = (Model) =>
+//     catchAsync(async (req, res, next) => {
+//         const doc = await Model.findByIdAndDelete(req.params.id).exec()
+
+//         const docName = Model.modelName.toLowerCase() || 'Document'
+
+//         // Handle case where the document was not found
+//         if (!doc) {
+//             return next(new AppError(`No ${docName} found with that ID`, 404))
+//         }
+
+//         // get single document store in cache
+//         const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
+//         await redisClient.del(cacheKeyOne)
+
+//         // delete document caches
+//         const cacheKey = getCacheKey(Model.modelName, '', req.query)
+//         await redisClient.del(cacheKey)
+
+//         res.status(204).json({
+//             status: 'success',
+//             doc: null,
+//         })
+//     })
+
+// DELETE One Document with Cascading Delete
+export const deleteOne = (Model, relatedModels = []) =>
     catchAsync(async (req, res, next) => {
-        const doc = await Model.findByIdAndDelete(req.params.id).exec()
+        const doc = await Model.findById(req.params.id)
 
         const docName = Model.modelName.toLowerCase() || 'Document'
 
@@ -49,11 +75,19 @@ export const deleteOne = (Model) =>
             return next(new AppError(`No ${docName} found with that ID`, 404))
         }
 
-        // get single document store in cache
+        // Cascading delete for related models
+        for (const relatedModel of relatedModels) {
+            const { model, foreignKey } = relatedModel
+            await model.deleteMany({ [foreignKey]: req.params.id }).exec()
+        }
+
+        // Delete the main document
+        await doc.remove()
+
+        // Delete the document cache (if using cache)
         const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
         await redisClient.del(cacheKeyOne)
 
-        // delete document caches
         const cacheKey = getCacheKey(Model.modelName, '', req.query)
         await redisClient.del(cacheKey)
 
