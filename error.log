@@ -1828,3 +1828,65 @@ Use mongoose.model(name, schema)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async executeOperation (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\operations\execute_operation.js:136:16)
     at async Collection.insertOne (F:\e-bazaar-mern\backend\node_modules\mongodb\lib\collection.js:155:16)
+2024-08-30T09:40:59.559Z [error]: TypeError: doc.remove is not a function
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:85:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T09:43:22.223Z [error]: Error: Referenced category ID does not exist
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/subCategoryModel.js:50:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T10:27:47.678Z [error]: Error: Can't find this /api/categories/sub-categories/sub-sub-categories on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+2024-08-30T10:28:02.162Z [error]: Error: Can't find this /api/categories/sub-categories on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+2024-08-30T10:28:14.276Z [error]: Error: "subCategory" is not allowed
+    at file:///F:/e-bazaar-mern/backend/middleware/validationMiddleware.js:6:21
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:47:12)
+2024-08-30T10:28:50.990Z [error]: Error: "logo" is not allowed
+    at file:///F:/e-bazaar-mern/backend/middleware/validationMiddleware.js:6:21
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:94:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:77:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-30T10:29:08.183Z [error]: SyntaxError: Expected double-quoted property name in JSON at position 124
+    at JSON.parse (<anonymous>)
+    at parse (F:\e-bazaar-mern\backend\node_modules\body-parser\lib\types\json.js:92:19)
+    at F:\e-bazaar-mern\backend\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (F:\e-bazaar-mern\backend\node_modules\raw-body\index.js:238:16)
+    at done (F:\e-bazaar-mern\backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (F:\e-bazaar-mern\backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+2024-08-30T10:29:11.713Z [error]: Main category not found.
+2024-08-30T10:29:14.993Z [error]: Main category not found.
+2024-08-30T10:31:09.963Z [error]: Main category not found.

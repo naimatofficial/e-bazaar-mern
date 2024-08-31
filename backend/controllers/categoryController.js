@@ -2,7 +2,12 @@ import Category from '../models/categoryModel.js'
 import { sendErrorResponse } from '../utils/responseHandler.js'
 import slugify from 'slugify'
 import { client } from '../utils/redisClient.js'
-import { deleteOne, getAll, getOne, getOneBySlug } from './handleFactory.js'
+import {
+    getAll,
+    getOne,
+    getOneBySlug,
+    deleteOneWithTransaction,
+} from './handleFactory.js'
 import catchAsync from '../utils/catchAsync.js'
 import { getCacheKey } from '../utils/helpers.js'
 import redisClient from '../config/redisConfig.js'
@@ -99,7 +104,7 @@ const relatedModels = [
 ]
 
 // Delete a category by ID
-export const deleteCategory = deleteOne(Category, relatedModels)
+export const deleteCategory = deleteOneWithTransaction(Category, relatedModels)
 
 // Get category by slug
 export const getCategoryBySlug = getOneBySlug(Category)

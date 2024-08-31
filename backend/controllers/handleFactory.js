@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import slugify from 'slugify'
 import redisClient from '../config/redisConfig.js'
 import APIFeatures from '../utils/apiFeatures.js'
@@ -38,9 +39,35 @@ export const checkFields = (Model, req, next) => {
 }
 
 // DELETE One Document
-// export const deleteOne = (Model) =>
+export const deleteOne = (Model) =>
+    catchAsync(async (req, res, next) => {
+        const doc = await Model.findByIdAndDelete(req.params.id).exec()
+
+        const docName = Model.modelName.toLowerCase() || 'Document'
+
+        // Handle case where the document was not found
+        if (!doc) {
+            return next(new AppError(`No ${docName} found with that ID`, 404))
+        }
+
+        // get single document store in cache
+        const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
+        await redisClient.del(cacheKeyOne)
+
+        // delete document caches
+        const cacheKey = getCacheKey(Model.modelName.toString(), '', req.query)
+        await redisClient.del(cacheKey)
+
+        res.status(204).json({
+            status: 'success',
+            doc: null,
+        })
+    })
+
+// DELETE One Document with Cascading Delete
+// export const deleteOne = (Model, relatedModels = []) =>
 //     catchAsync(async (req, res, next) => {
-//         const doc = await Model.findByIdAndDelete(req.params.id).exec()
+//         const doc = await Model.findById(req.params.id)
 
 //         const docName = Model.modelName.toLowerCase() || 'Document'
 
@@ -49,11 +76,19 @@ export const checkFields = (Model, req, next) => {
 //             return next(new AppError(`No ${docName} found with that ID`, 404))
 //         }
 
-//         // get single document store in cache
+//         // Cascading delete for related models
+//         for (const relatedModel of relatedModels) {
+//             const { model, foreignKey } = relatedModel
+//             await model.deleteMany({ [foreignKey]: req.params.id }).exec()
+//         }
+
+//         // Delete the main document
+//         await doc.deleteOne()
+
+//         // Delete the document cache (if using cache)
 //         const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
 //         await redisClient.del(cacheKeyOne)
 
-//         // delete document caches
 //         const cacheKey = getCacheKey(Model.modelName, '', req.query)
 //         await redisClient.del(cacheKey)
 
@@ -63,38 +98,54 @@ export const checkFields = (Model, req, next) => {
 //         })
 //     })
 
-// DELETE One Document with Cascading Delete
-export const deleteOne = (Model, relatedModels = []) =>
+export const deleteOneWithTransaction = (Model, relatedModels = []) =>
     catchAsync(async (req, res, next) => {
-        const doc = await Model.findById(req.params.id)
+        const session = await mongoose.startSession()
+        session.startTransaction()
 
-        const docName = Model.modelName.toLowerCase() || 'Document'
+        try {
+            const doc = await Model.findById(req.params.id).session(session)
 
-        // Handle case where the document was not found
-        if (!doc) {
-            return next(new AppError(`No ${docName} found with that ID`, 404))
+            if (!doc) {
+                await session.abortTransaction()
+                return next(
+                    new AppError(
+                        `No ${Model.modelName.toLowerCase()} found with that ID`,
+                        404
+                    )
+                )
+            }
+
+            // Delete related documents in a transaction
+            for (const relatedModel of relatedModels) {
+                const { model, foreignKey } = relatedModel
+                await model
+                    .deleteMany({ [foreignKey]: req.params.id })
+                    .session(session)
+
+                // delete document caches
+                const cacheKey = getCacheKey(model.modelName.toString(), '')
+                await redisClient.del(cacheKey)
+            }
+
+            // Delete the main document
+            await doc.deleteOne({ session })
+
+            // Commit the transaction
+            await session.commitTransaction()
+            session.endSession()
+
+            res.status(204).json({
+                status: 'success',
+                doc: null,
+            })
+        } catch (err) {
+            await session.abortTransaction()
+            session.endSession()
+            return next(
+                new AppError('Something went wrong during deletion', 500)
+            )
         }
-
-        // Cascading delete for related models
-        for (const relatedModel of relatedModels) {
-            const { model, foreignKey } = relatedModel
-            await model.deleteMany({ [foreignKey]: req.params.id }).exec()
-        }
-
-        // Delete the main document
-        await doc.remove()
-
-        // Delete the document cache (if using cache)
-        const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
-        await redisClient.del(cacheKeyOne)
-
-        const cacheKey = getCacheKey(Model.modelName, '', req.query)
-        await redisClient.del(cacheKey)
-
-        res.status(204).json({
-            status: 'success',
-            doc: null,
-        })
     })
 
 // UPDATE One Document

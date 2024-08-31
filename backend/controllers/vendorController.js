@@ -6,11 +6,18 @@ import {
 } from '../utils/responseHandler.js'
 
 import jwt from 'jsonwebtoken'
-import { deleteOne, getAll, getOne, updateStatus } from './handleFactory.js'
+import {
+    deleteOne,
+    deleteOneWithTransaction,
+    getAll,
+    getOne,
+    updateStatus,
+} from './handleFactory.js'
 import catchAsync from '../utils/catchAsync.js'
 import AppError from '../utils/appError.js'
 import { getCacheKey } from '../utils/helpers.js'
 import redisClient from '../config/redisConfig.js'
+import Product from '../models/productModel.js'
 
 // Create a new vendor
 export const createVendor = async (req, res) => {
@@ -108,8 +115,12 @@ export const getAllVendors = getAll(Vendor, { path: 'bank productCount' })
 
 // Get vendor by ID
 export const getVendorById = getOne(Vendor, { path: 'bank productCount' })
+
+// Define related models and their foreign keys
+const relatedModels = [{ model: Product, foreignKey: 'userId' }]
+
 // Delete vendor by ID
-export const deleteVendor = deleteOne(Vendor)
+export const deleteVendor = deleteOneWithTransaction(Vendor, relatedModels)
 
 // Update vendor status
 export const updateVendorStatus = updateStatus(Vendor)
