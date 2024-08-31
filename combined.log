@@ -3234,3 +3234,40 @@ Use mongoose.model(name, schema)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async model.Query.exec (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\query.js:4401:63)
     at async file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:289:21
+2024-08-31T10:49:19.512Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:108:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:98:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-31T10:49:35.891Z [error]: TypeError: currentUser.changePasswordAfter is not a function
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:86:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-31T10:52:29.528Z [error]: Error: Can't find this /api/orders/logout on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+2024-08-31T10:52:38.495Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:175:3)
+2024-08-31T11:41:19.361Z [error]: Error: Unfortunately, this token has already expired.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:87:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-08-31T11:44:37.396Z [error]: Error: Unfortunately, this token has already expired.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:86:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

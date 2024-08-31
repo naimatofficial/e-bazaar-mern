@@ -17,7 +17,11 @@ import {
     restrictTo,
     selectModelByRole,
 } from '../middleware/authMiddleware.js'
-import { loginVendor, updatePassword } from './../controllers/authController.js'
+import {
+    loginVendor,
+    logout,
+    updatePassword,
+} from './../controllers/authController.js'
 
 const router = express.Router()
 
@@ -66,6 +70,7 @@ router.route('/signup').post(
 router.put('/update-password', protect, selectModelByRole, updatePassword)
 
 router.post('/login', loginLimiter, loginVendor)
+router.post('/logout', protect, logout)
 
 router.put('/status/:id', protect, restrictTo('admin'), updateVendorStatus)
 

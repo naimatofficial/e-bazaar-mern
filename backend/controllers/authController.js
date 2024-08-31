@@ -35,8 +35,6 @@ const createSendToken = catchAsync(async (user, statusCode, res) => {
     // do not show the password to client side
     user.password = undefined
 
-    console.log(user)
-
     res.cookie('jwt', accessToken, cookieOptions)
 
     res.status(statusCode).json({

@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken'
+import { getRefreshToken } from '../services/redisService.js'
 
 import { promisify } from 'util'
 import AppError from './../utils/appError.js'
 import catchAsync from './../utils/catchAsync.js'
+
 import User from '../models/userModel.js'
 import Vendor from '../models/vendorModel.js'
 import Customer from '../models/customerModel.js'
-
-import { getRefreshToken } from '../services/redisService.js'
 
 const models = {
     user: User,
@@ -55,7 +55,7 @@ export const protect = catchAsync(async (req, res, next) => {
     const { userId } = decoded
 
     // 3) Check token in Redis Cache
-    const refreshToken = getRefreshToken(userId)
+    const refreshToken = await getRefreshToken(userId, next)
 
     if (!refreshToken) {
         return next(
@@ -66,6 +66,7 @@ export const protect = catchAsync(async (req, res, next) => {
     // 4) Determine the model based on the user role in the token
     const userRole = decoded.role // Assume role is included in the token payload
     const Model = models[userRole]
+
     if (!Model) {
         return next(new AppError('User role not recognized.', 401))
     }

@@ -103,6 +103,32 @@ vendorSchema.methods.correctPassword = async function (
     return await bcrypt.compare(candidatePassword, userPassword)
 }
 
+vendorSchema.methods.changePasswordAfter = function (JWTTimestamp) {
+    if (this.passwordChangedAt) {
+        const changeTimestamp = parseInt(
+            this.passwordChangedAt.getTime() / 1000,
+            10
+        )
+
+        return JWTTimestamp < changeTimestamp
+    }
+    // NO password changed
+    return false
+}
+
+vendorSchema.methods.createPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(32).toString('hex')
+
+    this.passwordResetToken = crypto
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex')
+
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000
+
+    return resetToken
+}
+
 vendorSchema.pre('save', async function (next) {
     // Only work when the password is not modified
     if (!this.isModified('password')) return next()
