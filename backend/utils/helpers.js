@@ -1,4 +1,5 @@
 import rateLimit from 'express-rate-limit'
+import redisClient from '../config/redisConfig.js'
 
 // Helper function to get the cache key
 export const getCacheKey = (modelName, id = '', query = {}) => {

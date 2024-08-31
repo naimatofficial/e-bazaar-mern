@@ -72,10 +72,18 @@ const vendorSchema = new mongoose.Schema(
     }
 )
 
-vendorSchema.virtual('productCount', {
+vendorSchema.virtual('totalProducts', {
     ref: 'Product',
     localField: '_id',
     foreignField: 'userId',
+    // This tells mongoose to return a count instead of the documents
+    count: true,
+})
+
+vendorSchema.virtual('totalOrders', {
+    ref: 'Order',
+    localField: '_id',
+    foreignField: 'vendors',
     // This tells mongoose to return a count instead of the documents
     count: true,
 })

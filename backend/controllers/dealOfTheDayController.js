@@ -5,6 +5,7 @@ import {
     getOne,
     updateOne,
     deleteOne,
+    updateStatus,
 } from './handleFactory.js'
 
 // Create a Deal of the Day
@@ -18,5 +19,7 @@ export const getDealOfTheDayById = getOne(DealOfTheDay)
 
 // Update Deal of the Day
 export const updateDealOfTheDay = updateOne(DealOfTheDay)
+
+export const updateStatusOfDeal = updateStatus(DealOfTheDay)
 // Delete Deal of the Day
 export const deleteDealOfTheDay = deleteOne(DealOfTheDay)

@@ -11,6 +11,8 @@ const FlashDealsPage = () => {
         {}
     )
 
+    console.log(deal)
+
     const endDate =
         deal?.endDate ||
         new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000)

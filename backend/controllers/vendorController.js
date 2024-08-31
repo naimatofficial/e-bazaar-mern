@@ -111,10 +111,14 @@ export const registerVendor = catchAsync(async (req, res) => {
 })
 
 // Get all vendors
-export const getAllVendors = getAll(Vendor, { path: 'bank productCount' })
+export const getAllVendors = getAll(Vendor, {
+    path: 'bank totalProducts totalOrders',
+})
 
 // Get vendor by ID
-export const getVendorById = getOne(Vendor, { path: 'bank productCount' })
+export const getVendorById = getOne(Vendor, {
+    path: 'bank totalProducts totalOrders',
+})
 
 // Define related models and their foreign keys
 const relatedModels = [{ model: Product, foreignKey: 'userId' }]

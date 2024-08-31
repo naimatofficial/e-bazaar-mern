@@ -1,4 +1,4 @@
-import { PRODUCTS_URL } from '../constants'
+import { FLASHDEALS_URL, PRODUCTS_URL } from '../constants'
 import { apiSlice } from './apiSlice'
 
 export const productsApiSlice = apiSlice.injectEndpoints({
@@ -72,9 +72,11 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         }),
         getProductSuggestions: builder.query({
             query: (query) => `${PRODUCTS_URL}/search?q=${query}`,
+            keepUnusedDataFor: 5,
         }),
         getFlashDeals: builder.query({
-            query: () => `/api/flash-deals?status=active&publish=true`,
+            query: () => `${FLASHDEALS_URL}`,
+            keepUnusedDataFor: 5,
         }),
     }),
 })
