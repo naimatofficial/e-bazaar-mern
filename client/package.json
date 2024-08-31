@@ -11,8 +11,11 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.13.3",
+		"@emotion/styled": "^11.13.0",
 		"@hookform/resolvers": "^3.6.0",
 		"@material-tailwind/react": "^2.1.9",
+		"@mui/material": "^6.0.0",
 		"@reduxjs/toolkit": "^2.2.6",
 		"axios": "^1.7.2",
 		"country-flag-icons": "^1.5.12",

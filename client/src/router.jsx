@@ -34,6 +34,8 @@ import Inbox from "./components/Profile/Inbox";
 import FlashDealsPage from "./_root/pages/FlashDealsPage";
 import OrderConfirmationPage from "./_root/pages/OrderConfirmationPage";
 import NotFoundPage from "./_root/pages/NotFoundPage";
+import ForgotPasswordPage from "./_root/pages/ForgotPasswordPage";
+import ResetPassword from "./_root/pages/ResetPassword";
 
 const router = createBrowserRouter([
 	{
@@ -139,6 +141,14 @@ const router = createBrowserRouter([
 				element: <SignInForm />,
 			},
 			{
+				path: "/forget-password",
+				element: <ForgotPasswordPage/>,	
+			},
+			{
+				path: "/Reset-password",
+				element: <ResetPassword/>,	
+			},
+			{
 				path: "cart",
 				element: <CartPage />,
 			},
@@ -163,6 +173,7 @@ const router = createBrowserRouter([
 				path: "faqs",
 				element: <FaqPage />,
 			},
+
 			{
 				path: "*",
 				element: <NotFoundPage />,
@@ -183,6 +194,7 @@ const router = createBrowserRouter([
 	// 		},
 	// 	],
 	// },
+	
 ]);
 
 export default router;
