@@ -1,10 +1,8 @@
 import Redis from 'redis'
-import dotenv from 'dotenv'
-
-dotenv.config({ path: 'env' })
+import config from './index.js'
 
 const redisClient = Redis.createClient({
-    url: process.env.REDIS_URL,
+    url: config.redisUrl,
 })
 // password: process.env.REDIS_PASSWORD,
 

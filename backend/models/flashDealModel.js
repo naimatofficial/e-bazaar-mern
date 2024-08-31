@@ -67,6 +67,7 @@ flashDealSchema.pre(/^find/, function (next) {
     next()
 })
 
+// Check the product is not included in products list
 flashDealSchema.pre('save', async function (next) {
     try {
         // Check if products are provided and validate them

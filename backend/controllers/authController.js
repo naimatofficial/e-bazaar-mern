@@ -7,12 +7,14 @@ import redisClient from '../config/redisConfig.js'
 import catchAsync from '../utils/catchAsync.js'
 import AppError from './../utils/appError.js'
 import { loginService } from '../services/authService.js'
+import { removeRefreshToken } from '../services/redisService.js'
+
 import {
     createPasswordResetConfirmationMessage,
     createPasswordResetMessage,
     getCacheKey,
 } from '../utils/helpers.js'
-import sendEmail from './../services/forgotPasswordService.js'
+import sendEmail from '../services/emailService.js'
 import * as crypto from 'crypto'
 
 const createSendToken = catchAsync(async (user, statusCode, res) => {
@@ -85,6 +87,8 @@ export const signup = catchAsync(async (req, res, next) => {
 
 export const logout = catchAsync(async (req, res, next) => {
     const user = req.user
+
+    await removeRefreshToken(user._id.toString())
 
     // Clear the refreshToken cookie on the client
     res.clearCookie('jwt')
