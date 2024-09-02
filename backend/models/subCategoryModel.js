@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import slugify from 'slugify'
 import AppError from '../utils/appError.js'
+import { checkReferenceId } from '../utils/helpers.js'
 
 const subCategorySchema = new mongoose.Schema(
     {
@@ -26,13 +27,6 @@ const subCategorySchema = new mongoose.Schema(
         timestamps: true,
     }
 )
-
-subCategorySchema.pre('save', function (next) {
-    this.slug = slugify(this.name, { lower: true })
-    console.log('thelk ', this.slug)
-    next()
-})
-
 subCategorySchema.pre(/^find/, function (next) {
     this.populate({
         path: 'mainCategory',
@@ -42,13 +36,8 @@ subCategorySchema.pre(/^find/, function (next) {
 })
 
 subCategorySchema.pre('save', async function (next) {
-    const category = await mongoose
-        .model('Category')
-        .findById(this.mainCategory)
+    await checkReferenceId('Category', this.mainCategory, next)
 
-    if (!category) {
-        return next(new AppError('Referenced category ID does not exist', 400))
-    }
     next()
 })
 

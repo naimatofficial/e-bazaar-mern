@@ -16,6 +16,7 @@ const categorySchema = new mongoose.Schema(
             // required: [true, 'Please provide category logo.'],
         },
         priority: Number,
+        slug: String,
     },
     {
         toJSON: { virtuals: true },
@@ -33,9 +34,9 @@ categorySchema.virtual('productCount', {
     count: true,
 })
 
-categorySchema.virtual('slug').get(function () {
-    return slugify(this.name, { lower: true })
-})
+// categorySchema.virtual('slug').get(function () {
+//     return slugify(this.name, { lower: true })
+// })
 
 categorySchema.post('findByIdAndDelete', async function (next) {
     console.log('DELETE MANY 🔥')

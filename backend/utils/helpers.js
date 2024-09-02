@@ -1,11 +1,24 @@
 import rateLimit from 'express-rate-limit'
-import redisClient from '../config/redisConfig.js'
+import AppError from './appError.js'
+import mongoose from 'mongoose'
 
 // Helper function to get the cache key
 export const getCacheKey = (modelName, id = '', query = {}) => {
     const baseKey = `cache:${modelName}`
     if (id) return `${baseKey}:${id}`
     return `${baseKey}:query:${JSON.stringify(query)}`
+}
+
+export const checkReferenceId = async (Model, foreignKey, next) => {
+    const referenceKey = await mongoose.model(Model).findById(foreignKey)
+    if (!referenceKey) {
+        return next(
+            new AppError(
+                `Referenced ${Model.toLowerCase()} ID does not exist`,
+                400
+            )
+        )
+    }
 }
 
 export const loginLimiter = rateLimit({

@@ -53,15 +53,7 @@ wishlistSchema.pre(/^find/, function (next) {
 
 wishlistSchema.pre('save', async function (next) {
     try {
-        const customer = await mongoose
-            .model('Customer')
-            .findById(this.customer)
-
-        if (!customer) {
-            return next(
-                new AppError('Referenced customer ID does not exist', 400)
-            )
-        }
+        await checkReferenceId('Customer', this.customer, next)
 
         // Check if products are provided and validate them
         if (this.products && this.products.length > 0) {

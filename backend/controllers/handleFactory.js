@@ -12,6 +12,8 @@ export const checkFields = (Model, req, next) => {
     // Step 1: Get the allowed fields from the model schema
     const allowedFields = Object.keys(Model.schema.paths)
 
+    console.log(allowedFields)
+
     // Step 2: Identify fields in req.body that are not in the allowedFields list
     const extraFields = Object.keys(req.body).filter(
         (field) => !allowedFields.includes(field)

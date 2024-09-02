@@ -23,11 +23,8 @@ const dealOfTheDaySchema = new mongoose.Schema(
 )
 
 dealOfTheDaySchema.pre('save', async function (next) {
-    const product = await mongoose.model('Product').findById(this.product)
+    await checkReferenceId('Product', this.product, next)
 
-    if (!product) {
-        return next(new AppError('Referenced product ID does not exist', 400))
-    }
     next()
 })
 

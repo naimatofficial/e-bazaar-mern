@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import AppError from './../utils/appError.js'
+import { checkReferenceId } from '../utils/helpers.js'
 
 const productSchema = new mongoose.Schema(
     {
@@ -119,6 +120,7 @@ const productSchema = new mongoose.Schema(
             enum: ['vendor', 'admin'],
             required: true,
         },
+        slug: String,
     },
     {
         toJSON: { virtuals: true },
@@ -128,35 +130,11 @@ const productSchema = new mongoose.Schema(
 )
 
 productSchema.pre('save', async function (next) {
-    const category = await mongoose.model('Category').findById(this.category)
-    if (!category) {
-        return next(new AppError('Referenced category ID does not exist', 400))
-    }
+    await checkReferenceId('Brand', this.brand, next)
+    await checkReferenceId('Category', this.category, next)
+    await checkReferenceId('SubCategory', this.subCategory, next)
+    await checkReferenceId('SubSubCategory', this.subSubCategory, next)
 
-    const subCategory = await mongoose
-        .model('SubCategory')
-        .findById(this.subCategory)
-
-    if (!subCategory) {
-        return next(
-            new AppError('Referenced subCategory ID does not exist', 400)
-        )
-    }
-
-    const subSubCategory = await mongoose
-        .model('SubSubCategory')
-        .findById(this.subSubCategory)
-
-    if (!subSubCategory) {
-        return next(
-            new AppError('Referenced subSubCategory ID does not exist', 400)
-        )
-    }
-
-    const brand = await mongoose.model('Brand').findById(this.brand)
-    if (!brand) {
-        return next(new AppError('Referenced brand ID does not exist', 400))
-    }
     next()
 })
 

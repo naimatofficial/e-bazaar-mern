@@ -3264,3 +3264,157 @@ Use mongoose.model(name, schema)
 2024-08-31T11:44:37.396Z [error]: Error: Unfortunately, this token has already expired.
     at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:86:13
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T04:52:27.755Z [error]: Error: Unfortunately, this token has already expired.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:62:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T04:56:18.270Z [error]: Error: Unfortunately, this token has already expired.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:62:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T05:50:27.391Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:175:3)
+2024-09-02T05:51:32.702Z [error]: Error: "couponId" is not allowed
+    at file:///F:/e-bazaar-mern/backend/middleware/validationMiddleware.js:6:21
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:99:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T05:52:14.362Z [error]: ReferenceError: Model is not defined
+    at file:///F:/e-bazaar-mern/backend/controllers/orderControllers.js:60:17
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/validationMiddleware.js:8:5
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:99:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T05:54:48.553Z [error]: ValidationError: Order validation failed: customer: Please provide customer.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-09-02T07:00:43.711Z [error]: Error: These fields are not allowed: userLimit, discountBearer
+    at checkFields (file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:23:13)
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:197:34
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+2024-09-02T07:02:02.877Z [error]: Error: These fields are not allowed: userLimit
+    at checkFields (file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:23:13)
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:197:34
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+2024-09-02T07:02:44.038Z [error]: Error: These fields are not allowed: userLimit
+    at checkFields (file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:23:13)
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:197:34
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+2024-09-02T07:03:28.674Z [error]: Error: These fields are not allowed: userLimit
+    at checkFields (file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:25:13)
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:199:34
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:280:10)
+2024-09-02T07:05:45.619Z [error]: Error: One or more products do not exist.
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:127:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T07:05:57.326Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:109:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:99:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T07:19:42.693Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at param (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:365:14)
+    at param (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:421:3)
+2024-09-02T07:20:04.475Z [error]: Error: You are not logged in! Please log in to get access.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:45:13
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:284:15
+    at param (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:365:14)
+    at param (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (F:\e-bazaar-mern\backend\node_modules\express\lib\router\index.js:421:3)
+2024-09-02T07:20:10.934Z [error]: Error: No order found with that ID
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:247:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T07:33:53.262Z [error]: ValidationError: Order validation failed: coupon: Cast to ObjectId failed for value "66d563a05566d454b2b68b7k" (type string) at path "coupon" because of "BSONError"
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\model.js:124:12)
+    at new model (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\model.js:4549:15)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\model.js:2639:20
+    at Array.map (<anonymous>)
+    at Function.create (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\model.js:2627:34)
+    at file:///F:/e-bazaar-mern/backend/controllers/orderControllers.js:60:29
+2024-09-02T07:34:48.808Z [error]: ReferenceError: mongoose is not defined
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:12:26)
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:105:15)
+    at callMiddlewareFunction (F:\e-bazaar-mern\backend\node_modules\kareem\index.js:628:27)
+    at model.next (F:\e-bazaar-mern\backend\node_modules\kareem\index.js:93:7)
+    at _next (F:\e-bazaar-mern\backend\node_modules\kareem\index.js:146:10)
+    at F:\e-bazaar-mern\backend\node_modules\kareem\index.js:653:30
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-09-02T07:37:17.823Z [error]: Error: Referenced coupon ID does not exist
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:105:9)
+2024-09-02T07:37:26.078Z [error]: Error: Referenced coupon ID does not exist
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:106:9)
+2024-09-02T07:37:29.503Z [error]: Error: Referenced coupon ID does not exist
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:106:9)
+2024-09-02T07:37:51.800Z [error]: Error: Referenced customer ID does not exist
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:106:9)
+2024-09-02T07:37:58.168Z [error]: Error: One or more products do not exist.
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:131:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

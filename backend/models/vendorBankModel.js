@@ -38,12 +38,7 @@ const vendorBankSchema = new mongoose.Schema(
 
 vendorBankSchema.post('save', async function (next) {
     try {
-        const vendor = await mongoose.model('Vendor').findById(this.vendor)
-        if (!vendor) {
-            return next(
-                new AppError('Referenced vendor ID does not exist', 400)
-            )
-        }
+        await checkReferenceId('Vendor', this.vendor, next)
 
         next()
     } catch (err) {

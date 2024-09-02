@@ -15,15 +15,11 @@ export const createBrand = catchAsync(async (req, res) => {
     const { name, imageAltText } = req.body
     const logo = req.file ? req.file.filename : ''
 
-    console.log(req.file)
-
     const brand = new Brand({
         name,
         logo,
         imageAltText,
     })
-
-    console.log(brand)
 
     await brand.save()
 
@@ -100,7 +96,6 @@ export const createBrand = catchAsync(async (req, res) => {
 // 		sendErrorResponse(res, error);
 // 	}
 // };
-
 export const getBrands = getAll(Brand, { path: 'productCount' })
 
 // Get a brand by ID

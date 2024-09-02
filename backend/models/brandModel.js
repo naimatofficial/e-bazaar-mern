@@ -8,7 +8,6 @@ const brandSchema = new mongoose.Schema(
             required: [true, 'Please provide brand.'],
             unique: true,
         },
-
         logo: {
             type: String,
             required: [true, 'Please provide brand logo.'],
@@ -22,6 +21,7 @@ const brandSchema = new mongoose.Schema(
             enum: ['active', 'inactive'],
             default: 'inactive',
         },
+        slug: String,
     },
     {
         toJSON: { virtuals: true },
@@ -29,18 +29,10 @@ const brandSchema = new mongoose.Schema(
         timestamps: true,
     }
 )
-// Middleware to create slug before saving the document
-// brandSchema.pre('save', function (next) {
-//     if (this.isNew || this.isModified('name')) {
-//         // Check if the document is new or if the name was modified
-//         this.slug = slugify(this.name, { lower: true })
-//     }
-//     next()
-// })
 
-brandSchema.virtual('slug').get(function () {
-    return slugify(this.name, { lower: true })
-})
+// brandSchema.virtual('slug').get(function () {
+//     return slugify(this.name, { lower: true })
+// })
 
 // Virtual to count products associated with the brand
 brandSchema.virtual('productCount', {

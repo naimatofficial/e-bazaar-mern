@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import slugify from 'slugify'
+import { checkReferenceId } from '../utils/helpers'
 
 const subSubCategorySchema = new mongoose.Schema(
     {
@@ -45,18 +46,10 @@ subSubCategorySchema.post('findByIdAndDelete', async function (doc) {
     }
 })
 
-
 subSubCategorySchema.pre('save', async function (next) {
-    const category = await mongoose.model('Category').findById(this.mainCategory)
+    await checkReferenceId('Category', this.mainCategory, next)
+    await checkReferenceId('SubCategory', this.subCategory, next)
 
-    if (!category) {
-        return next(new AppError('Referenced category ID does not exist', 400))
-    }
-    const subCategory = await mongoose.model('SubCategory').findById(this.subCategory)
-
-    if (!subCategory) {
-        return next(new AppError('Referenced sub category ID does not exist', 400))
-    }
     next()
 })
 

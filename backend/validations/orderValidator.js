@@ -1,7 +1,11 @@
 import Joi from 'joi'
 
 const orderValidationSchema = Joi.object({
-    customer: Joi.string().required().messages({
+    couponId: Joi.string().required().messages({
+        'any.required': 'Coupon ID is required',
+        'string.base': 'Coupon ID must be a string',
+    }),
+    customerId: Joi.string().required().messages({
         'any.required': 'Customer ID is required',
         'string.base': 'Customer ID must be a string',
     }),
@@ -40,7 +44,6 @@ const orderValidationSchema = Joi.object({
         )
         .default('pending')
         .messages({
-            'string.base': 'Order status must be a string',
             'any.only': 'Invalid order status',
         }),
     totalAmount: Joi.number().required().messages({

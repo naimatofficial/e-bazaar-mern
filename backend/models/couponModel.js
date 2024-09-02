@@ -16,10 +16,10 @@ const couponSchema = new mongoose.Schema(
         type: {
             type: String,
             enum: [
-                'Discount on Purchase',
-                'Free Delivery',
-                'Buy One Get One',
-                'Others',
+                'discount on purchase',
+                'free delivery',
+                'buy one get one',
+                'others',
             ],
             required: [true, 'Please provide type.'],
         },
@@ -124,15 +124,6 @@ couponSchema.pre('save', async function (next) {
         next(err)
     }
 })
-
-// Pre middleware to populate applicableProducts, applicableVendors,
-// and applicableCustomers before any find operation
-// couponSchema.pre(/^find/, function (next) {
-//     this.populate('applicableProducts')
-//         .populate('applicableVendors')
-//         .populate('applicableCustomers')
-//     next()
-// })
 
 const Coupon = mongoose.model('Coupon', couponSchema)
 

@@ -1,8 +1,13 @@
 import mongoose from 'mongoose'
-import AppError from '../utils/appError.js'
+import { checkReferenceId } from '../utils/helpers.js'
+import AppError from './../utils/appError.js'
 
 const orderSchema = new mongoose.Schema(
     {
+        coupon: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Coupon',
+        },
         customer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Customer',
@@ -97,6 +102,9 @@ orderSchema.pre(/^find/, function (next) {
 
 orderSchema.pre('save', async function (next) {
     try {
+        await checkReferenceId('Coupon', this.coupon, next)
+        await checkReferenceId('Customer', this.customer, next)
+
         // Check if vendors are provided and validate them
         if (this.vendors && this.vendors.length > 0) {
             const vendorCheck = await mongoose.model('Vendor').countDocuments({
