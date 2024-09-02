@@ -1,6 +1,6 @@
 # 🛒 Ecommerce Baazaar
 
-![Ecommerce Baaazaar Logo]([https://your-image-url-here](https://i.pinimg.com/originals/c8/51/e1/c851e1918e356d0bfdcd090fb2c2332c.jpg)) <!-- Image or Logo -->
+![Ecommerce Baaazaar Logo](https://i.pinimg.com/originals/c8/51/e1/c851e1918e356d0bfdcd090fb2c2332c.jpg)
 
 > A full-fledged e-commerce application built using the MERN stack (MongoDB, Express, React, Node.js) with a seamless shopping experience and efficient order management.
 
