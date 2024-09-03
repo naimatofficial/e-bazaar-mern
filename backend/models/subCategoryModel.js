@@ -1,6 +1,4 @@
 import mongoose from 'mongoose'
-import slugify from 'slugify'
-import AppError from '../utils/appError.js'
 import { checkReferenceId } from '../utils/helpers.js'
 
 const subCategorySchema = new mongoose.Schema(
@@ -16,10 +14,7 @@ const subCategorySchema = new mongoose.Schema(
             ref: 'Category',
         },
         priority: Number,
-        slug: {
-            type: String,
-            unique: true,
-        },
+        slug: String,
     },
     {
         toJSON: { virtuals: true },

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import AppError from './../utils/appError.js'
 import { checkReferenceId } from '../utils/helpers.js'
 
 const productSchema = new mongoose.Schema(
@@ -121,6 +120,17 @@ const productSchema = new mongoose.Schema(
             required: true,
         },
         slug: String,
+        rating: {
+            type: Number,
+            required: [true, 'Please provide rating.'],
+            default: 0,
+            set: (val) => (Math.round(val * 10) / 10).toFixed(1),
+        },
+        numOfReviews: {
+            type: Number,
+            required: [true, 'Number of reviews are required.'],
+            default: 0,
+        },
     },
     {
         toJSON: { virtuals: true },

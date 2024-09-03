@@ -5,13 +5,12 @@ import {
     sendSuccessResponse,
 } from '../utils/responseHandler.js'
 import { validateProductDependencies } from '../utils/validation.js'
-import { populateProductDetails } from '../utils/productHelper.js'
-import { buildFilterQuery, buildSortOptions } from '../utils/filterHelper.js'
 import Customer from '../models/customerModel.js'
 import { deleteOne, getAll, getOne, updateStatus } from './handleFactory.js'
 import catchAsync from '../utils/catchAsync.js'
 import { getCacheKey } from '../utils/helpers.js'
 import redisClient from '../config/redisConfig.js'
+import slugify from 'slugify'
 
 // Create a new product
 export const createProduct = catchAsync(async (req, res) => {
@@ -44,22 +43,6 @@ export const createProduct = catchAsync(async (req, res) => {
         userId,
         userType,
     } = req.body
-
-    // const {
-    //     categoryObj,
-    //     subCategoryObj,
-    //     subSubCategoryObj,
-    //     brandObj,
-    //     colorObjs,
-    //     attributeObjs,
-    // } = await validateProductDependencies({
-    //     category,
-    //     subCategorySlug,
-    //     subSubCategorySlug,
-    //     brand,
-    //     colors,
-    //     attributes,
-    // })
 
     const newProduct = new Product({
         name,
@@ -95,6 +78,7 @@ export const createProduct = catchAsync(async (req, res) => {
         images: req.files['images']
             ? req.files['images'].map((file) => file.path)
             : [],
+        slug: slugify(name, { lower: true }),
     })
     await newProduct.save()
 
@@ -189,9 +173,9 @@ export const updateProductImages = catchAsync(async (req, res) => {
 // 		sendErrorResponse(res, error);
 // 	}
 // };
-export const getAllProducts = getAll(Product)
+export const getAllProducts = getAll(Product, { path: 'reviews' })
 
-export const getProductById = getOne(Product)
+export const getProductById = getOne(Product, { path: 'reviews' })
 // Delete a Product
 export const deleteProduct = deleteOne(Product)
 

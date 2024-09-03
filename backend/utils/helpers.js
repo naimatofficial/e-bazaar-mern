@@ -22,9 +22,18 @@ export const checkReferenceId = async (Model, foreignKey, next) => {
 }
 
 export const loginLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 5, // limit each IP to 5 requests per windowMs for login route
-    message: 'Too many login attempts from this IP, please try again later.',
+    windowMs: 30 * 60 * 1000, // 30 minutes
+    max: 5, // limit each IP to 5 requests per windowMs
+    handler: (req, res, next, options) => {
+        res.status(options.statusCode).json({
+            status: 'fail',
+            message: `Too many login attempts from this IP, please try again after ${Math.ceil(
+                options.windowMs / 1000 / 60
+            )} minutes.`,
+        })
+    },
+    standardHeaders: true, // Send rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
 
 export const createPasswordResetMessage = (

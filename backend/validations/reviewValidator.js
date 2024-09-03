@@ -1,13 +1,9 @@
 import Joi from 'joi'
 
 const reviewValidationSchema = Joi.object({
-    product: Joi.string().required().messages({
+    productId: Joi.string().required().messages({
         'any.required': 'Product ID is required',
         'string.base': 'Product ID must be a string',
-    }),
-    customer: Joi.string().required().messages({
-        'any.required': 'Customer ID is required',
-        'string.base': 'Customer ID must be a string',
     }),
     review: Joi.string().required().messages({
         'any.required': 'Review is required',
@@ -22,7 +18,7 @@ const reviewValidationSchema = Joi.object({
     }),
     status: Joi.string()
         .valid('active', 'inactive')
-        .default('active')
+        .default('inactive')
         .messages({
             'string.base': 'Status must be a string',
             'any.only': 'Invalid status',

@@ -3418,3 +3418,556 @@ Use mongoose.model(name, schema)
 2024-09-02T07:37:58.168Z [error]: Error: One or more products do not exist.
     at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/orderModel.js:131:21)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T10:33:34.496Z [error]: Error: Can't find this /api/categoriesmainCategory=66a1f8c9828af0935f804d82 on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-02T10:34:19.725Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:109:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:99:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T10:34:30.779Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T10:34:42.507Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-02T10:34:50.890Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T04:32:23.310Z [error]: Error: Can't find this /api/wishlist/66ced4076847695b85a2fb88 on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:24.382Z [error]: Error: Can't find this /feature-deals on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.177Z [error]: Error: Can't find this /undefined on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.185Z [error]: Error: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.193Z [error]: Error: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.430Z [error]: Error: Can't find this /undefined on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.435Z [error]: Error: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.440Z [error]: Error: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.443Z [error]: Error: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.445Z [error]: Error: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.448Z [error]: Error: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.460Z [error]: Error: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:32:25.478Z [error]: Error: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.307Z [error]: Error: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.309Z [error]: Error: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.311Z [error]: Error: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.314Z [error]: Error: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.353Z [error]: Error: Can't find this /undefined on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.356Z [error]: Error: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.360Z [error]: Error: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:03.361Z [error]: Error: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:07.640Z [error]: Error: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:07.642Z [error]: Error: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:08.561Z [error]: Error: Can't find this /undefined on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:08.566Z [error]: Error: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:08.568Z [error]: Error: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:08.569Z [error]: Error: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:08.579Z [error]: Error: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:08.582Z [error]: Error: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.231Z [error]: Error: Can't find this /undefined on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.234Z [error]: Error: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.236Z [error]: Error: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.261Z [error]: Error: Can't find this /feature-deals on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.404Z [error]: Error: Can't find this /undefined on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.409Z [error]: Error: Can't find this /uploads/thumbnails/1724494344202-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.411Z [error]: Error: Can't find this /uploads/thumbnails/1724407777571-WhatsApp%20Image%202024-08-21%20at%2012.43.56%20PM.jpeg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.418Z [error]: Error: Can't find this /uploads/thumbnails/1724400815996-Black%20and%20Wite%20T%20Shirt%20Front.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.423Z [error]: Error: Can't find this /uploads/thumbnails/1724222737383-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.424Z [error]: Error: Can't find this /uploads/thumbnails/1724154219433-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.437Z [error]: Error: Can't find this /uploads/thumbnails/1724141767765-MARK.PK-01%20(1).jpg on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:33:16.462Z [error]: Error: Can't find this /uploads/thumbnails/1723201435577-What%20Is%20the%20Metaverse_%201.png on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:114:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+2024-09-03T04:53:21.723Z [error]: JsonWebTokenError: jwt malformed
+    at module.exports (F:\e-bazaar-mern\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at node:internal/util:442:7
+    at new Promise (<anonymous>)
+    at node:internal/util:428:12
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:53:48
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+2024-09-03T04:53:55.606Z [error]: ValidationError: ProductReview validation failed: product: Please provide product Id., customer: Please provide customer Id.
+    at Document.invalidate (F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3318:32)
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\document.js:3079:17
+    at F:\e-bazaar-mern\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-09-03T04:54:32.282Z [error]: ReferenceError: checkReferenceId is not defined
+    at model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/productReviewModel.js:47:5)
+    at callMiddlewareFunction (F:\e-bazaar-mern\backend\node_modules\kareem\index.js:628:27)
+    at model.next (F:\e-bazaar-mern\backend\node_modules\kareem\index.js:93:7)
+    at _next (F:\e-bazaar-mern\backend\node_modules\kareem\index.js:146:10)
+    at F:\e-bazaar-mern\backend\node_modules\kareem\index.js:653:30
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-09-03T04:55:00.760Z [error]: Error: Referenced customer ID does not exist
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/productReviewModel.js:48:5)
+2024-09-03T04:56:09.450Z [error]: Error: Referenced product ID does not exist
+    at checkReferenceId (file:///F:/e-bazaar-mern/backend/utils/helpers.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.<anonymous> (file:///F:/e-bazaar-mern/backend/models/productReviewModel.js:49:5)
+2024-09-03T05:08:44.212Z [error]: ReferenceError: customerId is not defined
+    at file:///F:/e-bazaar-mern/backend/controllers/reviewController.js:15:56
+    at file:///F:/e-bazaar-mern/backend/utils/catchAsync.js:2:2
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/validationMiddleware.js:8:5
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:99:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:21:59.785Z [error]: Error: No productreview found with that ID
+    at file:///F:/e-bazaar-mern/backend/controllers/handleFactory.js:50:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:22:46.693Z [error]: Error: You have already reviewed this product.
+    at file:///F:/e-bazaar-mern/backend/controllers/reviewController.js:26:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:23:25.202Z [error]: Error: You do not have permission to perform this action.
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:109:17
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at file:///F:/e-bazaar-mern/backend/middleware/authMiddleware.js:99:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:23:36.404Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:23:47.860Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:59:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:24:08.601Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:111:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T05:24:14.671Z [error]: Error: Incorrect email or password
+    at file:///F:/e-bazaar-mern/backend/controllers/authController.js:111:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-09-03T06:14:50.487Z [error]: Error: Can't find this /favicon.ico on this server.
+    at file:///F:/e-bazaar-mern/backend/app.js:101:9
+    at Layer.handle [as handle_request] (F:\e-bazaar-mern\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:149:13)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at next (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (F:\e-bazaar-mern\backend\node_modules\express\lib\router\route.js:119:3)

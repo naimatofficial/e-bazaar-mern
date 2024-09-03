@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import slugify from 'slugify'
-import { checkReferenceId } from '../utils/helpers'
+import { checkReferenceId } from '../utils/helpers.js'
 
 const subSubCategorySchema = new mongoose.Schema(
     {
@@ -20,6 +20,7 @@ const subSubCategorySchema = new mongoose.Schema(
             ref: 'SubCategory',
         },
         priority: Number,
+        slug: String,
     },
     {
         toJSON: { virtuals: true },
@@ -27,10 +28,6 @@ const subSubCategorySchema = new mongoose.Schema(
         timestamps: true,
     }
 )
-
-subSubCategorySchema.virtual('slug').get(function () {
-    return slugify(this.name, { lower: true })
-})
 
 subSubCategorySchema.pre(/^find/, function (next) {
     this.populate({

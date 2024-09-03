@@ -12,8 +12,6 @@ export const checkFields = (Model, req, next) => {
     // Step 1: Get the allowed fields from the model schema
     const allowedFields = Object.keys(Model.schema.paths)
 
-    console.log(allowedFields)
-
     // Step 2: Identify fields in req.body that are not in the allowedFields list
     const extraFields = Object.keys(req.body).filter(
         (field) => !allowedFields.includes(field)
@@ -155,13 +153,13 @@ export const updateOne = (Model) =>
     catchAsync(async (req, res, next) => {
         const { allowedFields, filteredData } = checkFields(Model, req, next)
 
-        // // if document contain slug then update slug value
-        // if (allowedFields?.slug && filteredData?.name) {
-        //     filteredData = {
-        //         ...filteredData,
-        //         slug: slugify(filteredData.name, { lower: true }),
-        //     }
-        // }
+        // if document contain slug then update slug value
+        if (allowedFields?.slug && filteredData?.name) {
+            filteredData = {
+                ...filteredData,
+                slug: slugify(filteredData.name, { lower: true }),
+            }
+        }
 
         // Perform the update operation
         const doc = await Model.findByIdAndUpdate(req.params.id, filteredData, {
@@ -176,13 +174,6 @@ export const updateOne = (Model) =>
             return next(new AppError(`No ${docName} found with that ID`, 404))
         }
 
-        const cacheKeyOne = getCacheKey(Model.modelName, req.params.id)
-
-        // delete pervious document data
-        await redisClient.del(cacheKeyOne)
-        // updated the cache with new data
-        await redisClient.setEx(cacheKeyOne, 3600, JSON.stringify(doc))
-
         // Update cache
         const cacheKey = getCacheKey(Model.modelName, '', req.query)
         await redisClient.del(cacheKey)
@@ -196,7 +187,15 @@ export const updateOne = (Model) =>
 // CREATE One Document
 export const createOne = (Model) =>
     catchAsync(async (req, res, next) => {
-        const { filteredData } = checkFields(Model, req, next)
+        const { allowedFields, filteredData } = checkFields(Model, req, next)
+
+        // if document contain slug then add slug value
+        if (allowedFields?.slug && filteredData?.name) {
+            filteredData = {
+                ...filteredData,
+                slug: slugify(filteredData.name, { lower: true }),
+            }
+        }
 
         const doc = await Model.create(filteredData)
 
@@ -205,9 +204,6 @@ export const createOne = (Model) =>
         if (!doc) {
             return next(new AppError(`${docName} could not be created`, 400))
         }
-
-        const cacheKeyOne = getCacheKey(Model.modelName, doc?._id)
-        await redisClient.setEx(cacheKeyOne, 3600, JSON.stringify(doc))
 
         // delete all documents caches related to this model
         const cacheKey = getCacheKey(Model.modelName, '', req.query)

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import AppError from '../utils/appError.js'
+import { checkReferenceId } from '../utils/helpers.js'
 
 const productReviewSchema = new mongoose.Schema(
     {
@@ -27,34 +27,28 @@ const productReviewSchema = new mongoose.Schema(
         status: {
             type: String,
             enum: ['active', 'inactive'],
-            default: 'active',
+            default: 'inactive',
         },
     },
     { timestamps: true }
 )
 
-productReviewSchema.pre(/^find/, function (next) {
-    this.populate({
-        path: 'customer',
-        select: '-__v -createdAt -updatedAt -role -status -referCode',
-    }).populate({
-        path: 'product',
-        select: '-__v -createdAt -updatedAt',
-    })
-})
+// productReviewSchema.pre(/^find/, function (next) {
+//     this.populate({
+//         path: 'customer',
+//         select: '-__v -createdAt -updatedAt -role -status -referCode',
+//     }).populate({
+//         path: 'product',
+//         select: '-__v -createdAt -updatedAt',
+//     })
+
+//     next()
+// })
 
 productReviewSchema.pre('save', async function (next) {
-    const customer = await mongoose.model('Customer').findById(this.customer)
+    await checkReferenceId('Customer', this.customer, next)
+    await checkReferenceId('Product', this.product, next)
 
-    if (!customer) {
-        return next(new AppError('Referenced customer ID does not exist', 400))
-    }
-
-    const product = await mongoose.model('Product').findById(this.product)
-
-    if (!product) {
-        return next(new AppError('Referenced product ID does not exist', 400))
-    }
     next()
 })
 

@@ -55,7 +55,12 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: ['Product'],
         }),
         getTopRatedProducts: builder.query({
-            query: () => `${PRODUCTS_URL}/top-rated`,
+            query: () => {
+                return {
+                    url: PRODUCTS_URL,
+                    params: `sort=-rating&limit=20`,
+                }
+            },
             keepUnusedDataFor: 5,
         }),
         getLatestProducts: builder.query({

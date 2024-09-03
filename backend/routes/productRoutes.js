@@ -62,9 +62,7 @@ router
     .put(updateProduct)
     .delete(deleteProduct)
 
-router
-    .route('/status/:id')
-    .put(protect, restrictTo('admin'), updateProductStatus)
+router.put('/status/:id', protect, restrictTo('admin'), updateProductStatus)
 
 router.route('/:id/feature').put(updateProductFeaturedStatus)
 

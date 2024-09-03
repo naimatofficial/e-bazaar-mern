@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import AppError from '../utils/appError.js'
+import { checkReferenceId } from '../utils/helpers.js'
 
 const refundSchema = new mongoose.Schema(
     {
@@ -38,10 +38,7 @@ refundSchema.pre(/^find/, function (next) {
 
 refundSchema.pre('save', async function (next) {
     try {
-        const order = await mongoose.model('Order').findById(this.order)
-        if (!order) {
-            return next(new AppError('Referenced order ID does not exist', 400))
-        }
+        await checkReferenceId('Order', this.order, next)
 
         next()
     } catch (err) {

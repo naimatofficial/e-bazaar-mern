@@ -1,4 +1,4 @@
-# 🛒 Ecommerce Baazaar
+# 🛒 Ecommerce Baaazaar
 
 ![Ecommerce Baaazaar Logo](https://i.pinimg.com/originals/c8/51/e1/c851e1918e356d0bfdcd090fb2c2332c.jpg)
 
@@ -62,7 +62,7 @@ git clone https://github.com/naimatofficial/e-bazaar-mern.git
 Create a .env file in the backend folder and add the following:
 
 ```bash
-DB_URI=[your_database_url]
+DB_URI=**************
 NODE_ENV='production'
 
 JWT_SECRET=********
@@ -71,7 +71,10 @@ JWT_ACCESS_TIME=********
 JWT_REFRESH_TIME=********
 JWT_COOKIE_EXPIRES_IN=********
 
-REDIS_URL=*redis_url*
+REDIS_URL=**redis_url**
+
+EMAIL_ADDRESS=*************
+EMAIL_PASS_KEY=************
 ```
 
 ### **Install packages & Start Both Server**
