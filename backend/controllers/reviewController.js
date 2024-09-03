@@ -58,8 +58,11 @@ export const createProductReview = catchAsync(async (req, res, next) => {
     const reviewCacheKey = getCacheKey('ProductReview', '', req.query)
     await redisClient.del(reviewCacheKey)
 
-    const productCacheKey = getCacheKey('Product', '', req.query)
+    const productCacheKey = getCacheKey('Product', productId)
     await redisClient.del(productCacheKey)
+
+    const productsCacheKey = getCacheKey('Product', '', req.query)
+    await redisClient.del(productsCacheKey)
 
     res.status(201).json({
         status: 'success',

@@ -35,7 +35,7 @@ const VendorRightBar = ({ vendorId }) => {
         <div className="w-1/2">
             <FeatureCard features={features} />
 
-            {vendorProducts ? (
+            {vendorProducts && vendorProducts.length ? (
                 <div className="flex flex-col gap-6">
                     <VanderCard
                         vendorId={vendorId}

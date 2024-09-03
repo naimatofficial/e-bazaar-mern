@@ -17,6 +17,11 @@ const categorySchema = new mongoose.Schema(
         },
         priority: Number,
         slug: String,
+        status: {
+            type: String,
+            enum: ['active', 'inactive'],
+            default: 'inactive',
+        },
     },
     {
         toJSON: { virtuals: true },

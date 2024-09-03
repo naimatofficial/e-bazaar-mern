@@ -25,6 +25,8 @@ const ProductDetailsPage = () => {
             { skip: !product?.category?._id }
         )
 
+    console.log(product?.doc?.reviews)
+
     return isLoading ? (
         <Loader />
     ) : product ? (
@@ -33,7 +35,7 @@ const ProductDetailsPage = () => {
                 <div className="flex flex-col">
                     <Product product={product?.doc} />
                     <Overview />
-                    <ProductReviews />
+                    <ProductReviews product={product?.doc} />
                 </div>
 
                 <VendorRightBar vendorId={product?.userId} />
