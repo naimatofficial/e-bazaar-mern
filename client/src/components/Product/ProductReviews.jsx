@@ -16,8 +16,6 @@ const calculateRatingPercentage = (rating, totalReviews) => {
 const ProductReviews = ({ product }) => {
     reviews = Array.isArray(product?.reviews) ? product.reviews : []
 
-    console.log('rating', product.rating)
-
     return (
         <div className="w-full mx-auto p-4 bg-white rounded-md shadow-gray-50 shadow-md mb-8">
             <div className="text-center mb-4">

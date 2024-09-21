@@ -25,8 +25,6 @@ const ProductDetailsPage = () => {
             { skip: !product?.category?._id }
         )
 
-    console.log(product?.doc?.reviews)
-
     return isLoading ? (
         <Loader />
     ) : product ? (
@@ -35,7 +33,7 @@ const ProductDetailsPage = () => {
                 <div className="flex flex-col">
                     <Product product={product?.doc} />
                     <Overview />
-                    <ProductReviews product={product?.doc} />
+                    {/* <ProductReviews product={product?.doc} /> */}
                 </div>
 
                 <VendorRightBar vendorId={product?.userId} />
@@ -58,12 +56,12 @@ const ProductDetailsPage = () => {
                             </span>
                         </Link>
                     </div>
-                    <ProductCarousel
+                    {/* <ProductCarousel
                         data={products?.doc}
                         component={ProductCard}
                         largeDesktopLimit={5}
                         desktopLimit={4}
-                    />
+                    /> */}
                 </div>
             ) : null}
         </div>

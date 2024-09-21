@@ -8,7 +8,7 @@ const CategoryItem = ({ category }) => {
             className="flex-center flex-col gap-2 p-2 group cursor-pointer"
         >
             <img
-                src={`http://localhost:3000/uploads/image/${category.logo}`}
+                src={`http://localhost:3000/uploads/${category.logo}`}
                 alt={category.name}
                 className="w-24 h-24 object-contain rounded-full transition-transform duration-300 group-hover:scale-90"
             />

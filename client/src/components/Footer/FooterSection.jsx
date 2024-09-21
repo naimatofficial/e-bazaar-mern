@@ -9,7 +9,7 @@ import {
     FaTicketAlt,
 } from 'react-icons/fa'
 
-import logo from './../../assets/app-logo/footer-app-logo.png'
+import logo from './../../assets/app-logo/vista-app-logo.png'
 
 const footerSpecial = [
     {
@@ -68,7 +68,7 @@ const FooterMainSection = () => {
                     <img
                         src={logo}
                         alt="logo"
-                        className="w-48 object-contain"
+                        className="w-48 h-30 object-contain"
                     />
 
                     <h4 className=" text-lg mb-2">DOWNLOAD OUR APP</h4>

@@ -31,8 +31,7 @@ const MultiStepForm = () => {
     const [vendorImages, setVendorImages] = useState([])
     const [step, setStep] = useState(0)
 
-    const [vendorRegister, { isLoading, isSuccess, error }] =
-        useVendorRegisterMutation()
+    const [vendorRegister, { isLoading }] = useVendorRegisterMutation()
 
     const methods = useForm({
         resolver: zodResolver(schema),
