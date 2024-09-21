@@ -19,8 +19,12 @@ const CategorySidebar = () => {
                                 <Link
                                     key={index}
                                     to={`/products?category=${category._id}`}
-                                    className="flex justify-between items-center group  p-1 border-b last:border-none cursor-pointer"
+                                    className="flex  items-center group  p-1 border-b last:border-none cursor-pointer  gap-3 px-3"
                                 >
+                                       <div className="image">
+                                        <img src="https://vistamart.biz/storage/app/public/category/2024-08-08-66b4dde53db3a.png"  alt="Logo"  
+                                        className='w-[1.5vw] h-[1vw] '/>
+                                         </div>
                                     <Typography className="text-gray-700 group-hover:text-primary-600">
                                         {capitalizeFirstLetter(category.name)}
                                     </Typography>
