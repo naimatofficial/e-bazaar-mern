@@ -3,85 +3,90 @@
 @tailwind utilities;
 
 .carousel-container {
-	width: 100%;
-	padding: 0 20px;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .carousel-container .react-multi-carousel-arrow {
-	display: none !important;
+    display: none !important;
 }
 
 /* src/styles/scrollbar.css */
 .custom-scrollbar::-webkit-scrollbar {
-	width: 4px;
+    width: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-	background: #f1f1f1;
-	border-radius: 10px;
+    background: #f1f1f1;
+    border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-	background: #90b63f;
-	border-radius: 10px;
+    background: #90b63f;
+    border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-	background: rgba(85, 85, 85, 0.953) 63f;
+    background: rgba(85, 85, 85, 0.953) 63f;
 }
 
 @layer utilities {
-	.carousel-arrow {
-		@apply absolute top-1/2 transform -translate-y-1/2 bg-primary-400 rounded-full p-2 shadow-md z-10;
-	}
+    .carousel-arrow {
+        @apply absolute top-1/2 transform -translate-y-1/2 bg-primary-400 rounded-full p-2 shadow-md z-10;
+    }
 
-	.flex-center {
-		@apply flex justify-center items-center;
-	}
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
 
-	.input {
-		@apply border rounded w-full py-3 px-6 border-gray-300 text-gray-700 leading-tight focus:outline-1 outline-primary-100;
-	}
+    .input {
+        @apply border rounded w-full py-3 px-6 text-gray-700 leading-tight focus:outline-1 outline-primary-100;
+        @apply border-gray-300; /* Default border */
+    }
 
-	.input-label {
-		@apply block text-gray-700 text-sm font-medium mb-2;
-	}
+    .input-error {
+        @apply border-red-500 outline-red-500 outline-0; /* Red border when error occurs */
+    }
 
-	.btn {
-		@apply py-1 px-2 text-sm cursor-pointer shadow-sm rounded-lg focus:outline-none transition-all duration-300 ease-out;
+    .input-label {
+        @apply block text-gray-700 text-sm font-medium mb-2;
+    }
 
-		/* Responsive padding */
-		@apply md:py-1.5 md:px-1.5 lg:py-2 lg:px-4 md:text-base lg:text-lg;
-	}
+    .btn {
+        @apply py-1 px-2 text-sm cursor-pointer shadow-sm rounded-lg focus:outline-none transition-all duration-300 ease-out;
 
-	.primary-btn {
-		@apply bg-primary-500 hover:text-gray-100 hover:bg-primary-400 text-white;
-	}
+        /* Responsive padding */
+        @apply md:py-1.5 md:px-1.5 lg:py-2 lg:px-4 md:text-base lg:text-lg;
+    }
 
-	.secondary-btn {
-		@apply bg-blue-gray-100 hover:text-blue-gray-200 hover:bg-blue-gray-200 text-gray-100;
-	}
+    .primary-btn {
+        @apply bg-primary-500 hover:text-gray-100 hover:bg-primary-400 text-white;
+    }
 
-	.products-container {
-		@apply bg-white shadow-sm rounded-lg px-2 py-4 mb-4 shadow-primary-100;
-	}
+    .secondary-btn {
+        @apply bg-blue-gray-100 hover:text-blue-gray-200 hover:bg-blue-gray-200 text-gray-100;
+    }
 
-	.product__quick-view {
-		@apply absolute inset-0 bg-primary-500 bg-opacity-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300;
-	}
+    .products-container {
+        @apply bg-white shadow-sm rounded-lg px-2 py-4 mb-4 shadow-primary-100;
+    }
 
-	.product__img {
-		@apply w-full h-48 p-4  object-contain rounded-lg transform transition-transform duration-300 group-hover:scale-110;
-	}
-	.navbar-item {
-		@apply text-white hover:text-primary-100 transition-colors cursor-pointer;
-	}
+    .product__quick-view {
+        @apply absolute inset-0 bg-primary-500 bg-opacity-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+    }
 
-	.view-box {
-		@apply flex justify-end p-3 text-base items-center gap-2 text-primary-400;
-	}
+    .product__img {
+        @apply w-full h-48 p-4  object-contain rounded-lg transform transition-transform duration-300 group-hover:scale-110;
+    }
+    .navbar-item {
+        @apply text-white hover:text-primary-100 transition-colors cursor-pointer;
+    }
 
-	.discount-badge {
-		@apply absolute top-2 left-2 bg-primary-400 text-white text-sm font-bold px-2 py-1 rounded z-40;
-	}
+    .view-box {
+        @apply flex justify-end p-3 text-base items-center gap-2 text-primary-400;
+    }
+
+    .discount-badge {
+        @apply absolute top-2 left-2 bg-primary-400 text-white text-sm font-bold px-2 py-1 rounded z-40;
+    }
 }
