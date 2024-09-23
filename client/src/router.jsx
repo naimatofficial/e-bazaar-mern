@@ -36,6 +36,9 @@ import OrderConfirmationPage from "./_root/pages/OrderConfirmationPage";
 import NotFoundPage from "./_root/pages/NotFoundPage";
 import ForgotPasswordPage from "./_root/pages/ForgotPasswordPage";
 import ResetPassword from "./_root/pages/ResetPassword";
+import RefundPolicy from "./_root/pages/RefundPolicyPage";
+import ReturnPolicy from "./_root/pages/ReturnPolicyPage";
+import CancellationPolicy from "./_root/pages/CancellationPolicyPage";
 
 const router = createBrowserRouter([
 	{
@@ -114,6 +117,7 @@ const router = createBrowserRouter([
 						path: "track-order",
 						element: <TrackOrder />,
 					},
+					
 				],
 			},
 			{
@@ -178,6 +182,18 @@ const router = createBrowserRouter([
 				path: "*",
 				element: <NotFoundPage />,
 			},
+			{
+				path:"/refund",
+				element: <RefundPolicy/>
+			},
+			{
+				path:"/return",
+				element: <ReturnPolicy />
+			},
+			{
+				path:"/cancellation",
+				element: <CancellationPolicy/>
+			}
 		],
 	},
 	// {

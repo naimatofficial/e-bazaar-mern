@@ -31,9 +31,9 @@ const footerInfo = [
             { name: 'Profile Info', url: '#' },
             { name: 'Wish List', url: '#' },
             { name: 'Track Order', url: '#' },
-            { name: 'Refund Policy', url: '#' },
-            { name: 'Return Policy', url: '#' },
-            { name: 'Cancellation Policy', url: '#' },
+            { name: 'Refund Policy', url: 'Refund' },
+            { name: 'Return Policy', url: 'Return' },
+            { name: 'Cancellation Policy', url: 'Cancellation' },
         ],
     },
 ]
@@ -50,7 +50,7 @@ const footerNews = [
                     <input
                         type="email"
                         placeholder="Your Email Address"
-                        className="pl-4 py-2 rounded text-black w-full focus:outline-none focus:ring-2 focus:ring-primary-700 "
+                        className="pl-4 py-2 rounded text-black w-80 focus:outline-none focus:ring-2 focus:ring-primary-700 "
                     />
                     <div className="absolute right-2 bg-primary-600 top-1/2 p-1 transform -translate-y-1/2 rounded text-white font-bold hover:bg-primary-700">
                         Subscribe
