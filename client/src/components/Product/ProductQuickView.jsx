@@ -42,7 +42,7 @@ const ProductQuickView = ({ productId, onClose }) => {
 
     const addToCartHandler = () => {
         if (qty >= product.doc.minimumOrderQty) {
-            dispatch(addToCart({ ...product, qty }))
+            dispatch(addToCart({ ...product.doc, qty }))
             onClose()
             toast.success('Item added successfully')
         } else setMinimumOrderError(true)
@@ -62,6 +62,8 @@ const ProductQuickView = ({ productId, onClose }) => {
             navigate('/checkout-details')
         } else setMinimumOrderError(true)
     }
+
+    console.log(qty)
 
     return isLoading ? (
         <div className="z-50">
@@ -83,7 +85,11 @@ const ProductQuickView = ({ productId, onClose }) => {
                 <div className="w-1/2 flex flex-col">
                     <div className="w-full h-80 overflow-hidden shadow-sm">
                         <img
-                            src={`http://localhost:3000/${mainImage}`}
+                            src={
+                                mainImage
+                                    ? `http://localhost:3000/${mainImage}`
+                                    : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                            }
                             alt={product.doc.name}
                             className="w-full lg:h-96 md:h-80 h-40 object-contain py-2 transition-all duration-300 ease-out"
                         />
@@ -121,7 +127,7 @@ const ProductQuickView = ({ productId, onClose }) => {
                             </p>
                         )}
                     </div>
-                    <div className="">
+                    <div className="flex items-center">
                         {product.doc.stock > 1 ? (
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
@@ -131,7 +137,7 @@ const ProductQuickView = ({ productId, onClose }) => {
                                     <Quantity
                                         qty={qty}
                                         setQty={setQty}
-                                        product={product}
+                                        product={product.doc}
                                     />
                                     <span className="mx-2 px-1 text-sm">
                                         {product.doc.stock} pieces left
@@ -143,12 +149,6 @@ const ProductQuickView = ({ productId, onClose }) => {
                                 </p>
                             </div>
                         ) : null}
-                        {minimumOrderError && (
-                            <p className="bg-red-50 border border-red-500 rounded-lg text-red-500 py-2 px-4 text-base transition-all ease-in-out duration-300">
-                                {`The min. order for this item is ${product.doc.minimumOrderQty} 
-								piece. Adjust quantity to continue.`}
-                            </p>
-                        )}
                     </div>
                     <div className="flex items-center gap-2">
                         <h3 className="text-gray-800 font-bold">

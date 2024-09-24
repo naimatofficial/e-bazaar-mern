@@ -5,7 +5,7 @@ export const brandsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getBrands: builder.query({
             query: ({ brand }) => ({
-                url: `${BRANDS_URL}?status=active`,
+                url: `${BRANDS_URL}`,
                 params: { brand },
             }),
         }),

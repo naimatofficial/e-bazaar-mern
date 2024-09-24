@@ -53,7 +53,11 @@ const Product = ({ product }) => {
                 <div className="lg:w-1/2 w-full">
                     <div className="shadow-md overflow-hidden">
                         <img
-                            src={`http://localhost:3000/${mainImage}`}
+                            src={
+                                mainImage
+                                    ? `http://localhost:3000/${mainImage}`
+                                    : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                            }
                             alt="Main product image"
                             className="w-[30rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
                         />

@@ -13,25 +13,22 @@ const BrandDropDownItem = () => {
         <>
             <ul>
                 {brands.doc.map((brand) => {
-                    if (brand.productCount > 0)
-                        return (
-                            <li
-                                key={brand._id}
-                                className=" py-2 border-b outline-none hover:text-primary-400 cursor-pointer"
+                    return (
+                        <li
+                            key={brand._id}
+                            className=" py-2 border-b outline-none hover:text-primary-400 cursor-pointer"
+                        >
+                            <Link
+                                to={`/products?brand=${brand._id}`}
+                                className="flex justify-between items-center"
                             >
-                                <Link
-                                    to={`/products?brand=${brand._id}`}
-                                    className="flex justify-between items-center"
-                                >
-                                    <span>
-                                        {capitalizeFirstLetter(brand.name)}
-                                    </span>
-                                    <span className="text-gray-500">
-                                        ({brand.productCount})
-                                    </span>
-                                </Link>
-                            </li>
-                        )
+                                <span>{capitalizeFirstLetter(brand.name)}</span>
+                                <span className="text-gray-500">
+                                    ({brand.productCount || 0})
+                                </span>
+                            </Link>
+                        </li>
+                    )
                 })}
             </ul>
             <div className="text-center mt-4">

@@ -4,6 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { FaUserCircle, FaCamera } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { useUpdateCustomerMutation } from '../../redux/slices/customersApiSlice'
+import { useNavigate } from 'react-router-dom'
 
 // Zod schema for form validation
 const profileSchema = z.object({
@@ -19,6 +22,9 @@ const profileSchema = z.object({
 const ProfileInfo = () => {
     const { userInfo } = useSelector((state) => state.auth)
     const [selectedImage, setSelectedImage] = useState(null)
+
+    const [updateCustomer, { isLoading, isSuccess }] =
+        useUpdateCustomerMutation()
 
     const {
         register,
@@ -43,15 +49,26 @@ const ProfileInfo = () => {
         }
     }
 
-    const onSubmit = (data) => {
+    const navigate = useNavigate()
+
+    const onSubmit = async (data) => {
         console.log('Form Data:', data)
         const formData = new FormData()
+        formData.append('customerId', userInfo?.user?._id)
         formData.append('firstName', formData.firstName)
         formData.append('lastName', formData.lastName)
         formData.append('email', formData.email)
         formData.append('phoneNumber', formData.phoneNumber)
         formData.append('image', formData.image)
-        // Submit form data
+
+        try {
+            await updateCustomer(formData).unwrap()
+            toast.success('Customer Update successfully')
+            navigate('/profile/profile-info')
+        } catch (error) {
+            console.log(error)
+            toast.error(error.data.message)
+        }
     }
 
     return (

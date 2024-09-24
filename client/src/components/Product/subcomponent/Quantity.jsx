@@ -10,6 +10,8 @@ const Quantity = ({ product, qty, setQty }) => {
     const location = useLocation()
     const dispatch = useDispatch()
 
+    console.log(product)
+
     useEffect(() => {
         if (location.pathname === '/cart') {
             dispatch(addToCart({ ...product, qty }))

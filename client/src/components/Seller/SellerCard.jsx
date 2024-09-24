@@ -29,7 +29,7 @@ const SellerCard = ({ data: seller }) => {
                                 className="w-16 h-16 bg-white rounded-full object-cover -mt-8 border-2 border-white shadow-md transform transition duration-300 ease-in-out hover:scale-105"
                             />
 
-                            <div className="flex flex-col -mt-4">
+                            <div className="flex flex-col -mt-2 ">
                                 <h3 className="font-medium text-gray-800">{`${seller.shopName}`}</h3>
                                 <div className="flex flex-row gap-1">
                                     <span className="text-yellow-400">★</span>

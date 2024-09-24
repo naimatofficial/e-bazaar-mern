@@ -63,28 +63,32 @@ const CheckoutPage = () => {
 
                 setStep(step + 1)
             } else {
-                // Final step, proceed to order
-                const { paymentMethod } = methods.getValues()
-                dispatch(savePaymentMethod(paymentMethod))
-                // order creation
-                const order = {
-                    products: cart?.cartItems,
-                    customer: userInfo?.user?._id,
-                    vendor: cart?.cartItems?.[0]?.userId || '',
-                    shippingAddress: cart?.shippingAddress,
-                    billingAddress: cart?.billingAddress,
-                    paymentMethod: paymentMethod,
-                    totalAmount: cart?.totalPrice,
-                }
+                try {
+                    // Final step, proceed to order
+                    const { paymentMethod } = methods.getValues()
+                    dispatch(savePaymentMethod(paymentMethod))
+                    // order creation
+                    const order = {
+                        products: cart?.cartItems,
+                        customer: userInfo?.user?._id,
+                        vendor: cart?.cartItems?.[0]?.userId || '',
+                        shippingAddress: cart?.shippingAddress,
+                        billingAddress: cart?.billingAddress,
+                        paymentMethod: paymentMethod,
+                        totalAmount: cart?.totalPrice,
+                    }
 
-                console.log(order)
+                    console.log(order)
 
-                // call the create order api
-                const res = await createOrder(order)
-                console.log(res)
-                if (isSuccess && res?.data) {
-                    navigate(`/order-confirmation/${res?.data?._id}`)
-                    toast.success('Order create successfully')
+                    // call the create order api
+                    const res = await createOrder(order).unwrap()
+                    if (isSuccess && res?.data) {
+                        navigate(`/order-confirmation/${res?.data?._id}`)
+                        toast.success('Order create successfully')
+                    }
+                } catch (err) {
+                    console.log(err.data)
+                    toast.error(err?.data?.message)
                 }
             }
         } catch (err) {
