@@ -11,11 +11,11 @@ const CategoryDropDown = () => {
 
     return isLoading ? (
         <Loader />
-    ) : categories && categories?.doc ? (
+    ) : categories && categories?.docs ? (
         <>
             <div className="w-[250px] p-2 mx-auto shadow-md bg-white-100">
                 <div>
-                    {categories.doc.map((category, index) => {
+                    {categories.docs.map((category, index) => {
                         if (index <= 6)
                             return (
                                 <Link

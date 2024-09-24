@@ -14,14 +14,19 @@ const calculateRatingPercentage = (rating, totalReviews) => {
 }
 
 const ProductReviews = ({ product }) => {
-    reviews = Array.isArray(product?.reviews) ? product.reviews : []
+    console.log(product)
+    reviews = product?.reviews || []
+
+    console.log(reviews)
 
     return (
         <div className="w-full mx-auto p-4 bg-white rounded-md shadow-gray-50 shadow-md mb-8">
             <div className="text-center mb-4">
-                <h1 className="text-3xl font-bold">{product.rating}</h1>
-                <Rating readonly value={Math.round(product.rating)} />
-                <p className="text-gray-600">{product.numOfReviews} Ratings</p>
+                <h1 className="text-3xl font-bold">{product.rating || 0}</h1>
+                <Rating readonly value={Math.round(product.rating) || 0} />
+                <p className="text-gray-600">
+                    {product.numOfReviews || 0} Ratings
+                </p>
             </div>
             <div className="mb-4 px-8">
                 {['Excellent', 'Good', 'Average', 'Below Average', 'Poor'].map(

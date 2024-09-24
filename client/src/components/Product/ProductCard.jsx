@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
 const ProductCard = ({ data: product }) => {
+    console.log(product)
     const oldPrice = product?.price + product?.discount || null
     const [selectedProduct, setSelectedProduct] = useState(null)
     const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -47,7 +48,7 @@ const ProductCard = ({ data: product }) => {
                     </div>
                 </div>
                 <div className="p-4 group">
-                    <Link to={`/products/${product._id}`}>
+                    <Link to={`/products/${product.slug}`}>
                         <p className="font-medium truncate mb-2 group-hover:text-primary-400 transition-all ease-in">
                             {product.name}
                         </p>

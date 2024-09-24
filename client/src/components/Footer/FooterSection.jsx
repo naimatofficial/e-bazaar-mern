@@ -15,11 +15,11 @@ const footerSpecial = [
     {
         title: 'SPECIAL',
         links: [
-            { name: 'Flash Deal', url: '#' },
-            { name: 'Featured Products', url: '#' },
-            { name: 'Latest Products', url: '#' },
-            { name: 'Best Selling Products', url: '#' },
-            { name: 'Top Rated Products', url: '#' },
+            { name: 'Flash Deal', url: '/flash-deals' },
+            { name: 'Featured Products', url: '/featured-products' },
+            { name: 'Latest Products', url: '/latest-products' },
+            { name: 'Best Selling Products', url: '/best-selling-products' },
+            { name: 'Top Rated Products', url: '/top-rated-products' },
         ],
     },
 ]
@@ -28,12 +28,12 @@ const footerInfo = [
     {
         title: 'ACCOUNT & SHIPPING INFO',
         links: [
-            { name: 'Profile Info', url: '#' },
-            { name: 'Wish List', url: '#' },
-            { name: 'Track Order', url: '#' },
-            { name: 'Refund Policy', url: '#' },
-            { name: 'Return Policy', url: '#' },
-            { name: 'Cancellation Policy', url: '#' },
+            { name: 'Profile Info', url: '/profile/profile-info' },
+            { name: 'Wish List', url: '/profile/wish-list' },
+            { name: 'Track Order', url: '/profile/track-order' },
+            { name: 'Refund Policy', url: '/refund-policy' },
+            { name: 'Return Policy', url: '/return-policy' },
+            { name: 'Cancellation Policy', url: '/cancellation-policy' },
         ],
     },
 ]
@@ -50,7 +50,7 @@ const footerNews = [
                     <input
                         type="email"
                         placeholder="Your Email Address"
-                        className="pl-4 py-2 rounded text-black w-full focus:outline-none focus:ring-2 focus:ring-primary-700 "
+                        className="pl-4 py-2 rounded text-black w-80 focus:outline-none focus:ring-2 focus:ring-primary-700 "
                     />
                     <div className="absolute right-2 bg-primary-600 top-1/2 p-1 transform -translate-y-1/2 rounded text-white font-bold hover:bg-primary-700">
                         Subscribe

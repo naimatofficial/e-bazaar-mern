@@ -72,7 +72,7 @@ const ProductQuickView = ({ productId, onClose }) => {
     ) : product && product?.doc ? (
         <div className="flex flex-col border shadow-lg bg-white rounded-lg">
             <div className="flex justify-between items-center p-4 border-b">
-                <Link to={`/products/${product.doc._id}`}>
+                <Link to={`/products/${product.doc.slug}`}>
                     <h2 className="text-xl font-semibold">
                         {product.doc.name}
                     </h2>
