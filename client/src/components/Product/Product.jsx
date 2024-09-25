@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import Quantity from './subcomponent/Quantity'
 import { useNavigate } from 'react-router-dom'
 import WishListIcon from './subcomponent/WishListIcon'
+import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 
 const Product = ({ product }) => {
     const [mainImage, setMainImage] = useState(product?.thumbnail)
@@ -55,8 +56,8 @@ const Product = ({ product }) => {
                         <img
                             src={
                                 mainImage
-                                    ? `http://localhost:3000/${mainImage}`
-                                    : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                                    ? `${API_URL}/uploads/${mainImage}`
+                                    : DEFAULT_IMG
                             }
                             alt="Main product image"
                             className="w-[30rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
@@ -66,7 +67,7 @@ const Product = ({ product }) => {
                         {productImages?.map((src, index) => (
                             <img
                                 key={index}
-                                src={`http://localhost:3000/${src}`}
+                                src={`${API_URL}/uploads/${src}` || DEFAULT_IMG}
                                 alt={`Thumbnail ${index + 1}`}
                                 className="w-16 h-16 md:w-20 md:h-20 object-contain mr-2 border border-gray-100 rounded-md shadow-sm cursor-pointer"
                                 onClick={() => setMainImage(src)}

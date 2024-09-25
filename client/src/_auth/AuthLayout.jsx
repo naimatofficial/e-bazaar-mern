@@ -1,22 +1,22 @@
-import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
+
+import logo from './../assets/app-logo/vista-app-logo.png'
 
 const AuthLayout = () => {
-	const { userInfo } = useSelector((state) => state.auth);
+    return (
+        <div className="">
+            <div className="my-4 p-8 flex justify-between items-center flex-col">
+                <img
+                    src={logo}
+                    alt="vistamart"
+                    className="w-40 h-40 object-contain"
+                />
+                <div className="p-8 lg:w-2/5 w-full">
+                    <Outlet />
+                </div>
+            </div>
+        </div>
+    )
+}
 
-	console.log(userInfo);
-
-	return (
-		!userInfo && (
-			<div className="">
-				<div className="my-20 w-3/4 mx-auto rounded-lg outline-1 outline-primary-400 shadow-md bg-white">
-					<div className="w-3/4 mx-auto p-8">
-						<Outlet />
-					</div>
-				</div>
-			</div>
-		)
-	);
-};
-
-export default AuthLayout;
+export default AuthLayout

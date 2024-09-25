@@ -1,15 +1,13 @@
 /* eslint-disable react/prop-types */
 import { AiFillStar, AiOutlineStar, AiFillMessage } from 'react-icons/ai'
+import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 
 const ShopBanner = ({ vendor }) => {
-    console.log(vendor)
-    const banner = `http://localhost:3000/${vendor.banner}`
-
     return (
         vendor && (
             <div className="relative h-[380px] mt-4 p-4 rounded-lg shadow-lg max-w-7xl mx-auto py-4 bg-pink-100">
                 <img
-                    src={banner}
+                    src={`${API_URL}/${vendor.banner}` || DEFAULT_IMG}
                     alt="Shop Banner"
                     className="absolute inset-0 w-full h-full object-cover rounded-lg"
                 />
@@ -18,8 +16,8 @@ const ShopBanner = ({ vendor }) => {
                         <div className="h-[240px]"></div>
                         <div className="bg-white p-4 rounded-lg shadow-lg flex items-center">
                             <img
-                                src={`http://localhost:3000/${vendor.logo}`}
-                                alt="6valley CMS"
+                                src={`${API_URL}/${vendor.logo}` || DEFAULT_IMG}
+                                alt="shop logo"
                                 className="w-16 h-16 object-cover rounded"
                             />
                             <div className="ml-4">

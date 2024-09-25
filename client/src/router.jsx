@@ -1,14 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from './_root/RootLayout'
+import AuthLayout from './_auth/AuthLayout'
+
 import SignUpForm from './_auth/Forms/SignUpForm'
 import SignInForm from './_auth/Forms/SignInForm'
+import VendorLoginForm from './_auth/Forms/VendorLoginForm'
 
 // Pages
 import HomePage from './_root/pages/HomePage'
 import BrandsPage from './_root/pages/BrandsPage'
 import ShopViewPage from './_root/pages/ShopViewPage'
 import ProductsPage from './_root/pages/ProductsPage'
-import VendorLoginForm from './components/Seller/VendorLoginForm'
 import VendorRegisterPage from './_root/pages/VendorRegisterPage'
 import VendorsPage from './_root/pages/VendorsPage'
 import CheckoutPage from './_root/pages/CheckoutPage'
@@ -42,17 +44,14 @@ import CancellationPolicy from './_root/pages/CancellationPolicyPage'
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '',
         element: <RootLayout />,
         children: [
             {
                 path: '',
                 element: <HomePage />,
             },
-            {
-                path: 'vendor/auth/login',
-                element: <VendorLoginForm />,
-            },
+
             {
                 path: 'vendor/auth/registration',
                 element: <VendorRegisterPage />,
@@ -192,6 +191,16 @@ const router = createBrowserRouter([
             {
                 path: '*',
                 element: <NotFoundPage />,
+            },
+        ],
+    },
+    {
+        path: 'auth',
+        element: <AuthLayout />,
+        children: [
+            {
+                path: 'vendor/login',
+                element: <VendorLoginForm />,
             },
         ],
     },

@@ -3,9 +3,9 @@ import { FaEye } from 'react-icons/fa'
 import ProductDialog from './ProductDialog'
 import { Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
+import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 
 const ProductCard = ({ data: product }) => {
-    console.log(product)
     const oldPrice = product?.price + product?.discount || null
     const [selectedProduct, setSelectedProduct] = useState(null)
     const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -32,8 +32,8 @@ const ProductCard = ({ data: product }) => {
                     <img
                         src={
                             product?.thumbnail
-                                ? `http://localhost:3000/${product.thumbnail}`
-                                : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                                ? `${API_URL}/uploads/thumbnails/${product.thumbnail}`
+                                : DEFAULT_IMG
                         }
                         alt={product.name}
                         className="product__img"
