@@ -17,6 +17,17 @@ export const customerApiSlice = apiSlice.injectEndpoints({
                 body: data,
             }),
         }),
+        customerSubscribe: builder.mutation({
+            query: (data) => ({
+                url: `https://lionfish-app-tdhk5.ondigitalocean.app/api/subscribers`,
+                method: 'POST',
+                body: JSON.stringify(data), 
+                headers: {
+                    'Content-Type': 'application/json', 
+                },
+            }),
+        }),
+        
         customerLogout: builder.mutation({
             query: (token) => ({
                 url: `${CUSTOMERS_URL}/logout`,
@@ -76,4 +87,5 @@ export const {
     useDeleteCustomerMutation,
     useUpdateCustomerMutation,
     useGetCustomerDetailsQuery,
+    useCustomerSubscribeMutation
 } = customerApiSlice
