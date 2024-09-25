@@ -32,7 +32,7 @@ const ProductCard = ({ data: product }) => {
                     <img
                         src={
                             product?.thumbnail
-                                ? `${API_URL}/uploads/thumbnails/${product.thumbnail}`
+                                ? `${API_URL}/${product.thumbnail}`
                                 : DEFAULT_IMG
                         }
                         alt={product.name}

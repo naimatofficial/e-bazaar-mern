@@ -88,7 +88,7 @@ const ProductQuickView = ({ productId, onClose }) => {
                         <img
                             src={
                                 mainImage
-                                    ? `${API_URL}/uploads/thumbnails/${mainImage}`
+                                    ? `${API_URL}/${mainImage}`
                                     : DEFAULT_IMG
                             }
                             alt={product.doc.name}
@@ -99,7 +99,7 @@ const ProductQuickView = ({ productId, onClose }) => {
                         {productImages?.map((src, index) => (
                             <img
                                 key={index}
-                                src={`${API_URL}/uploads/${src}` || DEFAULT_IMG}
+                                src={`${API_URL}/${src}` || DEFAULT_IMG}
                                 alt={`Thumbnail ${index + 1}`}
                                 className="w-20 lg:h-20 h-10 object-cover mr-2 border border-gray-100 rounded-md cursor-pointer"
                                 onClick={() => setMainImage(src)}

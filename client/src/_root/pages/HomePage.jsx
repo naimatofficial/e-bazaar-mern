@@ -80,7 +80,7 @@ const HomePage = () => {
             {/* Top Sellers */}
             <TopSeller />
 
-            <section className="py-4 mb-4 flex flex-col items-center lg:flex-row lg:items-start justify-around gap-2">
+            <section className="py-4 mb-4 flex flex-col items-center lg:flex-row lg:items-start justify-around gap-4">
                 <DealOfTheDay
                     image={'./src/assets/categories/laptop.png'}
                     title={'Laptop'}

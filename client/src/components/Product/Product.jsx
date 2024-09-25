@@ -56,7 +56,7 @@ const Product = ({ product }) => {
                         <img
                             src={
                                 mainImage
-                                    ? `${API_URL}/uploads/${mainImage}`
+                                    ? `${API_URL}/${mainImage}`
                                     : DEFAULT_IMG
                             }
                             alt="Main product image"
@@ -67,7 +67,7 @@ const Product = ({ product }) => {
                         {productImages?.map((src, index) => (
                             <img
                                 key={index}
-                                src={`${API_URL}/uploads/${src}` || DEFAULT_IMG}
+                                src={`${API_URL}/${src}` || DEFAULT_IMG}
                                 alt={`Thumbnail ${index + 1}`}
                                 className="w-16 h-16 md:w-20 md:h-20 object-contain mr-2 border border-gray-100 rounded-md shadow-sm cursor-pointer"
                                 onClick={() => setMainImage(src)}
