@@ -2,24 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { HiSearch } from "react-icons/hi";
-import { useGetProductSuggestionsQuery } from "../../redux/slices/productsApiSlice";
+import { useGetAllProductsQuery } from "../../redux/slices/productsApiSlice";
 
 const SearchBar = () => {
 	const [query, setQuery] = useState("");
 	const [showSuggestions, setShowSuggestions] = useState(false);
 	const navigate = useNavigate();
 
-	const { data: suggestions, isFetching,refetch } = useGetProductSuggestionsQuery(
-		query,
-		{
-			skip: !query,
-		}
-	);
+	const { data: suggestions, isFetching } = useGetAllProductsQuery();
+
+	console.log(suggestions)
 
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 		setShowSuggestions(true);
-		refetch();
 	};
 
 	const handleClearInput = () => {
@@ -40,7 +36,6 @@ const SearchBar = () => {
 		setShowSuggestions(false);
 	};
 
-	console.log(suggestions)
 	return (
 		<div className="relative mx-1">
 			<form onSubmit={handleSearch} className="flex items-center">
