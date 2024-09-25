@@ -12,12 +12,13 @@ import TopSeller from '../../components/Seller/TopSeller'
 import StarProducts from '../../components/Product/StarProducts'
 
 // images
-import PromoSaleImage from '../../assets/banner/promo-sale.webp'
-import MegaSaleBanner1 from '../../assets/banner/mega-sale.webp'
-import MegaSaleBanner2 from '../../assets/banner/super-sale.webp'
-import DealImage from '../../assets/categories/laptop.png'
-import TopRatedIcon from '../../assets/top-rated.png'
-import BestSellingIcon from '../../assets/best-sellings.png'
+import PromoSaleImage from './../../assets/banner/promo-sale.webp'
+import MegaSaleBanner1 from './../../assets/banner/mega-sale.webp'
+import MegaSaleBanner2 from './../../assets/banner/super-sale.webp'
+import TopRatedIcon from './../../assets/top-rated.png'
+import BestSellingIcon from './../../assets/best-sellings.png'
+import DealImage from './../../assets/categories/laptop.png'
+
 import {
     useGetProductsQuery,
     useGetTopRatedProductsQuery,
