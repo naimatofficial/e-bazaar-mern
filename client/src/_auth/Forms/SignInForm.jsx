@@ -109,12 +109,15 @@ const SignInForm = () => {
                                 </p>
                             )}
                         </div>
+                        <div className="text-right mb-4 py-2">
+                            <Link
+                                to="/forgot-password"
+                                className="text-green-600 hover:underline cursor-pointer"
+                            >
+                                Forgot Password?
+                            </Link>
+                        </div>
                     </div>
-                    {/* <ReCAPTCHA
-                        ref={recaptcha}
-                        sitekey={reCAPTCHA_SITE_KEY}
-                        // sitekey={'6LdROiEqAAAAABxH4D1HD30dC3VvDbnPpvCL'}
-                    /> */}
                 </div>
                 <div>
                     <button type="submit" className="w-full btn primary-btn">

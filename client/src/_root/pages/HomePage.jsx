@@ -49,7 +49,7 @@ const HomePage = () => {
             <HeroSection />
 
             {/* Flash Deal */}
-            <section className="py-4 mb-4">
+            <section className="py-2 mb-4">
                 <FlashDeal />
             </section>
 
