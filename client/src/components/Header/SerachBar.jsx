@@ -9,7 +9,7 @@ const SearchBar = () => {
 	const [showSuggestions, setShowSuggestions] = useState(false);
 	const navigate = useNavigate();
 
-	const { data: suggestions, isFetching } = useGetProductSuggestionsQuery(
+	const { data: suggestions, isFetching,refetch } = useGetProductSuggestionsQuery(
 		query,
 		{
 			skip: !query,
@@ -19,6 +19,7 @@ const SearchBar = () => {
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 		setShowSuggestions(true);
+		refetch();
 	};
 
 	const handleClearInput = () => {
@@ -39,6 +40,7 @@ const SearchBar = () => {
 		setShowSuggestions(false);
 	};
 
+	console.log(suggestions)
 	return (
 		<div className="relative mx-1">
 			<form onSubmit={handleSearch} className="flex items-center">
@@ -78,7 +80,7 @@ const SearchBar = () => {
 					)}
 					<ul className="list-none p-0 m-0">
 						{suggestions &&
-							suggestions.map((product) => (
+							suggestions.doc.map((product) => (
 								<li
 									key={product._id}
 									className="p-2 hover:bg-gray-100 cursor-pointer"

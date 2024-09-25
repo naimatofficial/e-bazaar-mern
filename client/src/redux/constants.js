@@ -9,3 +9,4 @@ export const CUSTOMERS_URL = '/api/customers'
 export const ORDERS_URL = '/api/orders'
 export const WISHLIST_URL = '/api/wishlists'
 export const PAYPAL_URL = '/paypal'
+
