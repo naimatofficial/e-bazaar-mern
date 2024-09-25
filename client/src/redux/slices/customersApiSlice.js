@@ -17,6 +17,13 @@ export const customerApiSlice = apiSlice.injectEndpoints({
 				body: data,
 			}),
 		}),
+		customerForgetPassword: builder.mutation({
+			query:(email) =>({
+				url:`${CUSTOMERS_URL}/forgot-password`,
+				method:"POST",
+				body:email
+			})
+		}),
 		customerLogout: builder.mutation({
 			query: (token) => ({
 				url: `${CUSTOMERS_URL}/logout`,
@@ -72,4 +79,5 @@ export const {
 	useDeleteCustomerMutation,
 	useUpdateCustomerMutation,
 	useGetCustomerDetailsQuery,
+	useCustomerForgetPasswordMutation
 } = customerApiSlice;

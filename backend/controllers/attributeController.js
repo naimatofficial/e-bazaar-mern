@@ -1,10 +1,10 @@
 import Attribute from "../models/attributeModel.js";
 import {
-	createOne,
-	deleteOne,
-	getAll,
-	getOne,
-	updateOne,
+  createOne,
+  deleteOne,
+  getAll,
+  getOne,
+  updateOne,
 } from "./handleFactory.js";
 
 // Create a new attribute
