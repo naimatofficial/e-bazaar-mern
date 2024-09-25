@@ -66,52 +66,37 @@ const MultiStepForm = () => {
 
     const onSubmit = async (data) => {
         try {
-            // Extract file names or set default messages
-            const logoFileName = logoImages?.[0]?.file || 'No logo uploaded'
-            const bannerFileName =
-                bannerImages?.[0]?.file || 'No banner uploaded'
-            const vendorFileName =
-                vendorImages?.[0]?.file || 'No banner uploaded'
-
-            console.log({ logoFileName, bannerFileName })
-
-            const finalData = {
-                ...data,
-                logo: logoFileName,
-                banner: bannerFileName,
-                vendorImage: vendorFileName,
+            const fileFields = {
+                logo: logoImages[0],
+                banner: bannerImages[0],
+                vendorImage: vendorImages[0],
             }
 
-            if (finalData.password !== finalData.confirmPassword) {
+            const formData = new FormData()
+            formData.append('email', data.email)
+            formData.append('password', data.password)
+            formData.append('phoneNumber', data.phoneNumber)
+            formData.append('firstName', data.firstName)
+            formData.append('lastName', data.lastName)
+            formData.append('shopName', data.shopName)
+            formData.append('address', data.address)
+
+            Object.keys(fileFields).forEach((field) => {
+                formData.append(field, fileFields[field] || 'No file uploaded')
+            })
+
+            if (data.password !== data.confirmPassword) {
                 toast.error('Passwords do not match')
                 return
             }
 
-            console.log(finalData) // Check the final data object
-
-            const formData = new FormData()
-            formData.append('email', finalData.email)
-            formData.append('password', finalData.password)
-            formData.append('phoneNumber', finalData.phoneNumber)
-            formData.append('firstName', finalData.firstName)
-            formData.append('lastName', finalData.lastName)
-            formData.append('shopName', finalData.shopName)
-            formData.append('address', finalData.address)
-            formData.append('logo', finalData.logo)
-            formData.append('banner', finalData.banner)
-            formData.append('vendorImage', finalData.vendorImage)
-
-            // await axios.post(`${BASE_URL}/api/vendors`, formData, {
-            // 	headers: {
-            // 		"Content-Type": "multipart/form-data",
-            // 	},
-            // });
-
-            await vendorRegister(formData).unwrap()
-            navigate('/vendor/auth/login')
+            await vendorRegister(formData)
+            navigate('/auth/vendor/login')
             toast.success('Vendor registered successfully')
         } catch (err) {
-            toast.error(err?.data?.error || err.error)
+            const errorMessage =
+                err?.data?.error || err?.error || 'An unknown error occurred'
+            toast.error(errorMessage)
             console.error('Error: ', err)
         }
     }

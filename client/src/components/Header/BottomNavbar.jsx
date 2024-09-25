@@ -33,7 +33,8 @@ const BottomNavbar = () => {
                         variant="small"
                         color="blue-gray"
                         className="p-2 font-medium"
-                        onMouseOver={() => setOpenMenu3(true)}
+                        onClick={() => setOpenMenu3(true)}
+                        onMouseLeave={() => setOpenMenu3(false)}
                     >
                         <p className="flex items-center hover:text-primary-500 text-primary-400 transition-all duration-300 ease-in justify-between cursor-pointer">
                             <BiSolidCategory className="w-6 h-6 mr-2" />
@@ -43,15 +44,14 @@ const BottomNavbar = () => {
                     </Typography>
 
                     {/* Conditionally render the CategoryDropDown based on the current path */}
-                    {location.pathname !== '/' && openMenu3 ? (
+                    {location.pathname !== '/' && openMenu3 && (
                         <div
                             className="Box absolute top-[8vh]  "
                             onMouseLeave={() => setOpenMenu3(false)}
+                            onClick={() => setOpenMenu3(true)}
                         >
                             <CategoryDropDown />
                         </div>
-                    ) : (
-                        openMenu3 && ''
                     )}
                 </div>
 
