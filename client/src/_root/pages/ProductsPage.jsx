@@ -5,7 +5,6 @@ import ProductCard from '../../components/Product/ProductCard'
 import { useGetProductsQuery } from '../../redux/slices/productsApiSlice'
 import { useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useGetBrandDetailsQuery } from '../../redux/slices/brandsApiSlice'
 
 export const ProductsPage = () => {
     const [searchParams] = useSearchParams()
