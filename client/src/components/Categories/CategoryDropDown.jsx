@@ -3,7 +3,7 @@ import Loader from '../Loader';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { capitalizeFirstLetter } from '../../utils';
-
+import { SlArrowRight } from "react-icons/sl";
 const CategoryDropDown = () => {
     const { data: categories, isLoading } = useGetCategoriesQuery({});
     const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -27,7 +27,7 @@ const CategoryDropDown = () => {
     ) : (
         <div className="relative z-20">
             {categories && categories.doc ? (
-                <div className="w-full p-2 mx-auto shadow-md bg-white">
+                <div className="w-full p-3 mx-auto shadow-md bg-white">
                     {categories.doc.slice(0, 7).map((category, index) => {
                         const hasSubCategories = category.subCategories?.length > 0;
 
@@ -39,25 +39,25 @@ const CategoryDropDown = () => {
                             >
                                 <Link
                                     to={`/products?category=${category._id}`}
-                                    className={`flex items-center group gap-2 p-2 
+                                    className={`flex items-center group gap-4 px-2 py-[1.4vh]
                                     cursor-pointer w-full hover:bg-gray-100`}
                                 >
                                     <div className="image">
                                         <img
                                             src="https://vistamart.biz/storage/app/public/category/2024-08-08-66b4dde53db3a.png"
                                             alt="Logo"
-                                            className="w-[1.5vw] h-[1vw]"
+                                            className="w-[1.7vw] h-[1vw]"
                                         />
                                     </div>
-                                    <span className="text-gray-700 group-hover:text-primary-600 flex justify-between w-full">
+                                    <span className="text-gray-700 group-hover:text-primary-600 flex justify-between w-full text-sm  items-center">
                                         {capitalizeFirstLetter(category.name)}
-                                        {hasSubCategories && <span className="ml-auto"> &gt; </span>}
+                                        {hasSubCategories && <span className="ml-auto text-sm"> <SlArrowRight size={9}/></span>}
                                     </span>
                                 </Link>
 
                                 {hoveredCategory === category._id && hasSubCategories && (
                                     <div
-                                        className="absolute top-0 left-full w-56 bg-white shadow-md z-20 ml-1 p-2"
+                                        className="absolute top-0 left-full w-56 bg-white shadow-md z-20 ml-1 p-1"
                                         onMouseEnter={() => handleMouseEnterCategory(category._id)}
                                         onMouseLeave={handleMouseLeave}
                                     >
@@ -78,7 +78,7 @@ const CategoryDropDown = () => {
                                                         to={`/products?subcategory=${subCategory._id}`}
                                                         className="flex justify-between p-2 hover:bg-gray-100"
                                                     >
-                                                        <span className="px-5">
+                                                        <span className="px-5 text-sm">
                                                             {capitalizeFirstLetter(
                                                                 subCategory.name
                                                             )}
@@ -90,7 +90,7 @@ const CategoryDropDown = () => {
 
                                                     {hoveredSubCategory === subCategory._id &&
                                                         hasSubSubCategories && (
-                                                            <div className="absolute top-0 left-full w-56 bg-white shadow-md ml-1 z-20 p-2">
+                                                            <div className="absolute top-0 left-full w-56 bg-white shadow-md ml-1 z-20 p-2 text-sm">
                                                                 {subCategory.subSubCategories.map(
                                                                     (subSubCategory, subSubIndex) => (
                                                                         <Link
@@ -117,9 +117,9 @@ const CategoryDropDown = () => {
 
                     <Link
                         to={`/categories`}
-                        className="group text-center cursor-pointer w-full"
+                        className="group text-center cursor-pointer w-full flex justify-center mt-2"
                     >
-                        <span className="text-primary-500 p-2 hover:text-primary-600">
+                        <span className="text-primary-500  hover:text-primary-600 ">
                             View More
                         </span>
                     </Link>
