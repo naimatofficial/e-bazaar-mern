@@ -13,8 +13,6 @@ const Product = ({ product }) => {
     const [mainImage, setMainImage] = useState(product?.thumbnail)
     const [qty, setQty] = useState(1)
 
-    console.log(product)
-
     const productImages = product ? [...product.images, product?.thumbnail] : []
     const oldPrice = product?.price + product?.discount
 
