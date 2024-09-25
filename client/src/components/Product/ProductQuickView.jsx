@@ -10,6 +10,7 @@ import Loader from '../Loader'
 import { useGetProductDetailsQuery } from '../../redux/slices/productsApiSlice'
 import { toast } from 'react-toastify'
 import WishListIcon from './subcomponent/WishListIcon'
+import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 
 const ProductQuickView = ({ productId, onClose }) => {
     const { data: product, isLoading } = useGetProductDetailsQuery(productId, {
@@ -72,7 +73,7 @@ const ProductQuickView = ({ productId, onClose }) => {
     ) : product && product?.doc ? (
         <div className="flex flex-col border shadow-lg bg-white rounded-lg">
             <div className="flex justify-between items-center p-4 border-b">
-                <Link to={`/products/${product.doc._id}`}>
+                <Link to={`/products/${product.doc.slug}`}>
                     <h2 className="text-xl font-semibold">
                         {product.doc.name}
                     </h2>
@@ -87,8 +88,8 @@ const ProductQuickView = ({ productId, onClose }) => {
                         <img
                             src={
                                 mainImage
-                                    ? `http://localhost:3000/${mainImage}`
-                                    : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                                    ? `${API_URL}/${mainImage}`
+                                    : DEFAULT_IMG
                             }
                             alt={product.doc.name}
                             className="w-full lg:h-96 md:h-80 h-40 object-contain py-2 transition-all duration-300 ease-out"
@@ -98,7 +99,7 @@ const ProductQuickView = ({ productId, onClose }) => {
                         {productImages?.map((src, index) => (
                             <img
                                 key={index}
-                                src={`http://localhost:3000/${src}`}
+                                src={`${API_URL}/${src}` || DEFAULT_IMG}
                                 alt={`Thumbnail ${index + 1}`}
                                 className="w-20 lg:h-20 h-10 object-cover mr-2 border border-gray-100 rounded-md cursor-pointer"
                                 onClick={() => setMainImage(src)}

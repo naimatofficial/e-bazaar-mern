@@ -13,12 +13,14 @@ const ShopViewPage = () => {
 
     const { data: vendor, isLoading } = useGetVendorDetailsQuery(vendorId)
 
+    console.log(vendorId)
+
     const { data: vendorProducts, isLoading: isVendorProductsLoading } =
         useGetProductsQuery(
             {
-                userId: vendor?._id,
+                userId: vendorId,
             },
-            { skip: !vendor?._id }
+            { skip: !vendorId }
         )
 
     console.log(vendorProducts)
@@ -39,7 +41,7 @@ const ShopViewPage = () => {
                     ) : vendorProducts && vendorProducts?.doc?.length ? (
                         <div className="grid grid-cols-4 gap-2">
                             {vendorProducts?.doc?.map((product, index) => (
-                                <ProductCard key={index} {...product} />
+                                <ProductCard key={index} data={product} />
                             ))}
                         </div>
                     ) : (

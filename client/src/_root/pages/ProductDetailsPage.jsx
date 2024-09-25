@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { FaAngleRight } from 'react-icons/fa'
 import {
-    useGetProductDetailsQuery,
+    useGetProductBySlugQuery,
     useGetProductsQuery,
 } from '../../redux/slices/productsApiSlice'
 
@@ -14,9 +14,11 @@ import VendorRightBar from '../../components/Seller/VendorRightBar'
 import Overview from '../../components/Product/subcomponent/Overview'
 
 const ProductDetailsPage = () => {
-    const { id } = useParams()
+    const { slug } = useParams()
 
-    const { data: product, isLoading } = useGetProductDetailsQuery(id)
+    // const { data: product, isLoading } = useGetProductDetailsQuery(id)
+    const { data: product, isLoading } = useGetProductBySlugQuery(slug)
+
     const { data: products, isLoading: isProductsLoading } =
         useGetProductsQuery(
             {
@@ -24,6 +26,8 @@ const ProductDetailsPage = () => {
             },
             { skip: !product?.category?._id }
         )
+
+    console.log(products)
 
     return isLoading ? (
         <Loader />

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { API_URL } from '../../utils/constants'
 
 /* eslint-disable react/prop-types */
 const BrandItem = ({ brand }) => {
@@ -6,7 +7,7 @@ const BrandItem = ({ brand }) => {
         <div className="border border-gray-300 h-24 w-24 rounded-full p-4 group cursor-pointer">
             <Link to={`/products?brand=${brand._id}`} className="">
                 <img
-                    src={`http://localhost:3000/uploads/${brand.logo}`}
+                    src={`${API_URL}/uploads/${brand.logo}`}
                     alt={brand.name}
                     className=" object-contain transition-transform duration-300 group-hover:scale-110"
                 />

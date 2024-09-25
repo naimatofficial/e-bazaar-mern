@@ -11,7 +11,7 @@ const CategorySidebar = () => {
         <Loader />
     ) : categories && categories?.doc ? (
         <>
-            <div className="w-[300px] p-2 border mx-auto shadow-sm shadow-primary-100 bg-white-100">
+            <div className="w-[300px] p-2 border bg-white-100 shadow-sm">
                 <div className="flex flex-col gap-2">
                     {categories.doc.map((category, index) => {
                         if (index <= 10)
@@ -27,14 +27,6 @@ const CategorySidebar = () => {
                                 </Link>
                             )
                     })}
-                    <Link
-                        to={`/categories`}
-                        className="group text-center cursor-pointer w-full"
-                    >
-                        <Typography className="text-primary-500 p-1 group-hover:text-primary-600">
-                            view more
-                        </Typography>
-                    </Link>
                 </div>
             </div>
         </>
