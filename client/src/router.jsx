@@ -36,6 +36,7 @@ import OrderConfirmationPage from "./_root/pages/OrderConfirmationPage";
 import NotFoundPage from "./_root/pages/NotFoundPage";
 import ForgotPasswordPage from "./_root/pages/ForgotPasswordPage";
 import ResetPassword from "./_root/pages/ResetPassword";
+import SearchResult from "./components/Product/SearchResult";
 
 const router = createBrowserRouter([
 	{
@@ -173,7 +174,10 @@ const router = createBrowserRouter([
 				path: "faqs",
 				element: <FaqPage />,
 			},
-
+			{
+				path: "search",
+				element: <SearchResult />,
+			},
 			{
 				path: "*",
 				element: <NotFoundPage />,
