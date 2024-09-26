@@ -48,7 +48,7 @@ const ProductCard = ({ data: product }) => {
                     </div>
                 </div>
                 <div className="p-4 group">
-                    <Link to={`/products/${product.slug || product._id}`}>
+                    <Link to={`/products/${product.slug}`}>
                         <p className="font-medium truncate mb-2 group-hover:text-primary-400 transition-all ease-in">
                             {product.name}
                         </p>

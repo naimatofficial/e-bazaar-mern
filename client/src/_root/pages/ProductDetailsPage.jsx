@@ -1,8 +1,8 @@
 import { Link, useParams } from 'react-router-dom'
 import { FaAngleRight } from 'react-icons/fa'
 import {
-    // useGetProductBySlugQuery,
-    useGetProductDetailsQuery,
+    useGetProductBySlugQuery,
+    // useGetProductDetailsQuery,
     useGetProductsQuery,
 } from '../../redux/slices/productsApiSlice'
 
@@ -17,8 +17,8 @@ import Overview from '../../components/Product/subcomponent/Overview'
 const ProductDetailsPage = () => {
     const { slug } = useParams()
 
-    const { data: product, isLoading } = useGetProductDetailsQuery(slug)
-    // const { data: product, isLoading } = useGetProductBySlugQuery(slug)
+    // const { data: product, isLoading } = useGetProductDetailsQuery(slug)
+    const { data: product, isLoading } = useGetProductBySlugQuery(slug)
 
     console.log(product)
 
