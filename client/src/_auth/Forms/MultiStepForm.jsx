@@ -67,9 +67,9 @@ const MultiStepForm = () => {
     const onSubmit = async (data) => {
         try {
             const fileFields = {
-                logo: logoImages[0],
-                banner: bannerImages[0],
-                vendorImage: vendorImages[0],
+                logo: logoImages,
+                banner: bannerImages,
+                vendorImage: vendorImages,
             }
 
             const formData = new FormData()
