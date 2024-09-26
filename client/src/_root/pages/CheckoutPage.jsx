@@ -1,109 +1,202 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useForm, FormProvider } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+// //////////////////////////
+// import { useEffect, useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { useForm, FormProvider } from 'react-hook-form'
+// import { zodResolver } from '@hookform/resolvers/zod'
+// import { useNavigate } from 'react-router-dom'
+// import { toast } from 'react-toastify'
+// import {
+//     saveShippingAddress,
+//     saveBillingAddress,
+//     savePaymentMethod,
+// } from '../../redux/slices/cartSlice'
+// import { addressSchema, paymentSchema } from './../../utils/schema'
+// import PaymentMethod from '../../components/Checkout/PaymentMethod'
+// import BillingAddressForm from '../../components/Checkout/BillingAddressForm'
+// import { useCreateOrderMutation } from '../../redux/slices/ordersApiSlice'
+// import CartSummary from '../../components/Cart/CartSummery'
+
+// const CheckoutPage = () => {
+//     const [step, setStep] = useState(0)
+
+//     const { userInfo } = useSelector((state) => state.auth)
+//     const cart = useSelector((state) => state.cart)
+
+//     const dispatch = useDispatch()
+//     const navigate = useNavigate()
+
+//     useEffect(() => {
+//         if (!userInfo && !userInfo?.user) {
+//             navigate('/customer/auth/sign-in')
+//         }
+//     }, [navigate, userInfo])
+
+//     const [createOrder, { isLoading, isSuccess }] = useCreateOrderMutation()
+
+//     const methods = useForm({
+//         resolver: zodResolver(step === 0 ? addressSchema : paymentSchema),
+//         mode: 'onSubmit', // Validates only on form submission
+//         reValidateMode: 'onChange', // Validates on each change after initial submission
+//     })
+//     const handleNext = async () => {
+//         try {
+//             // Trigger validation for all fields based on the current step
+//             const isValid = await methods.trigger()
+
+//             // Check if the form is valid
+//             if (!isValid) {
+//                 toast.error('Please fill all the required fields.')
+//                 return
+//             }
+
+//             if (step === 0) {
+//                 // Step 1: Save shipping and billing addresses
+//                 const shippingAddress = methods.getValues()
+//                 dispatch(saveShippingAddress(shippingAddress))
+//                 dispatch(saveBillingAddress(shippingAddress))
+
+//                 // Move to the payment step
+//                 setStep(step + 1)
+//             } else {
+//                 // Step 2: Handle order creation
+//                 const { paymentMethod } = methods.getValues()
+//                 dispatch(savePaymentMethod(paymentMethod))
+
+//                 const order = {
+//                     products: cart?.cartItems,
+//                     customer: userInfo?.user?._id,
+//                     vendor: cart?.cartItems?.[0]?.userId || '',
+//                     shippingAddress: cart?.shippingAddress,
+//                     billingAddress: cart?.billingAddress,
+//                     paymentMethod: paymentMethod,
+//                     totalAmount: cart?.totalPrice,
+//                 }
+
+//                 // Call the create order API
+//                 const res = await createOrder(order).unwrap()
+//                 if (isSuccess && res?.data) {
+//                     navigate(`/order-confirmation/${res?.data?._id}`)
+//                     toast.success('Order created successfully')
+//                 }
+//             }
+//         } catch (err) {
+//             console.log(err)
+//             toast.error(
+//                 err.message ||
+//                     'An error occurred while processing your request.'
+//             )
+//         }
+//     }
+
+//     return (
+//         <div className="w-full p-4 sm:p-6 md:p-8">
+//             <FormProvider {...methods}>
+//                 <form
+//                     onSubmit={methods.handleSubmit(handleNext)}
+//                     className="flex flex-col lg:flex-row gap-8"
+//                 >
+//                     {step === 0 && <BillingAddressForm />}
+//                     {step === 1 && <PaymentMethod />}
+//                     <CartSummary
+//                         cart={cart}
+//                         handleNext={handleNext}
+//                         isLoading={isLoading}
+//                         step={step}
+//                     />
+//                 </form>
+//             </FormProvider>
+//         </div>
+//     )
+// }
+
+// export default CheckoutPage
+
+
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import {
     saveShippingAddress,
     saveBillingAddress,
     savePaymentMethod,
-} from '../../redux/slices/cartSlice'
-import { addressSchema, paymentSchema } from './../../utils/schema'
-import PaymentMethod from '../../components/Checkout/PaymentMethod'
-import BillingAddressForm from '../../components/Checkout/BillingAddressForm'
-import { useCreateOrderMutation } from '../../redux/slices/ordersApiSlice'
-import CartSummary from '../../components/Cart/CartSummery'
+} from '../../redux/slices/cartSlice';
+import { addressSchema, paymentSchema } from './../../utils/schema';
+import PaymentMethod from '../../components/Checkout/PaymentMethod';
+import BillingAddressForm from '../../components/Checkout/BillingAddressForm';
+import { useCreateOrderMutation } from '../../redux/slices/ordersApiSlice';
+import CartSummary from '../../components/Cart/CartSummery';
 
 const CheckoutPage = () => {
-    const [step, setStep] = useState(0)
+    const [step, setStep] = useState(0);
 
-    const { userInfo } = useSelector((state) => state.auth)
-    const cart = useSelector((state) => state.cart)
+    const { userInfo } = useSelector((state) => state.auth);
+    const cart = useSelector((state) => state.cart);
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!userInfo && !userInfo?.user) {
-            navigate('/customer/auth/sign-in')
+        if (!userInfo?.user) {
+            navigate('/customer/auth/sign-in');
         }
-    }, [navigate, userInfo])
+    }, [navigate, userInfo]);
 
-    const [createOrder, { isLoading, isSuccess }] = useCreateOrderMutation()
+    const [createOrder, { isLoading, isSuccess, isError, error }] = useCreateOrderMutation();
 
     const methods = useForm({
         resolver: zodResolver(step === 0 ? addressSchema : paymentSchema),
-        mode: 'onSubmit', // Validates only on form submission
-        reValidateMode: 'onChange', // Validates on each change after initial submission
-    })
+        mode: 'onSubmit',
+        reValidateMode: 'onChange',
+    });
 
     const handleNext = async () => {
         try {
-            const isValid = await methods.trigger([
-                'email',
-                'password',
-                'confirmPassword',
-                'phoneNumber',
-            ])
+            const isValid = await methods.trigger();
 
-            console.log(methods.formState.isValid)
-
-            console.log(isValid)
             if (!isValid) {
-                toast.error('Please fill all the required fields.')
-                return
+                toast.error('Please fill all the required fields.');
+                return;
             }
 
             if (step === 0) {
-                const shippingAddress = methods.getValues()
-                // note: for testing purpose we add two same addresses
-                dispatch(saveShippingAddress(shippingAddress))
-                dispatch(saveBillingAddress(shippingAddress))
-
-                setStep(step + 1)
+                const shippingAddress = methods.getValues();
+                dispatch(saveShippingAddress(shippingAddress));
+                dispatch(saveBillingAddress(shippingAddress));
+                setStep(step + 1);
             } else {
-                try {
-                    // Final step, proceed to order
-                    const { paymentMethod } = methods.getValues()
-                    dispatch(savePaymentMethod(paymentMethod))
-                    // order creation
-                    const order = {
-                        products: cart?.cartItems,
-                        customer: userInfo?.user?._id,
-                        vendor: cart?.cartItems?.[0]?.userId || '',
-                        shippingAddress: cart?.shippingAddress,
-                        billingAddress: cart?.billingAddress,
-                        paymentMethod: paymentMethod,
-                        totalAmount: cart?.totalPrice,
-                    }
+                const { paymentMethod } = methods.getValues();
+                dispatch(savePaymentMethod(paymentMethod));
 
-                    console.log(order)
+                const order = {
+                    products: cart?.cartItems,
+                    customer: userInfo?.user?._id,
+                    vendor: cart?.cartItems?.[0]?.userId || '',
+                    shippingAddress: cart?.shippingAddress,
+                    billingAddress: cart?.billingAddress,
+                    paymentMethod: paymentMethod,
+                    totalAmount: cart?.totalPrice,
+                };
 
-                    // call the create order api
-                    const res = await createOrder(order).unwrap()
-                    if (isSuccess && res?.data) {
-                        navigate(`/order-confirmation/${res?.data?._id}`)
-                        toast.success('Order create successfully')
-                    }
-                } catch (err) {
-                    console.log(err.data)
-                    toast.error(err?.data?.message)
+                const res = await createOrder(order).unwrap();
+                if (isSuccess && res?.data) {
+                    navigate(`/order-confirmation/${res?.data?._id}`);
+                    toast.success('Order created successfully');
+                    methods.reset(); // Reset the form after successful submission
                 }
             }
         } catch (err) {
-            console.log(err)
-            toast.error(err)
+            console.error(err);
+            toast.error(error?.data?.message || 'An error occurred while processing your request.');
         }
-    }
+    };
 
     return (
         <div className="w-full p-4 sm:p-6 md:p-8">
             <FormProvider {...methods}>
-                <form
-                    onSubmit={methods.handleSubmit(handleNext)}
-                    className="flex flex-col lg:flex-row gap-8"
-                >
+                <form onSubmit={methods.handleSubmit(handleNext)} className="flex flex-col lg:flex-row gap-8">
                     {step === 0 && <BillingAddressForm />}
                     {step === 1 && <PaymentMethod />}
                     <CartSummary
@@ -112,10 +205,11 @@ const CheckoutPage = () => {
                         isLoading={isLoading}
                         step={step}
                     />
+                    {isError && <div className="text-red-500">{error?.data?.message}</div>}
                 </form>
             </FormProvider>
         </div>
-    )
-}
+    );
+};
 
-export default CheckoutPage
+export default CheckoutPage;
