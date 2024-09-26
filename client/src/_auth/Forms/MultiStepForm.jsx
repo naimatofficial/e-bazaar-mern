@@ -90,9 +90,9 @@ const MultiStepForm = () => {
                 return
             }
 
-            await vendorRegister(formData)
-            navigate('/auth/vendor/login')
+            await vendorRegister(formData).unwrap()
             toast.success('Vendor registered successfully')
+            navigate('/auth/vendor/login')
         } catch (err) {
             const errorMessage =
                 err?.data?.error || err?.error || 'An unknown error occurred'

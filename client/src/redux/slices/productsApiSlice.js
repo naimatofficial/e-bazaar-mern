@@ -17,12 +17,6 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             }),
             keepUnusedDataFor: 5,
         }),
-        getProductBySlug: builder.query({
-            query: (slug) => ({
-                url: `${PRODUCTS_URL}/slug/${slug}`,
-            }),
-            keepUnusedDataFor: 5,
-        }),
         createProduct: builder.mutation({
             query: () => ({
                 url: `${PRODUCTS_URL}`,
@@ -91,8 +85,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         }),
         searchProducts: builder.query({
             query: ({ query, page = 1, limit = 10 }) =>
-                `/search?query=${query}&page=${page}&limit=${limit}`,
+                `/api/search?query=${query}&page=${page}&limit=${limit}`,
         }),
+        getAllProducts : builder.query({
+            query: () => ({
+				url: PRODUCTS_URL,
+			}),
+        })
     }),
 })
 
@@ -110,5 +109,6 @@ export const {
     useGetLatestProductsQuery,
     useGetProductSuggestionsQuery,
     useGetFlashDealsQuery,
-    useGetProductBySlugQuery,
+    useSearchProductsQuery,
+    useGetAllProductsQuery
 } = productsApiSlice
