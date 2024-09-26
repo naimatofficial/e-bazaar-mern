@@ -102,8 +102,8 @@ const MultiStepForm = () => {
             formData.append('vendorImage', finalData.vendorImage)
 
             await vendorRegister(formData).unwrap()
-            navigate('/auth/vendor/login')
             toast.success('Vendor registered successfully')
+            navigate('/auth/vendor/login')
         } catch (err) {
             toast.error(err?.data?.error || err.error)
             console.error('Error: ', err)
