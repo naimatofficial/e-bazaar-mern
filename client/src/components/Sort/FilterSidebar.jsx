@@ -7,7 +7,7 @@ import Loader from '../Loader'
 import { Link, useSearchParams } from 'react-router-dom'
 import { capitalizeFirstLetter } from '../../utils'
 import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
+import toast from 'react-hot-toast'
 
 const FilterSidebar = ({ filters }) => {
     const [searchParams, setSearchParams] = useSearchParams()
