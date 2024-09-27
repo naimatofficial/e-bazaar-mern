@@ -113,23 +113,26 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div className="w-full p-4 sm:p-6 md:p-8">
-            <FormProvider {...methods}>
-                <form
-                    onSubmit={methods.handleSubmit(handleNext)}
-                    className="flex flex-col lg:flex-row gap-8"
-                >
-                    {step === 0 && <BillingAddressForm />}
-                    {step === 1 && <PaymentMethod />}
-                    <CartSummary
-                        cart={cart}
-                        handleNext={handleNext}
-                        isLoading={isLoading}
-                        step={step}
-                    />
-                </form>
-            </FormProvider>
-        </div>
+        userInfo &&
+        userInfo?.user && (
+            <div className="w-full p-4 sm:p-6 md:p-8">
+                <FormProvider {...methods}>
+                    <form
+                        onSubmit={methods.handleSubmit(handleNext)}
+                        className="flex flex-col lg:flex-row gap-8"
+                    >
+                        {step === 0 && <BillingAddressForm />}
+                        {step === 1 && <PaymentMethod />}
+                        <CartSummary
+                            cart={cart}
+                            handleNext={handleNext}
+                            isLoading={isLoading}
+                            step={step}
+                        />
+                    </form>
+                </FormProvider>
+            </div>
+        )
     )
 }
 

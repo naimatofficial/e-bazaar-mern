@@ -6,23 +6,26 @@ import { useGetCustomerDetailsQuery } from '../../redux/slices/customersApiSlice
 import Loader from '../../components/Loader'
 
 const ProfilePage = () => {
-    const { user } = useSelector((state) => state.auth.userInfo)
+    const { userInfo } = useSelector((state) => state.auth)
 
-    const { data, isLoading } = useGetCustomerDetailsQuery(user._id, {
-        skip: !user._id,
-    })
+    const { data, isLoading } = useGetCustomerDetailsQuery(
+        userInfo?.user?._id,
+        {
+            skip: !userInfo?.user?._id,
+        }
+    )
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (!user && user._id) {
-            navigate('/')
+        if (!userInfo && !userInfo?.user) {
+            navigate('/customer/auth/sign-in')
         }
-    }, [navigate, user])
+    }, [navigate, userInfo])
 
     return isLoading ? (
         <Loader />
-    ) : data && data?.doc ? (
+    ) : data && data?.doc && userInfo ? (
         <div className="flex gap-4 lg:p-8 md:p-6 p-4 w-full">
             <ProfileLeftBar user={data?.doc} />
             <div className="w-full px-2">

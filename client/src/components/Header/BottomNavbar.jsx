@@ -44,7 +44,7 @@ const BottomNavbar = () => {
     }
 
     return (
-        <div className="w-full py-3 border-none shadow-none bg-primary-400 hidden md:block">
+        <div className="w-full pl-10 py-3 border-none shadow-none bg-primary-400 hidden md:block">
             <div className="flex items-center gap-5 mx-16">
                 {/* Always show Categories */}
                 <div
