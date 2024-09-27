@@ -13,6 +13,7 @@ if (typeof localStorage !== 'undefined') {
               shippingAddress: {},
               billingAddress: {},
               paymentMethod: '',
+              vendors:[]
           }
 }
 

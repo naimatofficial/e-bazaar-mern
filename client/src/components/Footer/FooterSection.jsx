@@ -61,7 +61,7 @@ const footerNews = [
                         />
                         <button
                             type="submit" // Change button type to submit
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-600 px-1 py-2 rounded text-white font-bold hover:bg-primary-700 text-sm"
+                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-600 px-0.5 py-2 rounded text-white font-bold hover:bg-primary-700 text-sm"
                         >
                             Subscribe
                         </button>
