@@ -39,39 +39,40 @@ const CheckoutPage = () => {
     });
 
     const handleNext = async () => {
-        const isValid = await methods.trigger(); // Validate the current step's form inputs
-
-        if (!isValid) {
-            toast.error('Please fill all the required fields.');
-            return;
-        }
-
+        try {
+            const isValid = await methods.trigger(); // Validate the current step's form inputs
+    
+            if (!isValid) {
+                toast.error('Please fill all the required fields.');
+                return;
+            }
+    
             if (step === 0) {
-                const shippingAddress = methods.getValues()
+                const shippingAddress = methods.getValues();
                 // note: for testing purpose we add two same addresses
-                dispatch(saveShippingAddress(shippingAddress))
-                dispatch(saveBillingAddress(shippingAddress))
-
-                setStep(step + 1)
+                dispatch(saveShippingAddress(shippingAddress));
+                dispatch(saveBillingAddress(shippingAddress));
+    
+                setStep(step + 1);
             } else {
                 try {
                     // Final step, proceed to order
-                    const { paymentMethod } = methods.getValues()
-                    dispatch(savePaymentMethod(paymentMethod))
-
+                    const { paymentMethod } = methods.getValues();
+                    dispatch(savePaymentMethod(paymentMethod));
+    
                     // Initialize an empty array to store product IDs
-                    let productIds = []
-
+                    let productIds = [];
+    
                     // Loop through cartItems to get the product IDs
                     cart?.cartItems.forEach((item) => {
                         // Check if the product ID already exists in the productIds array
                         if (!productIds.includes(item._id)) {
                             // If the product ID doesn't exist, add it to the array
-                            productIds.push(item._id)
+                            productIds.push(item._id);
                         }
-                    })
-
-                    // order creation
+                    });
+    
+                    // Order creation
                     const order = {
                         products: productIds,
                         customerId: userInfo?.user?._id,
@@ -80,28 +81,29 @@ const CheckoutPage = () => {
                         paymentMethod: paymentMethod,
                         totalAmount: cart?.totalPrice,
                         vendors: cart?.vendors,
-                    }
-
-                    console.log(order)
-
-                    // call the create order api
-                    const res = await createOrder(order).unwrap()
-
-                    dispatch(clearCartItems())
-
-                    navigate(`/order-confirmation/${res?.data?._id}`)
-                    toast.success('Order create successfully')
+                    };
+    
+                    console.log(order);
+    
+                    // Call the create order API
+                    const res = await createOrder(order).unwrap();
+    
+                    // Clear cart items after successful order
+                    dispatch(clearCartItems());
+    
+                    navigate(`/order-confirmation/${res?.data?._id}`);
+                    toast.success('Order created successfully');
                 } catch (err) {
-                    console.log(err.data)
-                    toast.error(err?.data?.message)
+                    console.log(err?.data);
+                    toast.error(err?.data?.message || 'Something went wrong');
                 }
             }
         } catch (err) {
-            console.log(err)
-            toast.error(err)
+            console.log(err);
+            toast.error(err.message || 'Something went wrong');
         }
     };
-
+    
     return (
         userInfo &&
         userInfo?.user && (
