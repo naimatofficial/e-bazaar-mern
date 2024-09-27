@@ -5,9 +5,9 @@ import { useVendorLoginMutation } from '../../redux/slices/vendorsApiSlice'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCredentials } from '../../redux/slices/authSlice'
-import { toast } from 'react-toastify'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import toast from 'react-hot-toast'
 
 // Define the Zod schema
 const loginSchema = z.object({

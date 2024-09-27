@@ -7,8 +7,8 @@ import 'react-phone-input-2/lib/style.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { useCustomerRegisterMutation } from '../../redux/slices/customersApiSlice'
-import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
+import toast from 'react-hot-toast'
 
 const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),

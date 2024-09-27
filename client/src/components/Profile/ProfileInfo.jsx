@@ -4,9 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { FaUserCircle, FaCamera } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { useUpdateCustomerMutation } from '../../redux/slices/customersApiSlice'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 // Zod schema for form validation
 const profileSchema = z.object({
@@ -23,8 +23,7 @@ const ProfileInfo = () => {
     const { userInfo } = useSelector((state) => state.auth)
     const [selectedImage, setSelectedImage] = useState(null)
 
-    const [updateCustomer, { isLoading, isSuccess }] =
-        useUpdateCustomerMutation()
+    const [updateCustomer, { isLoading }] = useUpdateCustomerMutation()
 
     const {
         register,
@@ -168,7 +167,7 @@ const ProfileInfo = () => {
 
                 <div className="flex justify-end">
                     <button type="submit" className="btn primary-btn">
-                        Update
+                        {isLoading ? 'is Updating...' : 'Update'}
                     </button>
                 </div>
             </form>

@@ -3,11 +3,11 @@ import { Rating } from '@material-tailwind/react'
 import { useState } from 'react'
 import { addToCart } from '../../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import Quantity from './subcomponent/Quantity'
 import { useNavigate } from 'react-router-dom'
 import WishListIcon from './subcomponent/WishListIcon'
 import { API_URL, DEFAULT_IMG } from '../../utils/constants'
+import toast from 'react-hot-toast'
 
 const Product = ({ product }) => {
     const [mainImage, setMainImage] = useState(product?.thumbnail)

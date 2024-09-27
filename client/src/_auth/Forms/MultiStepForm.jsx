@@ -5,8 +5,8 @@ import { z } from 'zod'
 import SellerRegForm2 from './SellerRegForm2'
 import SellerRegForm1 from './SellerRegForm1'
 import { useVendorRegisterMutation } from '../../redux/slices/vendorsApiSlice'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 // Combined schema for both steps
 const schema = z.object({
