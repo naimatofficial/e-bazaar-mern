@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -11,8 +10,7 @@ import facebookIcon from './../../assets/socials-icons/fb-icon.png'
 import { setCredentials } from '../../redux/slices/authSlice'
 import { useCustomerLoginMutation } from '../../redux/slices/customersApiSlice'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
-// import ReCAPTCHA from 'react-google-recaptcha'
-// import { reCAPTCHA_SITE_KEY } from '../../utils/constants'
+import toast from 'react-hot-toast'
 
 const schema = z.object({
     email: z.string().email('Invalid email address'),

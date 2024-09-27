@@ -8,9 +8,9 @@ import Quantity from './subcomponent/Quantity'
 import { FaXmark } from 'react-icons/fa6'
 import Loader from '../Loader'
 import { useGetProductDetailsQuery } from '../../redux/slices/productsApiSlice'
-import { toast } from 'react-toastify'
 import WishListIcon from './subcomponent/WishListIcon'
 import { API_URL, DEFAULT_IMG } from '../../utils/constants'
+import toast from 'react-hot-toast'
 
 const ProductQuickView = ({ productId, onClose }) => {
     const { data: product, isLoading } = useGetProductDetailsQuery(productId, {
