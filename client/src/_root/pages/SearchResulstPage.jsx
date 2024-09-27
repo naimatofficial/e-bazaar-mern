@@ -1,9 +1,8 @@
 import { useLocation } from 'react-router-dom'
-import ProductCarousel from '../shared/ProductCarousel'
-import ProductCard from './ProductCard'
-import Loader from '../Loader'
 import { useGetAllProductsQuery } from '../../redux/slices/productsApiSlice'
 import { useEffect, useState } from 'react'
+import Loader from '../../components/Loader'
+import ProductCard from '../../components/Product/ProductCard'
 
 const SearchResultPage = () => {
     const location = useLocation()
@@ -39,23 +38,29 @@ const SearchResultPage = () => {
                     {filteredProducts.length} Items found
                 </p>
             </div>
-            {/* <Link to="/products?featured" className="view-box">
-                View All
-                <span>
-                    <FaAngleRight className="text-lg" />
-                </span>
-            </Link> */}
-            <ProductCarousel
-                data={filteredProducts}
-                component={ProductCard}
-                largeDesktopLimit={5}
-                desktopLimit={4}
-            />
+
+            {filteredProducts.length ? (
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 transition-all ease-in duration-300">
+                    {products?.doc?.map((product, index) => (
+                        <ProductCard key={index} data={product} />
+                    ))}
+                </div>
+            ) : (
+                <div className="text-lg flex mt-20 justify-center items-center bg-red-100 text-red-500 py-4 px-8 w-full text-center">
+                    <h2>No products found!</h2>
+                </div>
+            )}
         </div>
     ) : (
         <div>
             <h2 className="text-xl font-semibold">Search Result</h2>
             <p className="text-gray-500">0 Items found</p>
+
+            <div className="No-Product-Found mt-2 h-[300px] flex justify-center items-center">
+                <div className="Heading text-lg font-bold mt-1 ">
+                    No Product Found
+                </div>
+            </div>
         </div>
     )
 }

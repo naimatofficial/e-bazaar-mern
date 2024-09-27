@@ -13,6 +13,7 @@ if (typeof localStorage !== 'undefined') {
               shippingAddress: {},
               billingAddress: {},
               paymentMethod: '',
+              vendors: [],
           }
 }
 
@@ -22,19 +23,33 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const { ...item } = action.payload
+            const vendor = item.userId
 
+            // Check if the item already exists in the cart
             const existItem = state.cartItems.find((x) => x._id === item._id)
 
             if (existItem) {
+                // If item exists, update it
                 state.cartItems = state.cartItems.map((x) =>
                     x._id === existItem._id ? item : x
                 )
             } else {
+                // Otherwise, add it as a new item
                 state.cartItems = [...state.cartItems, item]
             }
 
-            return updateCart(state, item)
+            // Check if the vendor is already in the cart vendors
+            const existVendor = state.vendors.find((x) => x === vendor)
+
+            if (!existVendor) {
+                // Add the vendor only if it doesn't exist
+                state.vendors = [...state.vendors, vendor]
+            }
+
+            // Update the cart (total price, quantities, etc.)
+            return updateCart(state)
         },
+
         removeFromCart: (state, action) => {
             state.cartItems = state.cartItems.filter(
                 (x) => x._id !== action.payload

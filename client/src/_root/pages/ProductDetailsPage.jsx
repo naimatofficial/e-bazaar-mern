@@ -18,7 +18,9 @@ const ProductDetailsPage = () => {
     const { slug } = useParams()
 
     // const { data: product, isLoading } = useGetProductDetailsQuery(slug)
-    const { data: product, isLoading } = useGetProductBySlugQuery(slug)
+    const { data: product, isLoading } = useGetProductBySlugQuery(slug, {
+        skip: !slug,
+    })
 
     console.log(product)
 

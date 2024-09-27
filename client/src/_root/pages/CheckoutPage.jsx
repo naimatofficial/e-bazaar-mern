@@ -8,6 +8,7 @@ import {
     saveShippingAddress,
     saveBillingAddress,
     savePaymentMethod,
+    clearCartItems,
 } from '../../redux/slices/cartSlice'
 import { addressSchema, paymentSchema } from './../../utils/schema'
 import PaymentMethod from '../../components/Checkout/PaymentMethod'
@@ -30,7 +31,7 @@ const CheckoutPage = () => {
         }
     }, [navigate, userInfo])
 
-    const [createOrder, { isLoading, isSuccess }] = useCreateOrderMutation()
+    const [createOrder, { isLoading }] = useCreateOrderMutation()
 
     const methods = useForm({
         resolver: zodResolver(step === 0 ? addressSchema : paymentSchema),
@@ -67,25 +68,39 @@ const CheckoutPage = () => {
                     // Final step, proceed to order
                     const { paymentMethod } = methods.getValues()
                     dispatch(savePaymentMethod(paymentMethod))
+
+                    // Initialize an empty array to store product IDs
+                    let productIds = []
+
+                    // Loop through cartItems to get the product IDs
+                    cart?.cartItems.forEach((item) => {
+                        // Check if the product ID already exists in the productIds array
+                        if (!productIds.includes(item._id)) {
+                            // If the product ID doesn't exist, add it to the array
+                            productIds.push(item._id)
+                        }
+                    })
+
                     // order creation
                     const order = {
-                        products: cart?.cartItems,
-                        customer: userInfo?.user?._id,
-                        vendor: cart?.cartItems?.[0]?.userId || '',
+                        products: productIds,
+                        customerId: userInfo?.user?._id,
                         shippingAddress: cart?.shippingAddress,
                         billingAddress: cart?.billingAddress,
                         paymentMethod: paymentMethod,
                         totalAmount: cart?.totalPrice,
+                        vendors: cart?.vendors,
                     }
 
                     console.log(order)
 
                     // call the create order api
                     const res = await createOrder(order).unwrap()
-                    if (isSuccess && res?.data) {
-                        navigate(`/order-confirmation/${res?.data?._id}`)
-                        toast.success('Order create successfully')
-                    }
+
+                    dispatch(clearCartItems())
+
+                    navigate(`/order-confirmation/${res?.data?._id}`)
+                    toast.success('Order create successfully')
                 } catch (err) {
                     console.log(err.data)
                     toast.error(err?.data?.message)

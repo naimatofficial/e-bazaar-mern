@@ -10,8 +10,6 @@ const SearchBar = () => {
     const navigate = useNavigate()
 
     const { data: suggestions, isFetching } = useGetAllProductsQuery()
-
-    // Handle input change and filtering of suggestions
     const handleInputChange = (e) => {
         const inputValue = e.target.value
         setQuery(inputValue)
@@ -31,12 +29,13 @@ const SearchBar = () => {
             navigate(`/search?query=${query}`)
             setShowSuggestions(false)
         }
+        setQuery('')
     }
 
     const handleSuggestionClick = (suggestion) => {
         setQuery(suggestion.name)
         setShowSuggestions(false)
-        navigate(`/product/${suggestion._id}`)
+        navigate(`/products/${suggestion.slug}`)
     }
 
     // Filter the products based on the query
@@ -79,9 +78,7 @@ const SearchBar = () => {
                     {isFetching && <p className="p-2">Loading...</p>}
                     {filteredSuggestions &&
                         filteredSuggestions.length === 0 && (
-                            <p className="p-2 text-red-500">
-                                No products found
-                            </p>
+                            <p className="p-5">{''}</p>
                         )}
                     <ul className="list-none p-0 m-0">
                         {filteredSuggestions.map((product) => (
