@@ -27,7 +27,7 @@ const CategoryDropDown = () => {
     ) : (
         <div className="relative z-20">
             {categories && categories.doc ? (
-                <div className="w-full p-3 mx-auto shadow-md bg-white">
+                <div className="w-[250px] p-3 mx-auto shadow-md bg-white">
                     {categories.doc.slice(0, 7).map((category, index) => {
                         const hasSubCategories =
                             category.subCategories?.length > 0
@@ -35,7 +35,7 @@ const CategoryDropDown = () => {
                         return (
                             <div
                                 key={index}
-                                className="relative group border-b-2 border-gray-200"
+                                className="relative group border-b-2 border-gray-100"
                                 onMouseEnter={() =>
                                     handleMouseEnterCategory(category._id)
                                 }

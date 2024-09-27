@@ -2,24 +2,20 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 import { HiSearch } from 'react-icons/hi'
-import { useGetProductSuggestionsQuery } from '../../redux/slices/productsApiSlice'
-import { useSelector } from 'react-redux'
+import { useGetAllProductsQuery } from '../../redux/slices/productsApiSlice'
 
 const SearchBar = () => {
     const [query, setQuery] = useState('')
     const [showSuggestions, setShowSuggestions] = useState(false)
     const navigate = useNavigate()
 
-    const { data: suggestions, isFetching } = useGetProductSuggestionsQuery(
-        query,
-        {
-            skip: !query,
-        }
-    )
-
+    const { data: suggestions, isFetching } = useGetAllProductsQuery()
     const handleInputChange = (e) => {
-        setQuery(e.target.value)
-        setShowSuggestions(true)
+        const inputValue = e.target.value
+        setQuery(inputValue)
+
+        // Show suggestions only when query is not empty
+        setShowSuggestions(inputValue.trim().length > 0)
     }
 
     const handleClearInput = () => {
@@ -33,12 +29,21 @@ const SearchBar = () => {
             navigate(`/search?query=${query}`)
             setShowSuggestions(false)
         }
+        setQuery('')
     }
 
     const handleSuggestionClick = (suggestion) => {
         setQuery(suggestion.name)
         setShowSuggestions(false)
+        navigate(`/products/${suggestion.slug}`)
     }
+
+    // Filter the products based on the query
+    const filteredSuggestions = query
+        ? suggestions?.doc.filter((product) =>
+              product.name.toLowerCase().startsWith(query.toLowerCase())
+          )
+        : []
 
     return (
         <div className="relative mx-1">
@@ -63,7 +68,7 @@ const SearchBar = () => {
                         onClick={handleClearInput}
                         className="absolute right-2 top-2 md:hidden"
                     >
-                        <FaTimes className="" />
+                        <FaTimes />
                     </button>
                 )}
             </form>
@@ -71,28 +76,23 @@ const SearchBar = () => {
             {showSuggestions && query && (
                 <div className="absolute top-full mt-1 w-full bg-white border rounded shadow-lg z-10">
                     {isFetching && <p className="p-2">Loading...</p>}
-                    {/* {error && (
-						<p className="p-2 text-red-500">Error fetching suggestions</p>
-					)} */}
-                    {suggestions && suggestions.length === 0 && (
-                        <p className="p-2 text-red-500">No products found</p>
-                    )}
+                    {filteredSuggestions &&
+                        filteredSuggestions.length === 0 && (
+                            <p className="p-5">{''}</p>
+                        )}
                     <ul className="list-none p-0 m-0">
-                        {suggestions &&
-                            suggestions.map((product) => (
-                                <li
-                                    key={product._id}
-                                    className="p-2 hover:bg-gray-100 cursor-pointer"
-                                    onClick={() =>
-                                        handleSuggestionClick(product)
-                                    }
-                                >
-                                    <div className="flex items-center justify-between text-gray-800">
-                                        <span>{product.name}</span>
-                                        <HiSearch className="text-inherit" />
-                                    </div>
-                                </li>
-                            ))}
+                        {filteredSuggestions.map((product) => (
+                            <li
+                                key={product._id}
+                                className="p-2 hover:bg-gray-100 cursor-pointer"
+                                onClick={() => handleSuggestionClick(product)}
+                            >
+                                <div className="flex items-center justify-between text-gray-800">
+                                    <span>{product.name}</span>
+                                    <HiSearch className="text-inherit" />
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             )}

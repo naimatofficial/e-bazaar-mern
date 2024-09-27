@@ -41,6 +41,7 @@ import ResetPassword from './_root/pages/ResetPassword'
 import RefundPolicy from './_root/pages/RefundPolicyPage'
 import ReturnPolicy from './_root/pages/ReturnPolicyPage'
 import CancellationPolicy from './_root/pages/CancellationPolicyPage'
+import SearchResultPage from './_root/pages/SearchResulstPage'
 
 const router = createBrowserRouter([
     {
@@ -186,6 +187,10 @@ const router = createBrowserRouter([
             {
                 path: '/cancellation-policy',
                 element: <CancellationPolicy />,
+            },
+            {
+                path: '/search',
+                element: <SearchResultPage />,
             },
 
             {
