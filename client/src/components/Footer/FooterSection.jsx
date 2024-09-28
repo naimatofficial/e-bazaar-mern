@@ -45,34 +45,28 @@ const footerNews = [
         title: 'NEWSLETTER',
         content: (handleSubmit, email, setEmail) => (
             <div className="flex flex-col items-center w-full gap-4">
-                <p className="text-left">
-                    Subscribe to our new channel to get the latest updates
-                </p>
-                <form
-                    onSubmit={handleSubmit}
-                    className="flex justify-center w-full"
-                >
-                    {' '}
-                    {/* Center the form */}
-                    <div className="relative w-full max-w-md">
-                        {' '}
-                        {/* Set a max width for the input */}
-                        <input
-                            type="email"
-                            placeholder="Your Email Address"
-                            className="pl-3 py-2 rounded text-black w-full focus:outline-none focus:ring-2 focus:ring-primary-700 placeholder:text-xs placeholder:text-gray-400"
-                            style={{ minWidth: '300px' }} // Increased minimum width
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} // Capture email input
-                            required
-                        />
-                        <button
-                            type="submit" // Change button type to submit
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-600 px-1 py-2 rounded text-white font-bold hover:bg-primary-700 text-sm"
-                        >
-                            Subscribe
-                        </button>
-                    </div>
+                <p className="text-left">Subscribe to our new channel to get the latest updates</p>
+                <form onSubmit={handleSubmit} className="flex justify-center w-full"> {/* Center the form */}
+           
+                <div className="relative w-full max-w-md"> {/* Set a max width for the input */}
+    <input
+        type="email"
+        placeholder="Your Email Address"
+        className="pl-2 pr-16 py-2 rounded  text-black w-full focus:outline-none focus:ring-2 focus:ring-primary-700 placeholder:text-xs placeholder:text-gray-400"
+        style={{ minWidth: '275px' }} // Increased minimum width
+        value={email}
+        onChange={(e) => setEmail(e.target.value)} // Capture email input
+        required
+    />
+    <button
+        type="submit" // Change button type to submit
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-primary-600 px-2 py-2 rounded-r text-white font-bold hover:bg-primary-700 text-sm -mr-2 sm:-mr-4 md:-mr-6 lg:-mr-8"
+    >
+        Subscribe
+    </button>
+</div>
+
+
                 </form>
             </div>
         ),

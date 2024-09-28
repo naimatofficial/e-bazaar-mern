@@ -42,6 +42,7 @@ import RefundPolicy from './_root/pages/RefundPolicyPage'
 import ReturnPolicy from './_root/pages/ReturnPolicyPage'
 import CancellationPolicy from './_root/pages/CancellationPolicyPage'
 import SearchResultPage from './_root/pages/SearchResulstPage'
+import OrderView from './components/Product/OrderView'
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
                         element: <MyOrder />,
                     },
                     {
+                        path: 'order-view/:id',
+                        element: <OrderView/>,
+                    },
+                    {
                         path: 'inbox',
                         element: <Inbox />,
                     },
@@ -104,7 +109,8 @@ const router = createBrowserRouter([
                     {
                         path: 'my-address',
                         element: <MyAddress />,
-                    },
+                      },
+                      
                     {
                         path: 'refer-earn',
                         element: <ReferEarn />,
