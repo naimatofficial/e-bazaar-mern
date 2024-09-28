@@ -1,41 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addToCart, removeFromCart } from '../../../redux/slices/cartSlice'
-import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
-import { toast } from 'react-toastify'
+import { removeFromCart } from '../../../redux/slices/cartSlice'
+import { FaTrash } from 'react-icons/fa'
 
 const CartViewItem = ({ item }) => {
-    const [qty, setQty] = useState(item.qty || 1)
-
     const dispatch = useDispatch()
-
-    //  useEffect(() => {
-    //      if (qty) {
-    //          dispatch(addToCart({ ...item, qty }))
-    //      }
-    //  }, [qty])
 
     console.log(item)
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
     }
-
-    //  const increaseQty = () => {
-    //      if (qty < item.stock) {
-    //          setQty(qty + 1)
-    //      }
-    //  }
-
-    //  const decreaseQty = () => {
-    //      if (qty > item.minimumOrderQty) {
-    //          setQty(qty - 1)
-    //      } else
-    //          toast.error(
-    //              `Min. order for this item is ${item.minimumOrderQty} piece.`
-    //          )
-    //  }
 
     return (
         <div

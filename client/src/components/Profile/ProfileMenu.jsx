@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 
 import { logout } from '../../redux/slices/authSlice'
 import { useCustomerLogoutMutation } from '../../redux/slices/customersApiSlice'
-import { toast } from 'react-toastify'
+import toast from 'react-hot-toast'
 
 const ProfileMenu = ({ user }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)

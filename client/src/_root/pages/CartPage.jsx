@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import CartSummary from '../../components/Cart/CartSummery'
 import ShoppingCart from '../../components/Cart/ShoppingCart'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import toast from 'react-hot-toast'
 
 const CartPage = () => {
     const cart = useSelector((state) => state.cart)

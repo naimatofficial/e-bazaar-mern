@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useForm, FormProvider } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router-dom'
 import {
     saveShippingAddress,
     saveBillingAddress,
@@ -15,6 +15,8 @@ import PaymentMethod from '../../components/Checkout/PaymentMethod'
 import BillingAddressForm from '../../components/Checkout/BillingAddressForm'
 import { useCreateOrderMutation } from '../../redux/slices/ordersApiSlice'
 import CartSummary from '../../components/Cart/CartSummery'
+import toast from 'react-hot-toast'
+
 const CheckoutPage = () => {
     const [step, setStep] = useState(0);
 

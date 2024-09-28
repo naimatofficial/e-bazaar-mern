@@ -1,16 +1,27 @@
-import { useGetMyOrdersQuery } from '../../redux/slices/ordersApiSlice'
-import { useSelector } from 'react-redux'
-import Loader from '../Loader'
-import { IoEyeSharp } from 'react-icons/io5'
 
-import { Link } from 'react-router-dom'
+import { useGetMyOrdersQuery } from '../../redux/slices/ordersApiSlice';
+import { useSelector } from 'react-redux';
+import Loader from '../Loader';
+import { IoEyeSharp } from "react-icons/io5";
 
 const MyOrders = () => {
-    const { user } = useSelector((state) => state.auth.userInfo)
+    const { user } = useSelector((state) => state.auth.userInfo);
 
     const { data: orders, isLoading } = useGetMyOrdersQuery(user._id, {
         skip: !user._id,
-    })
+    });
+
+    const formatDate = (dateString) => {
+        const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+        };
+        return new Date(dateString).toLocaleString('en-US', options);
+    };
 
     const formatDate = (dateString) => {
         const options = {
@@ -90,10 +101,7 @@ const MyOrders = () => {
                                     </td>
                                     <td className="px-5 py-5 bg-white text-sm border border-gray-200">
                                         <p className="text-gray-900 whitespace-no-wrap">
-                                            $
-                                            {order.totalAmount
-                                                ? order.totalAmount.toFixed(2)
-                                                : '0.00'}
+                                            ${order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}
                                         </p>
                                     </td>
                                     <td className="px-5 py-5 bg-white text-sm flex justify-center items-center">
@@ -115,7 +123,7 @@ const MyOrders = () => {
         </div>
     ) : (
         <p>Something went wrong.</p>
-    )
-}
+    );
+};
 
-export default MyOrders
+export default MyOrders;

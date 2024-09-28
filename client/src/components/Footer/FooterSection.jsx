@@ -1,18 +1,17 @@
-import { Link } from 'react-router-dom';
-import AppStore from '../../assets/socials-icons/apple_app.png';
-import GoogleApp from '../../assets/socials-icons/google_app.png';
-import FooterItems from './FooterItems';
+import { Link } from 'react-router-dom'
+import AppStore from '../../assets/socials-icons/apple_app.png'
+import GoogleApp from '../../assets/socials-icons/google_app.png'
+import FooterItems from './FooterItems'
 import {
     FaEnvelope,
     FaMapMarkerAlt,
     FaPhone,
     FaTicketAlt,
-} from 'react-icons/fa';
-import logo from './../../assets/app-logo/vista-app-logo.png';
-import { useCustomerSubscribeMutation } from '../../redux/slices/customersApiSlice';
-import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+} from 'react-icons/fa'
+import logo from './../../assets/app-logo/vista-app-logo.png'
+import { useCustomerSubscribeMutation } from '../../redux/slices/customersApiSlice'
+import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 const footerSpecial = [
     {
@@ -25,7 +24,7 @@ const footerSpecial = [
             { name: 'Top Rated Products', url: '/top-rated-products' },
         ],
     },
-];
+]
 
 const footerInfo = [
     {
@@ -39,7 +38,7 @@ const footerInfo = [
             { name: 'Cancellation Policy', url: '/cancellation-policy' },
         ],
     },
-];
+]
 
 const footerNews = [
     {
@@ -72,38 +71,49 @@ const footerNews = [
             </div>
         ),
     },
-];
+]
 
 const FooterMainSection = () => {
-    const [email, setEmail] = useState(''); // State to store email input
-    const [customerSubscribe] = useCustomerSubscribeMutation(); // Hook to invoke subscription mutation
+    const [email, setEmail] = useState('') // State to store email input
+    const [customerSubscribe] = useCustomerSubscribeMutation() // Hook to invoke subscription mutation
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault() // Prevent default form submission
         try {
-            const result = await customerSubscribe({ email }).unwrap(); // Call the mutation with email
-            console.log('Subscription successful:', result); // Handle success
-            setEmail(''); // Clear email input on success
-            toast.success('Subscription successful! Thank you for subscribing.'); // Show success toast
+            const result = await customerSubscribe({ email }).unwrap() // Call the mutation with email
+            console.log('Subscription successful:', result) // Handle success
+            setEmail('') // Clear email input on success
+            toast.success('Subscription successful! Thank you for subscribing.') // Show success toast
         } catch (error) {
-            console.error('Subscription failed:', error); // Handle error
-            toast.error('Subscription failed. Please try again.'); // Show error toast
+            console.error('Subscription failed:', error) // Handle error
+            toast.error('Subscription failed. Please try again.') // Show error toast
         }
-    };
+    }
 
     return (
         <div className="bg-primary-600">
-            <ToastContainer /> {/* Corrected placement of ToastContainer */}
             <div className="lg:w-[80%] w-full bg-primary-10 mx-auto flex lg:flex-row flex-col items-center min-h-[50vh] gap-4 text-white">
                 <div className="lg:w-[25%] flex flex-col gap-4 px-4 items-center">
-                    <img src={logo} alt="Company Logo" className="w-48 h-30 object-contain" />
+                    <img
+                        src={logo}
+                        alt="Company Logo"
+                        className="w-48 h-30 object-contain"
+                    />
                     <h4 className="text-lg mb-2">DOWNLOAD OUR APP</h4>
                     <div className="flex justify-center gap-2">
                         <Link to="/">
-                            <img src={GoogleApp} alt="Google Play" className="w-36" />
+                            <img
+                                src={GoogleApp}
+                                alt="Google Play"
+                                className="w-36"
+                            />
                         </Link>
                         <Link to="/">
-                            <img src={AppStore} alt="App Store" className="w-36" />
+                            <img
+                                src={AppStore}
+                                alt="App Store"
+                                className="w-36"
+                            />
                         </Link>
                     </div>
                 </div>
@@ -111,24 +121,42 @@ const FooterMainSection = () => {
                     <div className="flex lg:flex-row flex-col-reverse w-full gap-4">
                         <div className="lg:w-[30%]">
                             {footerSpecial.map((section, index) => (
-                                <FooterItems key={index} title={section.title} links={section.links} />
+                                <FooterItems
+                                    key={index}
+                                    title={section.title}
+                                    links={section.links}
+                                />
                             ))}
                         </div>
                         <div className="lg:w-[40%]">
                             {footerInfo.map((section, index) => (
-                                <FooterItems key={index} title={section.title} links={section.links} />
+                                <FooterItems
+                                    key={index}
+                                    title={section.title}
+                                    links={section.links}
+                                />
                             ))}
                         </div>
                         <div className="lg:w-[30%]">
                             {footerNews.map((section, index) => (
-                                <FooterItems key={index} title={section.title} content={section.content(handleSubmit, email, setEmail)} />
+                                <FooterItems
+                                    key={index}
+                                    title={section.title}
+                                    content={section.content(
+                                        handleSubmit,
+                                        email,
+                                        setEmail
+                                    )}
+                                />
                             ))}
                         </div>
                     </div>
                     <div className="flex lg:flex-row flex-col w-full">
                         <div className="lg:w-[70%]">
                             <div className="flex lg:flex-row flex-col w-full mt-4">
-                                <h1 className="lg:w-[40%] w-full text-lg font-bold">Start a Conversation</h1>
+                                <h1 className="lg:w-[40%] w-full text-lg font-bold">
+                                    Start a Conversation
+                                </h1>
                                 <hr className="border-white lg:w-[55%] lg:my-4" />
                             </div>
                             <div className="flex flex-wrap justify-around">
@@ -148,7 +176,9 @@ const FooterMainSection = () => {
                         </div>
                         <div className="lg:w-[30%] mt-4">
                             <div className="flex lg:flex-row flex-col w-full">
-                                <div className="lg:w-[40%] text-lg font-bold">Address</div>
+                                <div className="lg:w-[40%] text-lg font-bold">
+                                    Address
+                                </div>
                                 <hr className="border-white lg:w-[60%] lg:my-4" />
                             </div>
                             <div className="flex items-center">
@@ -160,7 +190,7 @@ const FooterMainSection = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default FooterMainSection;
+export default FooterMainSection
