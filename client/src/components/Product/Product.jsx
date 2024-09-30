@@ -52,11 +52,7 @@ const Product = ({ product }) => {
                 <div className="lg:w-1/2 w-full">
                     <div className="shadow-md overflow-hidden">
                         <img
-                            src={
-                                mainImage
-                                    ? `${API_URL}/${mainImage}`
-                                    : DEFAULT_IMG
-                            }
+                            src={`${API_URL}/${mainImage}` || DEFAULT_IMG}
                             alt="Main product image"
                             className="w-[30rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
                         />
@@ -79,7 +75,9 @@ const Product = ({ product }) => {
                         <Rating value={Number(4)} readonly />
                         <span className="ml-2 text-gray-600">({0})</span>
                         <div className="flex justify-between gap-2 items-center mx-2 text-xs md:text-sm">
-                            <p className="border-r-2 pr-2">4 Reviews</p>
+                            <p className="border-r-2 pr-2">
+                                {product?.numOfReviews || 0} Reviews
+                            </p>
                             <p className="border-r-2 pr-2">6 Orders</p>
                             <p>1 Wish Listed</p>
                         </div>

@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { MdArrowForwardIos } from 'react-icons/md'
 import { FaSearch } from 'react-icons/fa'
 import { useGetBrandsQuery } from '../../redux/slices/brandsApiSlice'
 import { useGetCategoriesQuery } from '../../redux/slices/categoriesApiSlice'
-import Loader from '../Loader'
 import { Link, useSearchParams } from 'react-router-dom'
 import { capitalizeFirstLetter } from '../../utils'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import Loader from '../Loader'
 
 const FilterSidebar = ({ filters }) => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -24,7 +25,7 @@ const FilterSidebar = ({ filters }) => {
     const [maxPrice, setMaxPrice] = useState(null)
 
     useEffect(() => {
-        if (brands) {
+        if (brands && brands?.doc) {
             setFilterBrands(brands?.doc)
         }
     }, [brands])

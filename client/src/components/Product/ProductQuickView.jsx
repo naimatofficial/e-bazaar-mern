@@ -32,6 +32,8 @@ const ProductQuickView = ({ productId, onClose }) => {
         }
     }, [product])
 
+    console.log(product?.doc)
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -64,8 +66,6 @@ const ProductQuickView = ({ productId, onClose }) => {
         } else setMinimumOrderError(true)
     }
 
-    console.log(qty)
-
     return isLoading ? (
         <div className="z-50">
             <Loader />
@@ -86,11 +86,7 @@ const ProductQuickView = ({ productId, onClose }) => {
                 <div className="w-1/2 flex flex-col">
                     <div className="w-full h-80 overflow-hidden shadow-sm">
                         <img
-                            src={
-                                mainImage
-                                    ? `${API_URL}/${mainImage}`
-                                    : DEFAULT_IMG
-                            }
+                            src={`${API_URL}/${mainImage}` || DEFAULT_IMG}
                             alt={product.doc.name}
                             className="w-full lg:h-96 md:h-80 h-40 object-contain py-2 transition-all duration-300 ease-out"
                         />
@@ -148,6 +144,11 @@ const ProductQuickView = ({ productId, onClose }) => {
                                     (Minimum Order Qrty:{' '}
                                     {product.doc.minimumOrderQty})
                                 </p>
+                                {minimumOrderError && (
+                                    <p className="bg-red-100 text-red-400 w-full rounded-lg p-2">
+                                        {`Minimum order for this item is ${product.doc.minimumOrderQty} piece.`}
+                                    </p>
+                                )}
                             </div>
                         ) : null}
                     </div>

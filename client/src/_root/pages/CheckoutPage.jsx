@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -18,19 +17,19 @@ import CartSummary from '../../components/Cart/CartSummery'
 import toast from 'react-hot-toast'
 
 const CheckoutPage = () => {
-    const [step, setStep] = useState(0);
+    const [step, setStep] = useState(0)
 
-    const { userInfo } = useSelector((state) => state.auth);
-    const cart = useSelector((state) => state.cart);
+    const { userInfo } = useSelector((state) => state.auth)
+    const cart = useSelector((state) => state.cart)
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (!userInfo || !userInfo?.user) {
-            navigate('/customer/auth/sign-in');
+            navigate('/customer/auth/sign-in')
         }
-    }, [navigate, userInfo]);
+    }, [navigate, userInfo])
 
     const [createOrder, { isLoading }] = useCreateOrderMutation()
 
@@ -38,42 +37,42 @@ const CheckoutPage = () => {
         resolver: zodResolver(step === 0 ? addressSchema : paymentSchema),
         mode: 'onSubmit', // Validates only on form submission
         reValidateMode: 'onChange', // Validates on each change after initial submission
-    });
+    })
 
     const handleNext = async () => {
         try {
-            const isValid = await methods.trigger(); // Validate the current step's form inputs
-    
+            const isValid = await methods.trigger() // Validate the current step's form inputs
+
             if (!isValid) {
-                toast.error('Please fill all the required fields.');
-                return;
+                toast.error('Please fill all the required fields.')
+                return
             }
-    
+
             if (step === 0) {
-                const shippingAddress = methods.getValues();
+                const shippingAddress = methods.getValues()
                 // note: for testing purpose we add two same addresses
-                dispatch(saveShippingAddress(shippingAddress));
-                dispatch(saveBillingAddress(shippingAddress));
-    
-                setStep(step + 1);
+                dispatch(saveShippingAddress(shippingAddress))
+                dispatch(saveBillingAddress(shippingAddress))
+
+                setStep(step + 1)
             } else {
                 try {
                     // Final step, proceed to order
-                    const { paymentMethod } = methods.getValues();
-                    dispatch(savePaymentMethod(paymentMethod));
-    
+                    const { paymentMethod } = methods.getValues()
+                    dispatch(savePaymentMethod(paymentMethod))
+
                     // Initialize an empty array to store product IDs
-                    let productIds = [];
-    
+                    let productIds = []
+
                     // Loop through cartItems to get the product IDs
                     cart?.cartItems.forEach((item) => {
                         // Check if the product ID already exists in the productIds array
                         if (!productIds.includes(item._id)) {
                             // If the product ID doesn't exist, add it to the array
-                            productIds.push(item._id);
+                            productIds.push(item._id)
                         }
-                    });
-    
+                    })
+
                     // Order creation
                     const order = {
                         products: productIds,
@@ -83,29 +82,26 @@ const CheckoutPage = () => {
                         paymentMethod: paymentMethod,
                         totalAmount: cart?.totalPrice,
                         vendors: cart?.vendors,
-                    };
-    
-                    console.log(order);
-    
+                    }
+
                     // Call the create order API
-                    const res = await createOrder(order).unwrap();
-    
+                    const res = await createOrder(order).unwrap()
+
+                    toast.success('Order created successfully')
                     // Clear cart items after successful order
-                    dispatch(clearCartItems());
-    
-                    navigate(`/order-confirmation/${res?.data?._id}`);
-                    toast.success('Order created successfully');
+                    dispatch(clearCartItems())
+                    navigate(`/order-confirmation/${res?.data?._id}`)
                 } catch (err) {
-                    console.log(err?.data);
-                    toast.error(err?.data?.message || 'Something went wrong');
+                    console.log(err?.data)
+                    toast.error(err?.data?.message || 'Something went wrong')
                 }
             }
         } catch (err) {
-            console.log(err);
-            toast.error(err.message || 'Something went wrong');
+            console.log(err)
+            toast.error(err.message || 'Something went wrong')
         }
-    };
-    
+    }
+
     return (
         userInfo &&
         userInfo?.user && (
@@ -130,4 +126,4 @@ const CheckoutPage = () => {
     )
 }
 
-export default CheckoutPage;
+export default CheckoutPage

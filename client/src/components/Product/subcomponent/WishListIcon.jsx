@@ -23,7 +23,7 @@ const WishListIcon = ({ productId, onClose }) => {
 
     const addToWishListHandler = async () => {
         if (!userInfo || !userInfo?.user) {
-            toast.warning('You need to Sign in to view this feature.')
+            toast.error('You need to Sign in to view this feature.')
             return navigate('/customer/auth/sign-in')
         }
 

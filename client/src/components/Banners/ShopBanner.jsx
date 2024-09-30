@@ -5,7 +5,7 @@ import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 const ShopBanner = ({ vendor }) => {
     return (
         vendor && (
-            <div className="relative h-[380px] mt-4 p-4 rounded-lg shadow-lg max-w-7xl mx-auto py-4 bg-pink-100">
+            <div className="relative h-[50vh] mt-4 p-4 rounded-lg shadow-lg max-w-7xl mx-auto py-4 bg-pink-100">
                 <img
                     src={`${API_URL}/${vendor.banner}` || DEFAULT_IMG}
                     alt="Shop Banner"

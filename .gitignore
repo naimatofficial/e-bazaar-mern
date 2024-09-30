@@ -7,6 +7,11 @@ backend/node_modules
 client/node_modules
 /client/node_modules/
 
+uploads/
+./uploads
+uploads
+
+
 /.pnp
 .pnp.js
 
