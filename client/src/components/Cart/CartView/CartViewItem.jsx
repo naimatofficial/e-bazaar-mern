@@ -2,6 +2,7 @@
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../../../redux/slices/cartSlice'
 import { FaTrash } from 'react-icons/fa'
+import { API_URL, DEFAULT_IMG } from '../../../utils/constants'
 
 const CartViewItem = ({ item }) => {
     const dispatch = useDispatch()
@@ -20,41 +21,23 @@ const CartViewItem = ({ item }) => {
             <img
                 src={
                     item?.thumbnail
-                        ? `http://localhost:3000/${item.thumbnail}`
-                        : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                        ? `${API_URL}/${item.thumbnail}`
+                        : DEFAULT_IMG
                 }
                 alt={item.name}
                 className="w-16 h-16 object-contain mr-4"
             />
             <div className="flex-grow">
-                <div className="font-semibold">{item.name}</div>
+                <div className="font-semibold truncate">{item.name}</div>
                 <div className="text-gray-700">${item?.price?.toFixed(2)}</div>
             </div>
-            <div className="flex flex-col justify-between gap-4">
-                {/* <div className="flex flex-col items-center gap-1 justify-between">
-                    <button
-                        onClick={decreaseQty}
-                        className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none"
-                    >
-                        <FaMinus className="text-sm" />
-                    </button>
-                    <div className="p-1 w-8 h-8 object-contain text-center flex items-center justify-center bg-blue-50 rounded-full">
-                        <span>{qty}</span>
-                    </div>
-
-                    <button
-                        onClick={increaseQty}
-                        className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none"
-                    >
-                        <FaPlus className="text-sm" />
-                    </button>
-                </div> */}
+            <div className="flex flex-col justify-between gap-4 py-2">
                 <p>
                     qty: <span>{item.qty}</span>
                 </p>
                 <button
                     onClick={() => removeFromCartHandler(item._id)}
-                    className="text-inherit cursor-pointer"
+                    className="text-inherit cursor-pointer py-2"
                 >
                     <FaTrash className="text-sm text-red-300 ml-2 hover:text-red-400" />
                 </button>

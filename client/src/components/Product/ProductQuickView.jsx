@@ -106,12 +106,18 @@ const ProductQuickView = ({ productId, onClose }) => {
                 <div className="w-1/2 flex flex-col gap-4 mb-4">
                     <h2 className="text-2xl">{product.doc.name}</h2>
                     <div className="flex items-center mb-2">
-                        <Rating value={Number(4)} readonly />
-                        <span className="ml-2 text-gray-600">({10})</span>
-                        <div className="flex justify-between gap-2 items-center mx-2">
-                            <p className="border-r-2 pr-2">4 Reviews </p>
-                            <p className="border-r-2 pr-2">6 Orders</p>
-                            <p>1 Wish Listed</p>
+                        <Rating value={Number(product.rating || 0)} readonly />
+                        <span className="mx-2 text-gray-600 ">
+                            ({product.rating || 0})
+                        </span>
+
+                        <div className="flex justify-between gap-2 border-l-2 px-2 items-center mx-2 text-xs md:text-sm">
+                            <p className="border-r-2 pr-2">
+                                {product?.numOfReviews || 0} Reviews
+                            </p>
+                            <p className="px-2">
+                                {product.totalOrders || 0} Orders
+                            </p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
