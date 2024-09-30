@@ -3,7 +3,6 @@ import { Carousel } from '@material-tailwind/react'
 import Banner1 from '../../assets/slideshow-img/slide-1.png'
 import Banner2 from '../../assets/slideshow-img/slide-2.png'
 import Banner3 from '../../assets/slideshow-img/slide-3.png'
-// import CategorySidebar from './../Categories/CategorySideBar'
 
 const HeroSection = () => {
     return (
