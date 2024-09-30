@@ -1,67 +1,75 @@
-import { useEffect, useState } from 'react';
-import { Navbar, IconButton, Badge } from '@material-tailwind/react';
+import { useEffect, useState } from 'react'
+import { Navbar, IconButton, Badge } from '@material-tailwind/react'
 import {
     FaRegHeart,
     FaUser,
     FaSignInAlt,
     FaUserPlus,
     FaSearch,
-} from 'react-icons/fa';
-import { Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react';
-import logo from '../../assets/app-logo/vista-app-logo.png';
-import SearchBar from './SerachBar';
-import { Link } from 'react-router-dom';
-import ProfileMenu from '../Profile/ProfileMenu';
-import { useSelector } from 'react-redux';
-import CartIcon from './CartIcon';
-import { useGetWishListByIdQuery } from '../../redux/slices/wishlistApiSlice';
+} from 'react-icons/fa'
+import { Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react'
+import logo from '../../assets/app-logo/vista-app-logo.png'
+import SearchBar from './SerachBar'
+import { Link } from 'react-router-dom'
+import ProfileMenu from '../Profile/ProfileMenu'
+import { useSelector } from 'react-redux'
+import CartIcon from './CartIcon'
+import { useGetWishListByIdQuery } from '../../redux/slices/wishlistApiSlice'
+import MobileSidebar from './MobileSidebar'
 
 const NavbarSticky = () => {
-    const [openMenu, setOpenMenu] = useState(false);
-    const [isSticky, setIsSticky] = useState(false);
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const { userInfo } = useSelector((state) => state.auth);
+    const [openMenu, setOpenMenu] = useState(false)
+    const [isSticky, setIsSticky] = useState(false)
+    const [isSearchOpen, setIsSearchOpen] = useState(false)
+    const { userInfo } = useSelector((state) => state.auth)
     const { data: wishList } = useGetWishListByIdQuery(userInfo?.user?._id, {
         skip: !userInfo?.user?._id,
-    });
-    const totalWishListItems = wishList?.products?.length.toString() || '0';
+    })
+    const totalWishListItems = wishList?.products?.length.toString() || '0'
 
     const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        const threshold = window.innerHeight * 0.25;
-        setIsSticky(scrollPosition > threshold);
-    };
+        const scrollPosition = window.scrollY
+        const threshold = window.innerHeight * 0.25
+        setIsSticky(scrollPosition > threshold)
+    }
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll)
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     const toggleSearch = () => {
-        setIsSearchOpen(!isSearchOpen);
-    };
+        setIsSearchOpen(!isSearchOpen)
+    }
 
     const toggleMenu = () => {
-        setOpenMenu(!openMenu);
-    };
+        setOpenMenu(!openMenu)
+    }
 
     // Open menu on hover and click
     const handleMouseEnter = () => {
-        setOpenMenu(true);
-    };
+        setOpenMenu(true)
+    }
 
     const handleMouseLeave = () => {
-        setOpenMenu(false);
-    };
+        setOpenMenu(false)
+    }
 
     return (
         <div
-            className={`w-full z-40 transition-all duration-500 ease-in-out py-4 ${isSticky ? 'fixed top-0 shadow-lg bg-white' : 'relative'}`}
-            style={{ transform: isSticky ? 'translateY(0)' : 'translateY(-10%)' }}
+            className={`w-full z-40 transition-all duration-500 ease-in-out py-4 ${
+                isSticky ? 'fixed top-0 shadow-lg bg-white' : 'relative'
+            }`}
+            style={{
+                transform: isSticky ? 'translateY(0)' : 'translateY(-10%)',
+            }}
         >
-            <Navbar variant="gradient" className="mx-auto w-[80%] p-0 shadow-none">
+            <Navbar
+                variant="gradient"
+                className="mx-auto w-[80%] p-0 shadow-none"
+            >
                 <div className="flex items-center justify-between lg:gap-x-6 gap-x-2 text-white">
                     <Link to="/">
                         <img
@@ -145,8 +153,13 @@ const NavbarSticky = () => {
                     </div>
                 )}
             </Navbar>
-        </div>
-    );
-};
 
-export default NavbarSticky;
+            {/* Mobile Sidebar Toggle Button */}
+            <div className="fixed z-50 top-[calc(2rem)] left-2 block md:hidden">
+                <MobileSidebar />
+            </div>
+        </div>
+    )
+}
+
+export default NavbarSticky

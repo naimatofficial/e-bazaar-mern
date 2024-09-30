@@ -24,6 +24,14 @@ export const wishlistsApiSlice = apiSlice.injectEndpoints({
 			}),
 			providesTags: ["WishList"],
 		}),
+		deleteWishlistProduct :builder.mutation({
+			query :(data) =>({
+				url :`${WISHLIST_URL}/products/${data.productId}`,
+				method : "DELETE",
+				body : data
+			}),
+			providesTags: ["WishList"],
+		})
 	}),
 });
 
@@ -31,4 +39,5 @@ export const {
 	useAddWishListMutation,
 	useGetWishListByIdQuery,
 	useDeleteWishListMutation,
+	useDeleteWishlistProductMutation
 } = wishlistsApiSlice;

@@ -54,7 +54,7 @@ const Product = ({ product }) => {
                         <img
                             src={`${API_URL}/${mainImage}` || DEFAULT_IMG}
                             alt="Main product image"
-                            className="w-[30rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
+                            className="w-[24rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
                         />
                     </div>
                     <div className="flex justify-center mt-4 ">
@@ -72,10 +72,10 @@ const Product = ({ product }) => {
                 <div className="w-full flex-grow flex flex-col gap-4">
                     <h2 className="text-lg md:text-xl">{product.name}</h2>
                     <div className="flex items-center mb-2">
-                        <Rating value={Number(product.rating || 0)} readonly />
                         <span className="mx-2 text-gray-600 ">
-                            ({product?.rating || 0})
+                            {product?.rating || 0}
                         </span>
+                        <Rating value={Number(product.rating || 0)} readonly />
 
                         <div className="flex justify-between gap-2 border-l-2 px-2 items-center mx-2 text-xs md:text-sm">
                             <p className="border-r-2 pr-2">

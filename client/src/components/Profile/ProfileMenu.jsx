@@ -4,12 +4,10 @@ import {
     AiOutlineOrderedList,
     AiOutlineLogout,
 } from 'react-icons/ai'
-import { useState } from 'react'
-
+import { useState, useRef, useEffect } from 'react'
 import UserAvatar from '../../assets/user-avatar.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
 import { logout } from '../../redux/slices/authSlice'
 import { useCustomerLogoutMutation } from '../../redux/slices/customersApiSlice'
 import toast from 'react-hot-toast'
@@ -17,9 +15,9 @@ import toast from 'react-hot-toast'
 const ProfileMenu = ({ user }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [customerLogout] = useCustomerLogoutMutation()
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const menuRef = useRef(null) // Create a ref for the dropdown menu
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
     const closeMenu = (link) => {
@@ -43,8 +41,25 @@ const ProfileMenu = ({ user }) => {
         }
     }
 
+    // Close menu if clicked outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false)
+            }
+        }
+
+        // Attach event listener
+        document.addEventListener('mousedown', handleClickOutside)
+
+        // Clean up event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [])
+
     return user ? (
-        <div className="relative">
+        <div className="relative" ref={menuRef}>
             <button
                 onClick={toggleMenu}
                 className="flex items-center gap-2 p-1"

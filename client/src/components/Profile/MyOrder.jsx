@@ -26,26 +26,28 @@ const MyOrders = () => {
     return isLoading ? (
         <Loader />
     ) : orders ? (
-        <div className="rounded-lg p-8 bg-white">
-            <h1 className="text-xl font-bold mb-5">My Orders</h1>
+        <div className="rounded-lg p-4 md:p-8 bg-white">
+            <h1 className="text-sm md:text-lg lg:text-xl font-bold mb-4">
+                My Orders
+            </h1>
             {orders?.doc && orders?.doc?.length ? (
-                <div className=" overflow-auto rounded-lg shadow-lg">
-                    <table className="min-w-full border border-gray-200">
+                <div className="rounded-lg shadow-lg">
+                    <table className="min-w-full border border-gray-200 table-auto">
                         <thead>
                             <tr>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">
+                                <th className="px-2 md:px-4 py-2 border-b-2 border-gray-200 bg-gray-100 text-left text-xs md:text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">
                                     Order Id
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th className="px-2 md:px-4 py-2 border-b-2 border-gray-200 bg-gray-100 text-left text-xs md:text-sm font-semibold text-gray-600 uppercase tracking-wider">
                                     Order Date
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th className="px-2 md:px-4 py-2 border-b-2 border-gray-200 bg-gray-100 text-left text-xs md:text-sm font-semibold text-gray-600 uppercase tracking-wider">
                                     Status
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 text-center  bg-gray-100  text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                <th className="px-2 md:px-4 py-2 border-b-2 border-gray-200 bg-gray-100 text-center text-xs md:text-sm font-semibold text-gray-600 uppercase tracking-wider">
                                     Total
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 rounded-tr-lg ">
+                                <th className="px-2 md:px-4 py-2 border-b-2 border-gray-200 bg-gray-100 rounded-tr-lg">
                                     Action
                                 </th>
                             </tr>
@@ -54,48 +56,40 @@ const MyOrders = () => {
                             {orders.doc.map((order) => (
                                 <tr
                                     key={order._id}
-                                    className="border-b border-gray-200"
+                                    className="border-b border-gray-200 text-left sm:text-left"
                                 >
-                                    <td className="px-5 py-5 bg-white text-sm border border-gray-200 rounded-l-lg">
+                                    <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm border border-gray-200 rounded-l-lg">
                                         <div className="flex items-center">
-                                            <div className="ml-3">
-                                                <p className="text-gray-900 whitespace-no-wrap">
+                                            <div className="ml-2">
+                                                <p className="text-gray-900 whitespace-no-wrap text-xs md:text-sm">
                                                     {order._id}
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="px-5 py-5 bg-white text-sm border border-gray-200">
-                                        <span className="relative inline-block px-3 py-1 font-semibold leading-tight">
-                                            <span
-                                                aria-hidden
-                                                className="absolute inset-0 opacity-50 rounded-full"
-                                            ></span>
+                                    <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm border border-gray-200">
+                                        <span className="relative inline-block font-semibold leading-tight text-xs md:text-sm">
                                             <span className="relative">
                                                 {formatDate(order.createdAt)}
                                             </span>
                                         </span>
                                     </td>
-                                    <td className="px-5 py-5 bg-white text-sm border border-gray-200">
-                                        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span
-                                                aria-hidden
-                                                className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                            ></span>
+                                    <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm border border-gray-200">
+                                        <span className="relative inline-block font-semibold text-green-900 leading-tight text-xs md:text-sm">
                                             <span className="relative">
                                                 {order.orderStatus}
                                             </span>
                                         </span>
                                     </td>
-                                    <td className="px-5 py-5 bg-white text-sm border border-gray-200">
-                                        <p className="text-gray-900 whitespace-no-wrap">
+                                    <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm border border-gray-200">
+                                        <p className="text-gray-900 whitespace-no-wrap text-xs md:text-sm">
                                             $
                                             {order.totalAmount
                                                 ? order.totalAmount.toFixed(2)
                                                 : '0.00'}
                                         </p>
                                     </td>
-                                    <td className="px-5 py-5 bg-white text-sm flex justify-center items-center">
+                                    <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm flex justify-center items-center">
                                         <Link
                                             to={`/profile/order-view/${order._id}`}
                                             className="text-blue-600 hover:text-blue-900 border-none cursor-pointer"
@@ -109,7 +103,7 @@ const MyOrders = () => {
                     </table>
                 </div>
             ) : (
-                <p>Customer has not placed any orders yet!</p>
+                <p>No orders found!</p>
             )}
         </div>
     ) : (

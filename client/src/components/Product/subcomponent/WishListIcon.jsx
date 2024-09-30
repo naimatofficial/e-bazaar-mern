@@ -2,12 +2,16 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useAddWishListMutation } from '../../../redux/slices/wishlistApiSlice'
+import {
+    useAddWishListMutation,
+    useGetWishListByIdQuery,
+} from '../../../redux/slices/wishlistApiSlice'
 import { FaHeart } from 'react-icons/fa'
 import toast from 'react-hot-toast'
-
 const WishListIcon = ({ productId, onClose }) => {
     const { userInfo } = useSelector((state) => state.auth)
+
+    const { refetch } = useGetWishListByIdQuery(userInfo?.user?._id)
 
     const navigate = useNavigate()
 
@@ -23,14 +27,14 @@ const WishListIcon = ({ productId, onClose }) => {
 
     const addToWishListHandler = async () => {
         if (!userInfo || !userInfo?.user) {
-            toast.error('You need to Sign in to view this feature.')
+            toast.warning('You need to Sign in to view this feature.')
             return navigate('/customer/auth/sign-in')
         }
 
         try {
             const customerId = userInfo?.user?._id
-
             await addWishList({ customerId, productId })
+            refetch()
         } catch (err) {
             toast.error(error?.data?.message)
             console.log(err)

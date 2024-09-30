@@ -5,7 +5,7 @@ import StickyIcons from '../components/shared/StcikyIcons'
 import Contacts from '../components/shared/Contacts'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
-import MobileSidebar from '../components/Header/MobileSidebar'
+// import MobileSidebar from '../components/Header/MobileSidebar'
 
 const RootLayout = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -13,7 +13,7 @@ const RootLayout = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false)
-        }, 1500) // 1.5 seconds delay
+        }, null) // 1.5 seconds delay
 
         return () => clearTimeout(timer) // Clear the timer if the component unmounts
     }, [])
@@ -23,9 +23,11 @@ const RootLayout = () => {
     ) : (
         <div>
             <Header />
-            <div className="absolute z-50 top-14 mx-1 left-2 block md:hidden">
-                <MobileSidebar />
-            </div>
+            {/* <div className="fixed z-50 top-14 mx-1 left-2 block md:hidden">
+    <MobileSidebar />
+</div> */}
+
+x
             <div className="lg:w-[90%] w-full mx-auto md:px-8 px-4">
                 <Suspense
                     fallback={
