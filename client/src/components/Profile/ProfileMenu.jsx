@@ -1,50 +1,65 @@
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
 import {
     AiOutlineUser,
     AiOutlineOrderedList,
     AiOutlineLogout,
-} from 'react-icons/ai'
-import { useState } from 'react'
-
-import UserAvatar from '../../assets/user-avatar.jpg'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
-import { logout } from '../../redux/slices/authSlice'
-import { useCustomerLogoutMutation } from '../../redux/slices/customersApiSlice'
-import { toast } from 'react-toastify'
+} from 'react-icons/ai';
+import { useState, useRef, useEffect } from 'react';
+import UserAvatar from '../../assets/user-avatar.jpg';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/slices/authSlice';
+import { useCustomerLogoutMutation } from '../../redux/slices/customersApiSlice';
+import { toast } from 'react-toastify';
 
 const ProfileMenu = ({ user }) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [customerLogout] = useCustomerLogoutMutation()
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [customerLogout] = useCustomerLogoutMutation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const menuRef = useRef(null); // Create a ref for the dropdown menu
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = (link) => {
-        setIsMenuOpen(false)
-        navigate(link)
-    }
+        setIsMenuOpen(false);
+        navigate(link);
+    };
 
     const logoutHandler = () => {
         try {
             // Get accessToken from localStorage
-            const userInfo = localStorage.getItem('userInfo')
-            const user = JSON.parse(userInfo)
+            const userInfo = localStorage.getItem('userInfo');
+            const user = JSON.parse(userInfo);
 
-            dispatch(logout())
-            customerLogout(user?.accessToken)
+            dispatch(logout());
+            customerLogout(user?.accessToken);
 
-            toast.success('Logout Successfully')
-            window.location.reload()
+            toast.success('Logout Successfully');
+            window.location.reload();
         } catch (err) {
-            toast.error(err?.data?.message || err.error)
+            toast.error(err?.data?.message || err.error);
         }
-    }
+    };
+
+    // Close menu if clicked outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        // Attach event listener
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Clean up event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return user ? (
-        <div className="relative">
+        <div className="relative" ref={menuRef}>
             <button
                 onClick={toggleMenu}
                 className="flex items-center gap-2 p-1"
@@ -89,11 +104,11 @@ const ProfileMenu = ({ user }) => {
                 </div>
             )}
         </div>
-    ) : null
-}
+    ) : null;
+};
 
 ProfileMenu.propTypes = {
     user: PropTypes.object.isRequired,
-}
+};
 
-export default ProfileMenu
+export default ProfileMenu;
