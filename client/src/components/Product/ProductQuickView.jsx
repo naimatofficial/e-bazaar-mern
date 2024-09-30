@@ -15,51 +15,48 @@ import toast from 'react-hot-toast'
 const ProductQuickView = ({ productId, onClose }) => {
     const { data: product, isLoading } = useGetProductDetailsQuery(productId, {
         skip: !productId,
-    })
+    });
 
-    const [mainImage, setMainImage] = useState('')
-    const [qty, setQty] = useState(1)
-    const [minimumOrderError, setMinimumOrderError] = useState(false)
-    // const [shopClosed, setShopClosed] = useState(false)
+    const [mainImage, setMainImage] = useState('');
+    const [qty, setQty] = useState(1);
+    const [minimumOrderError, setMinimumOrderError] = useState(false);
 
-    const productImages = product?.doc ? [mainImage, ...product.doc.images] : []
-
-    const oldPrice = product?.doc?.price + product?.doc?.discount
+    const productImages = product?.doc ? [mainImage, ...product.doc.images] : [];
+    const oldPrice = product?.doc?.price + product?.doc?.discount;
 
     useEffect(() => {
         if (product && product?.doc?.thumbnail) {
-            setMainImage(product?.doc?.thumbnail)
+            setMainImage(product?.doc?.thumbnail);
         }
-    }, [product])
+    }, [product]);
 
-    console.log(product?.doc)
+
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const { cartItems } = useSelector((state) => state.cart)
+    const { cartItems } = useSelector((state) => state.cart);
 
     const isProductAddToCart = cartItems?.find(
         (item) => item._id === product?.doc?._id
-    )
+    );
 
     const addToCartHandler = () => {
         if (qty >= product.doc.minimumOrderQty) {
-            dispatch(addToCart({ ...product.doc, qty }))
-            onClose()
-            toast.success('Item added successfully')
-        } else setMinimumOrderError(true)
-    }
+            dispatch(addToCart({ ...product.doc, qty }));
+            onClose();
+            toast.success('Item added successfully');
+        } else setMinimumOrderError(true);
+    };
 
     if (minimumOrderError) {
         setTimeout(() => {
-            setMinimumOrderError(false)
-        }, 3000)
+            setMinimumOrderError(false);
+        }, 3000);
     }
 
     const buyNowHandler = () => {
-        console.log('qty: ' + qty)
         if (qty >= product.doc.minimumOrderQty) {
+
             dispatch(addToCart({ ...product, qty }))
             onClose()
             navigate('/checkout-details')
@@ -68,27 +65,32 @@ const ProductQuickView = ({ productId, onClose }) => {
 
     return isLoading ? (
         <div className="z-50">
-            <Loader />
-        </div>
+        <Loader />
+    </div>
     ) : product && product?.doc ? (
-        <div className="flex flex-col border shadow-lg bg-white rounded-lg">
+        <div className="flex flex-col border shadow bg-white rounded w-full max-w-full md:max-w-3xl lg:max-w-5xl">
+            {/* Close button and Product title */}
             <div className="flex justify-between items-center p-4 border-b">
                 <Link to={`/products/${product.doc.slug}`}>
-                    <h2 className="text-xl font-semibold">
+                    <h2 className="text-lg md:text-xl font-semibold">
                         {product.doc.name}
                     </h2>
                 </Link>
-                <button onClick={onClose} className="text-gray-500 text-xlg">
+                <button onClick={onClose} className="text-gray-500 text-xl">
                     <FaXmark />
                 </button>
             </div>
-            <div className="flex lg:flex-row flex-col items-start gap-4 p-4">
-                <div className="w-1/2 flex flex-col">
-                    <div className="w-full h-80 overflow-hidden shadow-sm">
+    
+            {/* Product Image and Details */}
+            <div className="flex flex-col lg:flex-row items-start gap-4 p-4">
+                {/* Product Image Section */}
+                <div className="w-full lg:w-1/2">
+                    <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden">
                         <img
+
                             src={`${API_URL}/${mainImage}` || DEFAULT_IMG}
                             alt={product.doc.name}
-                            className="w-full lg:h-96 md:h-80 h-40 object-contain py-2 transition-all duration-300 ease-out"
+                            className="w-full h-full object-contain"
                         />
                     </div>
                     <div className="flex justify-center mt-4">
@@ -97,19 +99,21 @@ const ProductQuickView = ({ productId, onClose }) => {
                                 key={index}
                                 src={`${API_URL}/${src}` || DEFAULT_IMG}
                                 alt={`Thumbnail ${index + 1}`}
-                                className="w-20 lg:h-20 h-10 object-cover mr-2 border border-gray-100 rounded-md cursor-pointer"
+                                className="w-16 h-16 object-cover mr-2 border rounded cursor-pointer"
                                 onClick={() => setMainImage(src)}
                             />
                         ))}
                     </div>
                 </div>
-                <div className="w-1/2 flex flex-col gap-4 mb-4">
-                    <h2 className="text-2xl">{product.doc.name}</h2>
-                    <div className="flex items-center mb-2">
-                        <Rating value={Number(4)} readonly />
-                        <span className="ml-2 text-gray-600">({10})</span>
-                        <div className="flex justify-between gap-2 items-center mx-2">
-                            <p className="border-r-2 pr-2">4 Reviews </p>
+    
+                {/* Product Details Section */}
+                <div className="w-full lg:w-1/2 flex flex-col gap-4">
+                    <h2 className="text-xl md:text-2xl">{product.doc.name}</h2>
+                    <div className="flex items-center">
+                        <Rating value={4} readonly />
+                        <span className="ml-2 text-gray-600">(10)</span>
+                        <div className="flex gap-2 ml-2">
+                            <p className="border-r-2 pr-2">4 Reviews</p>
                             <p className="border-r-2 pr-2">6 Orders</p>
                             <p>1 Wish Listed</p>
                         </div>
@@ -150,39 +154,38 @@ const ProductQuickView = ({ productId, onClose }) => {
                                     </p>
                                 )}
                             </div>
-                        ) : null}
-                    </div>
+                            <p className="text-sm">
+                                (Minimum Order Qty: {product.doc.minimumOrderQty})
+                            </p>
+                        </div>
+                    )}
                     <div className="flex items-center gap-2">
-                        <h3 className="text-gray-800 font-bold">
-                            Total Price:
-                        </h3>
+                        <h3 className="font-bold">Total Price:</h3>
                         <p>${(product.doc.price * qty).toFixed(2)}</p>
-                        <span className="mx-2 px-1 text-xs">(Tax : incl.)</span>
+                        <span className="text-xs">(Tax included)</span>
                     </div>
-                    <div className="flex gap-3 w-3/4">
+                    <div className="flex flex-col lg:flex-row gap-3">
                         <button
                             onClick={buyNowHandler}
-                            className="w-full btn bg-orange-500 hover:bg-orange-600 transition-all ease-in text-white py-2 px-4"
+                            className="btn bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 w-full lg:w-1/2"
                         >
                             Buy now
                         </button>
                         <button
                             onClick={addToCartHandler}
-                            className="w-full btn primary-btn"
+                            className="btn primary-btn w-full lg:w-1/2"
                         >
                             {isProductAddToCart ? 'Update Cart' : 'Add to cart'}
                         </button>
-                        <WishListIcon
-                            productId={product.doc._id}
-                            onClose={onClose}
-                        />
+                        <WishListIcon productId={product.doc._id} onClose={onClose} />
                     </div>
                 </div>
             </div>
         </div>
     ) : (
         <p>Product details not found!</p>
-    )
-}
+    );
+    
+};
 
-export default ProductQuickView
+export default ProductQuickView;

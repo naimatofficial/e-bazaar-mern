@@ -15,6 +15,7 @@ import ProfileMenu from '../Profile/ProfileMenu';
 import { useSelector } from 'react-redux';
 import CartIcon from './CartIcon';
 import { useGetWishListByIdQuery } from '../../redux/slices/wishlistApiSlice';
+import MobileSidebar from './MobileSidebar';
 
 const NavbarSticky = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -145,6 +146,11 @@ const NavbarSticky = () => {
                     </div>
                 )}
             </Navbar>
+
+            {/* Mobile Sidebar Toggle Button */}
+            <div className="fixed z-50 top-[calc(2rem)] left-2 block md:hidden">
+                <MobileSidebar />
+            </div>
         </div>
     );
 };
