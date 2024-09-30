@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
     const { user } = useSelector((state) => state.auth.userInfo);
+    const { user } = useSelector((state) => state.auth.userInfo);
 
     const { data: orders, isLoading } = useGetMyOrdersQuery(user._id, {
         skip: !user._id,
@@ -105,5 +106,8 @@ const MyOrders = () => {
         <p>Something went wrong.</p>
     );
 };
+    );
+};
 
+export default MyOrders;
 export default MyOrders;

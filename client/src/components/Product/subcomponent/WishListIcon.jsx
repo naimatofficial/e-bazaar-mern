@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useAddWishListMutation } from '../../../redux/slices/wishlistApiSlice'
-import { toast } from 'react-toastify'
 import { FaHeart } from 'react-icons/fa'
+import toast from 'react-hot-toast'
 
 const WishListIcon = ({ productId, onClose }) => {
     const { userInfo } = useSelector((state) => state.auth)
