@@ -1,16 +1,16 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useUpdateCustomerMutation } from '../../redux/slices/customersApiSlice';
-import { toast } from 'react-toastify'; // Import toast
-import AddressCard from './subcomponenets/AddressCard';
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useUpdateCustomerMutation } from '../../redux/slices/customersApiSlice'
+import AddressCard from './subcomponenets/AddressCard'
+import toast from 'react-hot-toast'
 
 const MyAddress = () => {
-    const { userInfo } = useSelector((state) => state.auth);
-    const user = userInfo?.user;
-    const { permanentAddress } = user || {};
+    const { userInfo } = useSelector((state) => state.auth)
+    const user = userInfo?.user
+    const { permanentAddress } = user || {}
 
     // State for modal visibility and form data
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -18,69 +18,78 @@ const MyAddress = () => {
         zip: '',
         address: '',
         country: '',
-    });
+    })
 
     // State to hold the addresses
-    const [addresses, setAddresses] = useState([permanentAddress]);
+    const [addresses, setAddresses] = useState([permanentAddress])
 
     // Fetch userId from local storage and store it in customerId
-    const customerId = user._id;
+    const customerId = user._id
 
     const handleClick = () => {
-        setIsModalOpen(true); // Open the modal
-    };
+        setIsModalOpen(true) // Open the modal
+    }
 
     const handleClose = () => {
-        setIsModalOpen(false); // Close the modal
-        setFormData({ name: '', phone: '', city: '', zip: '', address: '', country: '' }); // Reset form data
-    };
+        setIsModalOpen(false) // Close the modal
+        setFormData({
+            name: '',
+            phone: '',
+            city: '',
+            zip: '',
+            address: '',
+            country: '',
+        }) // Reset form data
+    }
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
-        }));
-    };
+        }))
+    }
 
-    const [updateCustomer] = useUpdateCustomerMutation();
+    const [updateCustomer] = useUpdateCustomerMutation()
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        
+        e.preventDefault()
+
         if (!customerId) {
-            console.error('Customer ID not found');
-            return;
+            console.error('Customer ID not found')
+            return
         }
-    
+
         try {
-            const result = await updateCustomer({ customerId, address: formData }).unwrap();
-            console.log('Address updated:', result);
-            toast.success('Address updated successfully!');
-    
+            const result = await updateCustomer({
+                customerId,
+                address: formData,
+            }).unwrap()
+            console.log('Address updated:', result)
+            toast.success('Address updated successfully!')
+
             // Get the current user data from local storage
-            const userFromStorage = JSON.parse(localStorage.getItem('user'));
-    
+            const userFromStorage = JSON.parse(localStorage.getItem('user'))
+
             // Update the addresses array in the user object
             const updatedUser = {
                 ...userFromStorage,
-                permanentAddress: formData,  // Assuming you want to save it as 'permanentAddress'
-            };
-    
+                permanentAddress: formData, // Assuming you want to save it as 'permanentAddress'
+            }
+
             // Save the updated user object to local storage
-            localStorage.setItem('userInfo', JSON.stringify(updatedUser));
-    
+            localStorage.setItem('userInfo', JSON.stringify(updatedUser))
+
             // Update the addresses state with the new address
-            const updatedAddresses = [...addresses, formData];
-            setAddresses(updatedAddresses);
-    
-            handleClose();
+            const updatedAddresses = [...addresses, formData]
+            setAddresses(updatedAddresses)
+
+            handleClose()
         } catch (error) {
-            console.error('Failed to update address:', error);
-            toast.error('Failed to update address. Please try again.');
+            console.error('Failed to update address:', error)
+            toast.error('Failed to update address. Please try again.')
         }
-    };
-    
+    }
 
     return (
         <div className="mx-auto rounded-lg p-8 shadow-sm shadow-primary-100">
@@ -116,7 +125,10 @@ const MyAddress = () => {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl">
                         <h3 className="text-xl font-bold mb-4">Add Address</h3>
-                        <form onSubmit={handleSubmit} className="flex flex-wrap">
+                        <form
+                            onSubmit={handleSubmit}
+                            className="flex flex-wrap"
+                        >
                             <div className="mb-4 w-1/2 pr-2">
                                 <label>Name</label>
                                 <input
@@ -184,10 +196,17 @@ const MyAddress = () => {
                                 />
                             </div>
                             <div className="w-full flex justify-between mt-4">
-                                <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded-md">
+                                <button
+                                    type="submit"
+                                    className="bg-green-500 text-white py-2 px-4 rounded-md"
+                                >
                                     Submit
                                 </button>
-                                <button type="button" onClick={handleClose} className="mt-2 bg-red-500 text-white py-2 px-4 rounded-md">
+                                <button
+                                    type="button"
+                                    onClick={handleClose}
+                                    className="mt-2 bg-red-500 text-white py-2 px-4 rounded-md"
+                                >
                                     Close
                                 </button>
                             </div>
@@ -196,7 +215,7 @@ const MyAddress = () => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default MyAddress;
+export default MyAddress

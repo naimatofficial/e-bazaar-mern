@@ -30,9 +30,10 @@ const ProductQuickView = ({ productId, onClose }) => {
         }
     }, [product]);
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { cartItems } = useSelector((state) => state.cart);
 
     const isProductAddToCart = cartItems?.find(
@@ -55,11 +56,12 @@ const ProductQuickView = ({ productId, onClose }) => {
 
     const buyNowHandler = () => {
         if (qty >= product.doc.minimumOrderQty) {
-            dispatch(addToCart({ ...product, qty }));
-            onClose();
-            navigate('/checkout-details');
-        } else setMinimumOrderError(true);
-    };
+
+            dispatch(addToCart({ ...product, qty }))
+            onClose()
+            navigate('/checkout-details')
+        } else setMinimumOrderError(true)
+    }
 
     return isLoading ? (
         <div className="z-50">
@@ -85,7 +87,8 @@ const ProductQuickView = ({ productId, onClose }) => {
                 <div className="w-full lg:w-1/2">
                     <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden">
                         <img
-                            src={mainImage ? `${API_URL}/${mainImage}` : DEFAULT_IMG}
+
+                            src={`${API_URL}/${mainImage}` || DEFAULT_IMG}
                             alt={product.doc.name}
                             className="w-full h-full object-contain"
                         />
@@ -125,14 +128,31 @@ const ProductQuickView = ({ productId, onClose }) => {
                             </p>
                         )}
                     </div>
-                    {product.doc.stock > 1 && (
-                        <div>
-                            <div className="flex items-center gap-2 mb-2">
-                                <h3 className="font-bold">Quantity:</h3>
-                                <Quantity qty={qty} setQty={setQty} product={product.doc} />
-                                <span className="text-sm">
-                                    {product.doc.stock} left
-                                </span>
+                    <div className="flex items-center">
+                        {product.doc.stock > 1 ? (
+                            <div>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <h3 className="text-gray-800 font-bold">
+                                        Quantity:
+                                    </h3>
+                                    <Quantity
+                                        qty={qty}
+                                        setQty={setQty}
+                                        product={product.doc}
+                                    />
+                                    <span className="mx-2 px-1 text-sm">
+                                        {product.doc.stock} pieces left
+                                    </span>
+                                </div>
+                                <p className="text-gray-700 text-sm">
+                                    (Minimum Order Qrty:{' '}
+                                    {product.doc.minimumOrderQty})
+                                </p>
+                                {minimumOrderError && (
+                                    <p className="bg-red-100 text-red-400 w-full rounded-lg p-2">
+                                        {`Minimum order for this item is ${product.doc.minimumOrderQty} piece.`}
+                                    </p>
+                                )}
                             </div>
                             <p className="text-sm">
                                 (Minimum Order Qty: {product.doc.minimumOrderQty})

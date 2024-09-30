@@ -1,28 +1,16 @@
-import { useGetMyOrdersQuery } from '../../redux/slices/ordersApiSlice';
-import { useSelector } from 'react-redux';
-import Loader from '../Loader';
-import { IoEyeSharp } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+
+import { useGetMyOrdersQuery } from '../../redux/slices/ordersApiSlice'
+import { useSelector } from 'react-redux'
+import Loader from '../Loader'
+import { IoEyeSharp } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
 
 const MyOrders = () => {
-    const { user } = useSelector((state) => state.auth.userInfo);
-    const { user } = useSelector((state) => state.auth.userInfo);
+    const { user } = useSelector((state) => state.auth.userInfo)
 
     const { data: orders, isLoading } = useGetMyOrdersQuery(user._id, {
         skip: !user._id,
-    });
-
-    const formatDate = (dateString) => {
-        const options = {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true,
-        };
-        return new Date(dateString).toLocaleString('en-US', options);
-    };
+    })
 
     return isLoading ? (
         <Loader />
@@ -83,6 +71,7 @@ const MyOrders = () => {
                                     <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm border border-gray-200">
                                         <p className="text-gray-900 whitespace-no-wrap text-xs md:text-sm">
                                             ${order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}
+
                                         </p>
                                     </td>
                                     <td className="px-2 md:px-4 py-2 bg-white text-xs md:text-sm flex justify-center items-center">
@@ -106,8 +95,6 @@ const MyOrders = () => {
         <p>Something went wrong.</p>
     );
 };
-    );
-};
+ 
 
-export default MyOrders;
 export default MyOrders;

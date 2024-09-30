@@ -32,11 +32,9 @@ const ProductDetailsPage = () => {
             { skip: !product?.category?._id }
         )
 
-    console.log(products)
-
     return isLoading ? (
         <Loader />
-    ) : product ? (
+    ) : product && product.doc ? (
         <div className="container mx-auto flex flex-col space-y-4 sm:space-y-0">
             <div className="flex flex-col lg:flex-row justify-between gap-4 w-full">
                 <div className="flex flex-col">

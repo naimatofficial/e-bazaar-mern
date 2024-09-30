@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { capitalizeFirstLetter } from '../../utils'
 import { SlArrowRight } from 'react-icons/sl'
+import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 const CategoryDropDown = () => {
     const { data: categories, isLoading } = useGetCategoriesQuery({})
     const [hoveredCategory, setHoveredCategory] = useState(null)
@@ -21,6 +22,8 @@ const CategoryDropDown = () => {
         setHoveredCategory(null)
         setHoveredSubCategory(null)
     }
+
+    console.log(categories)
 
     return isLoading ? (
         <Loader />
@@ -47,7 +50,10 @@ const CategoryDropDown = () => {
                                 >
                                     <div className="image">
                                         <img
-                                            src="https://vistamart.biz/storage/app/public/category/2024-08-08-66b4dde53db3a.png"
+                                            src={
+                                                `${API_URL}/uploads/${category.logo}` ||
+                                                DEFAULT_IMG
+                                            }
                                             alt="Logo"
                                             className="w-[1.7vw] h-[1vw]"
                                         />
