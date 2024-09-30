@@ -10,7 +10,7 @@ const HeroSection = () => {
         <div className="w-full flex justify-between gap-2">
             {/* <CategorySidebar className="hidden" /> */}
             <Carousel
-                className=" w-full lg:h-[70vh] md:h-[50vh] h-[30vh] rounded-lg "
+                className=" w-full z-10 lg:h-[70vh] md:h-[50vh] h-[30vh] rounded-lg "
                 navigation={({ setActiveIndex, activeIndex, length }) => (
                     <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
                         {new Array(length).fill('').map((_, i) => (
