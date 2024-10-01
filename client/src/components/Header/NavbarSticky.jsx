@@ -8,26 +8,23 @@ import {
     FaSearch,
 } from 'react-icons/fa'
 import { Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react'
-// import logo from "../../assets/app-logo/app-logo-transparent.png";
 import logo from '../../assets/app-logo/vista-app-logo.png'
-
 import SearchBar from './SerachBar'
 import { Link } from 'react-router-dom'
 import ProfileMenu from '../Profile/ProfileMenu'
 import { useSelector } from 'react-redux'
 import CartIcon from './CartIcon'
 import { useGetWishListByIdQuery } from '../../redux/slices/wishlistApiSlice'
+import MobileSidebar from './MobileSidebar'
 
 const NavbarSticky = () => {
     const [openMenu, setOpenMenu] = useState(false)
     const [isSticky, setIsSticky] = useState(false)
     const [isSearchOpen, setIsSearchOpen] = useState(false)
     const { userInfo } = useSelector((state) => state.auth)
-
     const { data: wishList } = useGetWishListByIdQuery(userInfo?.user?._id, {
         skip: !userInfo?.user?._id,
     })
-
     const totalWishListItems = wishList?.products?.length.toString() || '0'
 
     const handleScroll = () => {
@@ -45,6 +42,19 @@ const NavbarSticky = () => {
 
     const toggleSearch = () => {
         setIsSearchOpen(!isSearchOpen)
+    }
+
+    const toggleMenu = () => {
+        setOpenMenu(!openMenu)
+    }
+
+    // Open menu on hover and click
+    const handleMouseEnter = () => {
+        setOpenMenu(true)
+    }
+
+    const handleMouseLeave = () => {
+        setOpenMenu(false)
     }
 
     return (
@@ -68,7 +78,7 @@ const NavbarSticky = () => {
                             className="w-24 sm:w-36 md:w-40 object-contain"
                         />
                     </Link>
-                    <div className="flex-grow hidden md:block ">
+                    <div className="flex-grow hidden md:block">
                         <SearchBar />
                     </div>
                     <div className="md:hidden">
@@ -92,24 +102,24 @@ const NavbarSticky = () => {
                                 </IconButton>
                             </Link>
                         </Badge>
-                        <div>
+                        <div
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                        >
                             {userInfo && userInfo?.user ? (
                                 <ProfileMenu user={userInfo.user} />
                             ) : (
-                                <Menu
-                                    open={openMenu}
-                                    handler={setOpenMenu}
-                                    allowHover
-                                >
+                                <Menu open={openMenu} handler={setOpenMenu}>
                                     <MenuHandler>
                                         <IconButton
                                             variant="text"
                                             className="bg-gray-100 rounded-full border-none"
+                                            onClick={toggleMenu} // Allow click to toggle menu
                                         >
                                             <FaUser className="h-5 w-5 text-primary-500" />
                                         </IconButton>
                                     </MenuHandler>
-                                    <MenuList className="hidden overflow-visible md:grid shadow-md">
+                                    <MenuList className="overflow-visible md:grid shadow-md">
                                         <Link to="/customer/auth/sign-in">
                                             <MenuItem>
                                                 <FaSignInAlt className="inline mr-2" />
@@ -143,6 +153,11 @@ const NavbarSticky = () => {
                     </div>
                 )}
             </Navbar>
+
+            {/* Mobile Sidebar Toggle Button */}
+            <div className="fixed z-50 top-[calc(2rem)] left-2 block md:hidden">
+                <MobileSidebar />
+            </div>
         </div>
     )
 }

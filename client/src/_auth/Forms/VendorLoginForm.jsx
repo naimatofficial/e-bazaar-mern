@@ -5,9 +5,9 @@ import { useVendorLoginMutation } from '../../redux/slices/vendorsApiSlice'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCredentials } from '../../redux/slices/authSlice'
-import { toast } from 'react-toastify'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import toast from 'react-hot-toast'
 
 // Define the Zod schema
 const loginSchema = z.object({
@@ -20,7 +20,7 @@ const loginSchema = z.object({
 
 const VendorLoginForm = () => {
     const [showPassword, setShowPassword] = useState(false)
-    const [vendorLogin, { isLoading, isSuccess }] = useVendorLoginMutation()
+    const [vendorLogin, { isLoading }] = useVendorLoginMutation()
 
     const { userInfo } = useSelector((state) => state.auth)
 
@@ -47,8 +47,8 @@ const VendorLoginForm = () => {
         try {
             const res = await vendorLogin({ email, password }).unwrap()
             dispatch(setCredentials({ ...res }))
+            toast.success('Vendor login successfully')
             navigate('/')
-            isSuccess && toast.success('Vendor login successfully')
         } catch (err) {
             console.error(err?.data?.message)
             toast.error(err?.data?.message || err.error)

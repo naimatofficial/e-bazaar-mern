@@ -27,9 +27,9 @@ export const BrandHeader = ({ products, filters }) => {
 
     const getTitle = () => {
         if (filters.brand) {
-            return `Brand Products (${filters.brand})`
+            return `Brand Products`
         } else if (filters.category) {
-            return `Category Products (${filters.category})`
+            return `Category Products`
         } else if (filters.sort) {
             if (filters.sort === 'featured') {
                 return 'Featured Products'
@@ -37,7 +37,7 @@ export const BrandHeader = ({ products, filters }) => {
                 return 'Discount Products'
             }
         }
-        return 'All Products'
+        return 'Vendor Products'
     }
 
     const title = getTitle()

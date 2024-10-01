@@ -1,37 +1,38 @@
-import { useDispatch } from "react-redux";
-import Quantity from "../Product/subcomponent/Quantity";
-import { useEffect, useState } from "react";
-import { removeFromCart } from "../../redux/slices/cartSlice";
-import { Typography } from "@material-tailwind/react";
-import { FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import Quantity from '../Product/subcomponent/Quantity'
+import { useEffect, useState } from 'react'
+import { removeFromCart } from '../../redux/slices/cartSlice'
+import { Typography } from '@material-tailwind/react'
+import { FaTrash } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 
 /* eslint-disable react/prop-types */
 const CartItem = ({ item }) => {
-	console.log(item);
-	const [qty, setQty] = useState(0);
-	const dispatch = useDispatch();
+    console.log(item)
+    const [qty, setQty] = useState(0)
+    const dispatch = useDispatch()
 
-	useEffect(() => {
-		if (item?.qty) {
-			setQty(item.qty);
-		}
-	}, [item.qty]);
+    useEffect(() => {
+        if (item?.qty) {
+            setQty(item.qty)
+        }
+    }, [item.qty])
 
-	const removeFromCartHandler = (id) => {
-		dispatch(removeFromCart(id));
-		console.log("ID: ", id);
-	};
+    const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id))
+        console.log('ID: ', id)
+    }
 
-	return item && qty > 0 ? (
+    return item && qty > 0 ? (
         <div className="bg-gray-50 p-3 flex gap-3 justify-between items-center rounded-lg shadow-sm">
             <div className="flex gap-2">
-                <Link to={`/products/${item._id}`} className="cursor-pointer">
+                <Link to={`/products/${item.slug}`} className="cursor-pointer">
                     <img
                         src={
                             item?.thumbnail
-                                ? `http://localhost:3000/${item.thumbnail}`
-                                : 'https://www.proclinic-products.com/build/static/default-product.30484205.png'
+                                ? `${API_URL}/${item.thumbnail}`
+                                : DEFAULT_IMG
                         }
                         alt={item.name}
                         className="h-20 object-cover rounded-md"
@@ -80,6 +81,6 @@ const CartItem = ({ item }) => {
             </div>
         </div>
     ) : null
-};
+}
 
-export default CartItem;
+export default CartItem

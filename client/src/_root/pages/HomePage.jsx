@@ -12,17 +12,19 @@ import TopSeller from '../../components/Seller/TopSeller'
 import StarProducts from '../../components/Product/StarProducts'
 
 // images
-import PromoSaleImage from '../../assets/banner/promo-sale.webp'
-import MegaSaleBanner1 from '../../assets/banner/mega-sale.webp'
-import MegaSaleBanner2 from '../../assets/banner/super-sale.webp'
-import TopRatedIcon from '../../assets/top-rated.png'
-import BestSellingIcon from '../../assets/best-sellings.png'
+import PromoSaleImage from './../../assets/banner/promo-sale.webp'
+import MegaSaleBanner1 from './../../assets/banner/mega-sale.webp'
+import MegaSaleBanner2 from './../../assets/banner/super-sale.webp'
+import TopRatedIcon from './../../assets/top-rated.png'
+import BestSellingIcon from './../../assets/best-sellings.png'
+
 import {
     useGetProductsQuery,
     useGetTopRatedProductsQuery,
 } from '../../redux/slices/productsApiSlice'
 import { useEffect, useState } from 'react'
 import Brands from '../../components/Brands'
+import { DEFAULT_IMG } from '../../utils/constants'
 
 const HomePage = () => {
     const { data: products, isLoading: productsLoading } = useGetProductsQuery()
@@ -82,7 +84,10 @@ const HomePage = () => {
 
             <section className="py-4 mb-4 flex flex-col items-center lg:flex-row lg:items-start justify-around gap-4">
                 <DealOfTheDay
-                    image={'./src/assets/categories/laptop.png'}
+                    image={
+                        `https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-macbook-air-space-gray-m1-202010?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1634145627000` ||
+                        DEFAULT_IMG
+                    }
                     title={'Laptop'}
                     price={150.0}
                 />

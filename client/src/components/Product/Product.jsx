@@ -3,17 +3,15 @@ import { Rating } from '@material-tailwind/react'
 import { useState } from 'react'
 import { addToCart } from '../../redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import Quantity from './subcomponent/Quantity'
 import { useNavigate } from 'react-router-dom'
 import WishListIcon from './subcomponent/WishListIcon'
 import { API_URL, DEFAULT_IMG } from '../../utils/constants'
+import toast from 'react-hot-toast'
 
 const Product = ({ product }) => {
     const [mainImage, setMainImage] = useState(product?.thumbnail)
     const [qty, setQty] = useState(1)
-
-    console.log(product)
 
     const productImages = product ? [...product.images, product?.thumbnail] : []
     const oldPrice = product?.price + product?.discount
@@ -54,13 +52,9 @@ const Product = ({ product }) => {
                 <div className="lg:w-1/2 w-full">
                     <div className="shadow-md overflow-hidden">
                         <img
-                            src={
-                                mainImage
-                                    ? `${API_URL}/${mainImage}`
-                                    : DEFAULT_IMG
-                            }
+                            src={`${API_URL}/${mainImage}` || DEFAULT_IMG}
                             alt="Main product image"
-                            className="w-[30rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
+                            className="w-[24rem] h-[24rem]  object-contain p-2 transition-transform duration-300 ease-out"
                         />
                     </div>
                     <div className="flex justify-center mt-4 ">
@@ -78,12 +72,18 @@ const Product = ({ product }) => {
                 <div className="w-full flex-grow flex flex-col gap-4">
                     <h2 className="text-lg md:text-xl">{product.name}</h2>
                     <div className="flex items-center mb-2">
-                        <Rating value={Number(4)} readonly />
-                        <span className="ml-2 text-gray-600">({0})</span>
-                        <div className="flex justify-between gap-2 items-center mx-2 text-xs md:text-sm">
-                            <p className="border-r-2 pr-2">4 Reviews</p>
-                            <p className="border-r-2 pr-2">6 Orders</p>
-                            <p>1 Wish Listed</p>
+                        <span className="mx-2 text-gray-600 ">
+                            {product?.rating || 0}
+                        </span>
+                        <Rating value={Number(product.rating || 0)} readonly />
+
+                        <div className="flex justify-between gap-2 border-l-2 px-2 items-center mx-2 text-xs md:text-sm">
+                            <p className="border-r-2 pr-2">
+                                {product?.numOfReviews || 0} Reviews
+                            </p>
+                            <p className="px-2">
+                                {product.totalOrders || 0} Orders
+                            </p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2">

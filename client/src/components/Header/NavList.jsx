@@ -32,7 +32,7 @@ const NavList = () => {
                         color="blue-gray"
                         className="p-1 font-medium text-base"
                     >
-                        <span className="navbar-item">Brand</span>
+                        <span className="navbar-item">Brands</span>
                     </Typography>
                 </MenuHandler>
                 <MenuList className="hidden w-[250px] overflow-visible md:block shadow-md">
@@ -56,7 +56,7 @@ const NavList = () => {
                 className="p-1 font-medium text-base"
             >
                 <Link to="/vendors" className="navbar-item">
-                    All Vendors
+                    Vendors
                 </Link>
             </Typography>
             <Menu open={openMenu2} handler={setOpenMenu2} allowHover>
@@ -81,7 +81,7 @@ const NavList = () => {
                             to="/vendor/auth/registration"
                             className="flex items-center text-black border-b hover:text-primary-400 transition-colors"
                         >
-                            Become A Vendor
+                            Become a vendor
                         </Link>
                     </Typography>
                     <Typography

@@ -91,7 +91,12 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         }),
         searchProducts: builder.query({
             query: ({ query, page = 1, limit = 10 }) =>
-                `/search?query=${query}&page=${page}&limit=${limit}`,
+                `/api/search?query=${query}&page=${page}&limit=${limit}`,
+        }),
+        getAllProducts: builder.query({
+            query: () => ({
+                url: PRODUCTS_URL,
+            }),
         }),
     }),
 })
@@ -110,5 +115,7 @@ export const {
     useGetLatestProductsQuery,
     useGetProductSuggestionsQuery,
     useGetFlashDealsQuery,
+    useSearchProductsQuery,
+    useGetAllProductsQuery,
     useGetProductBySlugQuery,
 } = productsApiSlice

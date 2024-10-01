@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { API_URL, DEFAULT_IMG } from '../../utils/constants'
 
 const SellerCard = ({ data: seller }) => {
-    console.log(seller)
     return (
         <>
             <div className="bg-white rounded-lg border border-primary-100 overflow-hidden flex flex-col w-75 mx-2 cursor-pointer">

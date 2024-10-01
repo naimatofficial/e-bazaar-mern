@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { FaAngleRight } from 'react-icons/fa'
 import {
     useGetProductBySlugQuery,
+    // useGetProductDetailsQuery,
     useGetProductsQuery,
 } from '../../redux/slices/productsApiSlice'
 
@@ -16,8 +17,12 @@ import Overview from '../../components/Product/subcomponent/Overview'
 const ProductDetailsPage = () => {
     const { slug } = useParams()
 
-    // const { data: product, isLoading } = useGetProductDetailsQuery(id)
-    const { data: product, isLoading } = useGetProductBySlugQuery(slug)
+    // const { data: product, isLoading } = useGetProductDetailsQuery(slug)
+    const { data: product, isLoading } = useGetProductBySlugQuery(slug, {
+        skip: !slug,
+    })
+
+    console.log(product)
 
     const { data: products, isLoading: isProductsLoading } =
         useGetProductsQuery(
@@ -27,11 +32,9 @@ const ProductDetailsPage = () => {
             { skip: !product?.category?._id }
         )
 
-    console.log(products)
-
     return isLoading ? (
         <Loader />
-    ) : product ? (
+    ) : product && product.doc ? (
         <div className="container mx-auto flex flex-col space-y-4 sm:space-y-0">
             <div className="flex flex-col lg:flex-row justify-between gap-4 w-full">
                 <div className="flex flex-col">

@@ -1,36 +1,58 @@
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useGetWishListByIdQuery } from '../../redux/slices/wishlistApiSlice'
-import Loader from '../Loader'
-import WishItem from './subcomponenets/WishItem'
+import { useNavigate } from 'react-router-dom'
 
-const WishList = () => {
+import { FaHeart } from 'react-icons/fa'
+import toast from 'react-hot-toast'
+import {
+    useAddWishListMutation,
+    useGetWishListByIdQuery,
+} from '../../redux/slices/wishlistApiSlice'
+
+const WishListIcon = ({ productId, onClose }) => {
     const { userInfo } = useSelector((state) => state.auth)
 
-    const { data: wishList, isLoading } = useGetWishListByIdQuery(
-        userInfo?.user?._id,
-        {
-            skip: !userInfo?.user?._id,
+    const { refetch } = useGetWishListByIdQuery(userInfo?.user?._id)
+
+    const navigate = useNavigate()
+
+    const [addWishList, { isLoading, error, isSuccess }] =
+        useAddWishListMutation()
+
+    useEffect(() => {
+        if (!isLoading && isSuccess) {
+            onClose && onClose()
+            toast.success('Product added to wishlist')
         }
-    )
+    }, [isLoading, isSuccess, onClose])
 
-    console.log(wishList)
+    const addToWishListHandler = async () => {
+        if (!userInfo || !userInfo?.user) {
+            toast.warning('You need to Sign in to view this feature.')
+            return navigate('/customer/auth/sign-in')
+        }
 
-    return isLoading ? (
-        <Loader />
-    ) : (
-        <div className="p-8 shadow-sm shadow-primary-100">
-            <h2 className="text-xl font-bold mb-4">WishList</h2>
-            {wishList && wishList?.products && wishList?.products.length ? (
-                <div className="flex flex-col gap-2">
-                    {wishList?.products?.map((product) => (
-                        <WishItem key={product._id} product={product} />
-                    ))}
-                </div>
-            ) : (
-                <p>No product added in wishlist.</p>
-            )}
+        try {
+            const customerId = userInfo?.user?._id
+            await addWishList({ customerId, productId })
+            refetch()
+        } catch (err) {
+            toast.error(error?.data?.message)
+            console.log(err)
+        }
+    }
+
+    return (
+        <div>
+            <button
+                onClick={addToWishListHandler}
+                className="btn border border-gray-300 text-primary-500 py-2 px-4 rounded flex items-center justify-center"
+            >
+                <FaHeart className="mr-2" />
+            </button>
         </div>
     )
 }
 
-export default WishList
+export default WishListIcon
