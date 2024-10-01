@@ -7,7 +7,6 @@ import Banner3 from '../../assets/slideshow-img/slide-3.png'
 const HeroSection = () => {
     return (
         <div className="w-full flex justify-between gap-2">
-            {/* <CategorySidebar className="hidden" /> */}
             <Carousel
                 className=" w-full z-10 lg:h-[70vh] md:h-[50vh] h-[30vh] rounded-lg "
                 navigation={({ setActiveIndex, activeIndex, length }) => (
